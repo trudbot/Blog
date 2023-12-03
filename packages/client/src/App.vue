@@ -1,30 +1,77 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Navigation from "./components/navigation.vue";
+import {useThemeStore} from "./stores/theme-store.ts";
+import {useLanguageStore} from "./stores/language-store.ts";
+import {useRouter} from "vue-router";
+import {nextTick, onMounted, ref, watch} from "vue";
+import {useDark} from "@vueuse/core";
+const router = useRouter();
+const {isDark} = useThemeStore();
+const dark = useDark();
+useLanguageStore();
+
+onMounted(() => {
+  // document.documentElement.classList.toggle('dark');
+  console.log(dark.value)
+  if (dark.value) {
+    document.documentElement.classList.add('dark-mode');
+  }
+})
+
+watch(dark, async () => {
+  await nextTick()
+  document.documentElement.classList.toggle('dark-mode')
+})
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311122207869.webp" alt="home" @click="router.push('/')">
+  <div class="app-container">
+    <header class="nav-container">
+      <navigation />
+    </header>
+    <main>
+      <router-view />
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style scoped lang="scss">
+
+img {
+  $L: min(145px, max(10vw, 96px));
+  width: $L;
+  height: $L;
+  //width: 100px;
+  //height: 100px;
+  position: absolute;
+  top: 2vh;
+  left: 0.5vw;
+  z-index: 999;
+  border-radius: 50%;
+  cursor: pointer;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.app-container {
+  transition: background 2s;
+  background: var(--color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    box-sizing: border-box;
+    padding-top: 20px;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .nav-container {
+    padding-left: 10vw;
+    padding-top: 15px;
+  }
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>

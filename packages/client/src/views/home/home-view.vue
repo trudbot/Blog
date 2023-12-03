@@ -1,0 +1,171 @@
+<script setup lang="ts">
+import FullPage from '../../components/FullPage/index.vue'
+import PageItem from "../../components/FullPage/page-item.vue";
+import {useThemeStore} from "../../stores/theme-store";
+import {computed, onMounted, ref} from "vue";
+import {usePhone} from "../../hooks/isPhone.ts";
+import device from 'current-device'
+import {Codemirror} from 'vue-codemirror'
+import {cpp} from '@codemirror/lang-cpp'
+import { oneDark } from '@codemirror/theme-one-dark'
+import {tomorrow} from "thememirror";
+import codeStr from "./code.ts";
+import {useI18n} from "vue-i18n";
+import techStack from "./tech-stack.ts";
+import {openLink} from "../../utils/openLink.ts";
+
+const {isPhone} = usePhone();
+const {t} = useI18n();
+const {isDark} = useThemeStore();
+const extensions = computed(() => {
+  return [cpp(), isDark() ? oneDark : tomorrow];
+});
+
+const code = ref<string>(``);
+const disable = ref<boolean>(true);
+
+onMounted(() => {
+  let idx: number = 0;
+  const timer = setInterval(() => {
+    if (idx === codeStr.length) {
+      clearInterval(timer);
+      disable.value = false;
+      return;
+    }
+    code.value += codeStr[idx ++];
+  }, 500);
+})
+
+</script>
+
+<template>
+  <div class="home-container">
+    <FullPage>
+      <PageItem class="avatar">
+        <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311131854196.webp" alt="">
+        <p>trudbot</p>
+      </PageItem>
+      <PageItem>
+        <div class="frontend">
+          <div class="title">
+            {{t('home.frontend')}}
+          </div>
+          <div class="stack">
+            <img v-for="tech in techStack" :src="tech.img" :alt="tech.name" :key="tech.name" @click="openLink(tech.url)"/>
+          </div>
+        </div>
+      </PageItem>
+      <PageItem>
+        <div class="acm-show">
+          <div class="title">
+            {{ t('home.cp') }}
+          </div>
+          <div class="cp-content">
+            <div class="cp-item icpc-icon">
+              <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311181422543.png" alt="icpc">
+            </div>
+            <div class="code-box cp-item" v-if="device.desktop()">
+              <Codemirror
+                  class="editor"
+                  style="height: 60vh; padding-top: 5vh; box-sizing: border-box;"
+                  @wheel.stop
+                  :extensions="extensions"
+                  v-model="code"
+                  :autofocus="true"
+                  :indent-with-tab="true"
+                  :tab-size="2"
+                  :disabled="disable"
+              />
+            </div>
+          </div>
+        </div>
+      </PageItem>
+    </FullPage>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.home-container {
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  &:hover {
+    cursor: ns-resize;
+  }
+
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      $L: min(30vw, 30vh);
+      width: $L;
+      height: $L;
+      border-radius: 50%;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: max(3vh, 3vw);
+    }
+  }
+
+  .frontend .stack {
+    width: 50vw;
+    margin: 5vh auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    img {
+      $L: 10vw;
+      width: $L;
+      height: $L;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .acm-show, .frontend {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-family: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: max(3vw, 30px);
+      margin-top: 1vh;
+      margin-bottom: 1vh;
+      height: 10vh;
+    }
+
+    .cp-content {
+      flex: 1;
+      display: flex;
+
+      .cp-item {
+        height: 100%;
+        flex: 1;
+
+        img {
+          position: relative;
+          top: 30%;
+          object-fit: contain;
+        }
+
+        &.icpc-icon {
+          text-align: center;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+</style>
