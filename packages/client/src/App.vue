@@ -3,22 +3,18 @@ import Navigation from "./components/navigation.vue";
 import {useThemeStore} from "./stores/theme-store.ts";
 import {useLanguageStore} from "./stores/language-store.ts";
 import {useRouter} from "vue-router";
-import {nextTick, onMounted, ref, watch} from "vue";
-import {useDark} from "@vueuse/core";
+import {nextTick, onMounted, watch} from "vue";
 const router = useRouter();
 const {isDark} = useThemeStore();
-const dark = useDark();
 useLanguageStore();
 
 onMounted(() => {
-  // document.documentElement.classList.toggle('dark');
-  console.log(dark.value)
-  if (dark.value) {
+  if (isDark()) {
     document.documentElement.classList.add('dark-mode');
   }
 })
 
-watch(dark, async () => {
+watch(isDark, async () => {
   await nextTick()
   document.documentElement.classList.toggle('dark-mode')
 })
@@ -38,23 +34,19 @@ watch(dark, async () => {
 </template>
 
 <style scoped lang="scss">
+@import "./mixin.scss";
 
 img {
-  $L: min(145px, max(10vw, 96px));
-  width: $L;
-  height: $L;
-  //width: 100px;
-  //height: 100px;
+  @include cycle(min(145px, max(10vw, 96px)));
   position: absolute;
   top: 2vh;
   left: 0.5vw;
   z-index: 999;
-  border-radius: 50%;
   cursor: pointer;
 }
 
 .app-container {
-  transition: background 2s;
+  transition: background-color 2s;
   background: var(--color);
   height: 100%;
   display: flex;

@@ -4,10 +4,15 @@ export default {
         tags: 'Tags',
         categories: 'Categories',
         archives: 'Archives',
-        idols: 'Idols'
+        idols: 'Idols',
+        friends: 'Friends'
     },
     home: {
         cp: "Competitive Programming",
         frontend: "FrontEnd"
+    },
+    404: {
+        tip: "PAGE NOT FOUND",
+        short: "PAGE NOT FOUND"
     }
 }

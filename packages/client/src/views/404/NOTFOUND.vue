@@ -1,11 +1,22 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <div>not found</div>
+  <component :is="templates[lodash.random(0, templates.length - 1)]"></component>
+<!--  <grimace></grimace>-->
+<!--  <train></train>-->
+<!--  <lantern></lantern>-->
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import lantern from "./templates/lantern.vue";
+import train from "./templates/train.vue";
+import hits from "./templates/hits.vue";
+import grimace from './templates/grimace.vue';
+import lodash from "lodash";
 
-</style>
+const templates = [
+  train,
+  hits,
+  grimace
+];
+
+
+</script>

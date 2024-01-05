@@ -1,5 +1,9 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import {createWebHistory, RouteRecordRaw, createRouter} from "vue-router";
 import HomeView from "../views/home/home-view.vue";
+import templates from './404-templates'
+
+const templateNames = templates.map(template => template.name)
+
 export const routes:  RouteRecordRaw[] = [
     {
         path: '/',
@@ -34,8 +38,25 @@ export const routes:  RouteRecordRaw[] = [
         component: () => import('../views/menu/menu-view.vue')
     },
     {
+        path: '/friends',
+        component: () => import('../views/friends/friends-view.vue')
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('../views/404/NOTFOUND.vue')
+    },
+    ...templates,
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
+        beforeEnter: () => {
+            const templateName = templateNames[Math.floor(Math.random() * templateNames.length)]
+            console.log(templateName);
+            return {
+                name: templateName
+            }
+        },
         component: () => import('../views/404/NOTFOUND.vue')
     }
 ]
