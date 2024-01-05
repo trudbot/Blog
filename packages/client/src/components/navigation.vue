@@ -5,15 +5,14 @@ import {useI18n} from "vue-i18n";
 import {useLanguageStore} from "../stores/language-store";
 import {computed} from "vue";
 import {useRouter} from "vue-router";
-import {usePhone} from '../hooks/isPhone.ts'
-import {throttle} from 'lodash'
-
+import lodash from 'lodash';
+import device from "current-device";
+const { throttle } = lodash;
 
 const {isDark, switchTheme} = useThemeStore();
 const {locale, t} = useI18n();
 const {changeLanguage} = useLanguageStore();
 const router = useRouter();
-const {isPhone} = usePhone();
 
 const socialLink = [
   {title: "github", link: "https://github.com/trudbot", icon: "line-md:github-loop"},
@@ -27,7 +26,8 @@ const menuItems = computed(() => {
     {label: t('menus.tags'), route: '/tags'},
     {label: t('menus.categories'), route: '/categories'},
     {label: t('menus.archives'), route: '/archives'},
-    {label: t('menus.idols'), route: '/idols'}
+    {label: t('menus.idols'), route: '/idols'},
+    {label: t('menus.friends'), route: '/friends'}
   ]
 })
 
@@ -46,9 +46,9 @@ const changeLanguageThrottling = throttle(changeLanguage, 1000, {
 <template>
   <nav>
 
-    <!-- 菜单栏， 当屏幕宽度大于770px时显示 -->
+    <!-- 菜单栏， 当设备为桌面时显示 -->
     <div class="menu">
-      <template v-if="!isPhone">
+      <template v-if="!device.mobile()">
         <a class="nav-item text-box" v-for="item in menuItems" :key="item.route" @click="router.push(item.route)">
           {{item.label}}
         </a>
@@ -70,8 +70,8 @@ const changeLanguageThrottling = throttle(changeLanguage, 1000, {
         <Icon :icon="social.icon" :title="social.title" :class="['icon', isDark() ? 'icon-color__dark' : 'icon-color__light']"/>
       </a>
 
-      <!-- 当屏幕宽度小于770时， 显示打开菜单界面的按钮 -->
-      <a class="nav-item icon-box" @click="router.push('/menu')" v-if="isPhone">
+      <!-- 当为移动设备， 显示打开菜单界面的按钮 -->
+      <a class="nav-item icon-box" @click="router.push('/menu')" v-if="device.mobile()">
         <Icon icon="gg:menu-round"
               :class="['icon', isDark() ? 'icon-color__dark' : 'icon-color__light']"
         />
@@ -81,6 +81,7 @@ const changeLanguageThrottling = throttle(changeLanguage, 1000, {
 </template>
 
 <style scoped lang="scss">
+@import "../mixin.scss";
 $icon-color__light: #000;
 $icon-color__dark: #fff;
 
@@ -104,17 +105,15 @@ nav {
 }
 
 .nav-item {
+  @include flex-center;
   transition: background-color 1s;
-  display: flex;
   height: 3vw;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
   border-radius: 10%;
   font-family: inherit;
 
   &.icon-box {
-    width: 3vw;
+    width: auto;
     margin-left: 1vw;
   }
 
@@ -126,18 +125,17 @@ nav {
     color: #7f7f7f;
     border-radius: 5px;
   }
-  &:hover {
-    background: #c7c5c5;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background: #c7c5c5;
+    }
   }
 
-  //.icon {
-  //  width: 20px;
-  //  height: 20px;
-  //}
+  $icon-size: 30px;
 
   .icon {
-    width: 2vw;
-    height: 2vw;
+    font-size: $icon-size;
   }
 
   .icon-color__light {

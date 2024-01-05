@@ -28,9 +28,13 @@ export function useFullPage(container: Ref<HTMLElement | null>, duration: string
             gotoSection(updated, ele)
         }, {passive: true});
 
-        addSwipeListener(ele, (direction) => {
-            const updated = direction === ScrollDirection.Down ? 1 : -1;
+        addSwipeListener(ele, (direction, e) => {
+            const updated = currIndex.value + (direction === ScrollDirection.Up ? 1 : -1);
             gotoSection(updated, ele);
+            e.stopPropagation();
+        }, {
+            touchStartCallback: e => e.stopPropagation(),
+            touchEndCallback: e => e.stopPropagation()
         })
     }
 

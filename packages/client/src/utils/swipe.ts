@@ -4,28 +4,51 @@ enum ScrollDirection {
     Down = 'down',
 }
 
-type ScrollCallback = (direction: ScrollDirection) => void;
+type ScrollCallback = (direction: ScrollDirection, event: TouchEvent) => void;
+type TouchCallback = (event: TouchEvent) => void;
+interface SwipeOptions {
+    deltaLimit?: number;
+    touchStartCallback?: TouchCallback;
+    touchEndCallback?: TouchCallback;
+}
 
-function addSwipeListener(targetElement: HTMLElement | Window = window, callback: ScrollCallback): void {
+const defaultDeltaLimit = 5;
+
+function addSwipeListener(
+    targetElement: HTMLElement,
+    touchMoveCallback: ScrollCallback,
+    {
+        deltaLimit,
+        touchStartCallback,
+        touchEndCallback,
+    }: SwipeOptions = {
+        deltaLimit: defaultDeltaLimit,
+    },
+): void {
     let startY: number | null = 0;
 
-    targetElement.addEventListener('touchstart', function (event: TouchEvent)  {
+    targetElement.addEventListener('touchstart', (event: TouchEvent) =>  {
         startY = event.touches[0].clientY;
+        touchStartCallback && touchStartCallback(event);
     });
 
-    targetElement.addEventListener('touchmove', function (event: TouchEvent)  {
+    targetElement.addEventListener('touchmove',  (event: TouchEvent) => {
         if (!startY) {
             return;
         }
         const endY = event.touches[0].clientY;
         const deltaY = endY - startY;
         startY = null;
-        if (deltaY > 50) {
-            callback(ScrollDirection.Down);
-        } else if (deltaY < -50) {
-            callback(ScrollDirection.Up);
+        if (deltaY > (deltaLimit || defaultDeltaLimit)) {
+            touchMoveCallback(ScrollDirection.Down, event);
+            console.log('callback')
+        } else if (deltaY < -(deltaLimit || defaultDeltaLimit)) {
+            touchMoveCallback(ScrollDirection.Up, event);
+            console.log('callback')
         }
     });
+
+    touchEndCallback && targetElement.addEventListener('touchend', touchEndCallback);
 }
 
-export {ScrollDirection, ScrollCallback, addSwipeListener}
+export {ScrollDirection, addSwipeListener}

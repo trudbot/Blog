@@ -2,10 +2,8 @@
 import FullPage from '../../components/FullPage/index.vue'
 import PageItem from "../../components/FullPage/page-item.vue";
 import {useThemeStore} from "../../stores/theme-store";
-import {computed, onMounted, ref} from "vue";
-import {usePhone} from "../../hooks/isPhone.ts";
+import {computed} from "vue";
 import device from 'current-device'
-import {Codemirror} from 'vue-codemirror'
 import {cpp} from '@codemirror/lang-cpp'
 import { oneDark } from '@codemirror/theme-one-dark'
 import {tomorrow} from "thememirror";
@@ -13,28 +11,18 @@ import codeStr from "./code.ts";
 import {useI18n} from "vue-i18n";
 import techStack from "./tech-stack.ts";
 import {openLink} from "../../utils/openLink.ts";
+import TimeLine from "../../components/TimeLine/time-line.vue";
 
-const {isPhone} = usePhone();
+import pkg from 'vue-codemirror';
+import {useCodingSimulator} from "./codingSimulator.ts";
+const { Codemirror } = pkg;
 const {t} = useI18n();
 const {isDark} = useThemeStore();
 const extensions = computed(() => {
   return [cpp(), isDark() ? oneDark : tomorrow];
 });
 
-const code = ref<string>(``);
-const disable = ref<boolean>(true);
-
-onMounted(() => {
-  let idx: number = 0;
-  const timer = setInterval(() => {
-    if (idx === codeStr.length) {
-      clearInterval(timer);
-      disable.value = false;
-      return;
-    }
-    code.value += codeStr[idx ++];
-  }, 500);
-})
+const {code, disable} = useCodingSimulator(codeStr, 500);
 
 </script>
 
@@ -50,8 +38,10 @@ onMounted(() => {
           <div class="title">
             {{t('home.frontend')}}
           </div>
-          <div class="stack">
-            <img v-for="tech in techStack" :src="tech.img" :alt="tech.name" :key="tech.name" @click="openLink(tech.url)"/>
+          <div class="stack-container">
+            <div class="stack">
+              <img v-for="tech in techStack" :src="tech.img" :alt="tech.name" :key="tech.name" @click="openLink(tech.url)"/>
+            </div>
           </div>
         </div>
       </PageItem>
@@ -62,7 +52,8 @@ onMounted(() => {
           </div>
           <div class="cp-content">
             <div class="cp-item icpc-icon">
-              <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311181422543.png" alt="icpc">
+              <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311181422543.png"
+                   alt="icpc" :style="{width: device.mobile() ? '80vw' : ''}">
             </div>
             <div class="code-box cp-item" v-if="device.desktop()">
               <Codemirror
@@ -80,30 +71,29 @@ onMounted(() => {
           </div>
         </div>
       </PageItem>
+      <PageItem>
+        <TimeLine></TimeLine>
+      </PageItem>
+      <PageItem></PageItem>
     </FullPage>
   </div>
 </template>
 
 <style scoped lang="scss">
+@import "../../mixin.scss";
+
 .home-container {
   box-sizing: border-box;
-  height: 100%;
+  @include fill-up;
   overflow: hidden;
-  &:hover {
-    cursor: ns-resize;
-  }
+  @include hover-cursor(ns-resize);
 
   .avatar {
-    display: flex;
+    @include flex-center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
     img {
-      $L: min(30vw, 30vh);
-      width: $L;
-      height: $L;
-      border-radius: 50%;
+      @include cycle(min(30vw, 30vh));
     }
 
     p {
@@ -112,34 +102,37 @@ onMounted(() => {
     }
   }
 
-  .frontend .stack {
-    width: 50vw;
-    margin: 5vh auto;
+  .frontend {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
 
-    img {
-      $L: 10vw;
-      width: $L;
-      height: $L;
+    .stack-container {
+      flex: 1;
+      @include flex-center;
+    }
 
-      &:hover {
-        cursor: pointer;
+    .stack {
+      width: 50vw;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      img {
+        @include square(10vw);
+        @include hover-cursor(pointer);
       }
     }
   }
 
+
   .acm-show, .frontend {
-    height: 100%;
+    @include fill-up;
     display: flex;
     flex-direction: column;
 
     .title {
       font-family: inherit;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-center;
       font-size: max(3vw, 30px);
       margin-top: 1vh;
       margin-bottom: 1vh;
@@ -162,7 +155,6 @@ onMounted(() => {
 
         &.icpc-icon {
           text-align: center;
-          width: 80%;
         }
       }
     }
