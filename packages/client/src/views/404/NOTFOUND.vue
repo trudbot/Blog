@@ -15,7 +15,8 @@ import lodash from "lodash";
 const templates = [
   train,
   hits,
-  grimace
+  grimace,
+  lantern
 ];
 
 

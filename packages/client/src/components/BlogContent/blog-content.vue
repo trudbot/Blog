@@ -1,10 +1,10 @@
 <template>
-  <div class="smart-blue editor">
+  <div class="mk-cute editor">
     <Viewer :value="text" :plugins="plugins"></Viewer>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import gfm from '@bytemd/plugin-gfm'
 import 'katex/dist/katex.css'
 import math from '@bytemd/plugin-math'
@@ -88,10 +88,6 @@ Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
     Add as many paragraphs as you like.
 `);
-
-function handleChange(value) {
-  text.value = value;
-}
 </script>
 
 <style src="../../assets/markdown-themes/smart-blue.scss"/>
