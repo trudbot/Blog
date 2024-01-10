@@ -1,0 +1,1 @@
+trudbot's blog的后端api接口的ts类型。
