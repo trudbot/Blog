@@ -6,7 +6,6 @@ import {
     PrimaryGeneratedColumn,
     TreeChildren,
     TreeParent,
-    TreeLevelColumn,
     OneToMany,
 } from "typeorm"
 
@@ -25,6 +24,8 @@ export class Category {
     @TreeParent()
     parent: Category;
 
-    @OneToMany(() => Post, (post) => post.category)
+    @OneToMany(() => Post, (post) => post.category, {
+        cascade: true
+    })
     posts: Post[]
 }

@@ -1,14 +1,14 @@
 import { Category } from "src/category/category.entity";
 import { Tag } from "src/tags/tag.entity";
-import { 
-    Column, 
-    Entity, 
-    JoinTable, 
-    ManyToMany, 
-    ManyToOne, 
-    PrimaryGeneratedColumn, 
+import {
+    Column, CreateDateColumn,
+    Entity,
+    JoinTable,
+    ManyToMany,
+    ManyToOne,
+    PrimaryGeneratedColumn,
     UpdateDateColumn
- } from "typeorm";
+} from "typeorm";
 
 @Entity()
 export class Post {
@@ -24,18 +24,16 @@ export class Post {
     post_content: string;
 
     @UpdateDateColumn({
-        type: 'datetime'
+        type: "timestamp"
     })
     last_updated: Date;
 
-    @Column({
-        type: 'datetime'
+    @CreateDateColumn({
+        type: "timestamp"
     })
     publish_date : Date;
 
-    @ManyToOne(() => Category, (category) => category.posts, {
-        cascade: true
-    })
+    @ManyToOne(() => Category, (category) => category.posts)
     category: Category;
 
     @ManyToMany(() => Tag, (tag) => tag.posts, {
