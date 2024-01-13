@@ -4,9 +4,7 @@ import BlogContent from "../../components/BlogContent/blog-content.vue";
 </script>
 
 <template>
-  <div class="blog-box">
-    <blog-content></blog-content>
-  </div>
+  <router-view></router-view>
 </template>
 
 <style scoped lang="scss">

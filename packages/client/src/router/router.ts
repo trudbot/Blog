@@ -15,7 +15,18 @@ export const routes:  RouteRecordRaw[] = [
     },
     {
       path: '/blog',
-      component: () => import('../views/blog/blog-view.vue')
+      component: () => import('../views/blog/blog-view.vue'),
+      children: [
+        {
+            path: '',
+            component: () => import('../views/blog/components/blog-list.vue')
+        },
+        {
+            path: 'show',
+            name: 'BlogShow',
+            component: () => import('../views/blog/components/blog-show.vue')
+        }
+      ]
     },
     {
         path: '/archives',
@@ -52,7 +63,6 @@ export const routes:  RouteRecordRaw[] = [
         name: 'NotFound',
         beforeEnter: () => {
             const templateName = templateNames[Math.floor(Math.random() * templateNames.length)]
-            console.log(templateName);
             return {
                 name: templateName
             }
