@@ -21,6 +21,10 @@ const plugins = [
 // Add more plugins here
 ]
 
+defineProps<{
+  modelValue: string;
+}>();
+
 const text = ref(`
 # trudbot
 ## Markdown Basic Syntax
