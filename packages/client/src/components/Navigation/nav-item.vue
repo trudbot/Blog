@@ -1,0 +1,64 @@
+<script setup lang="ts">
+import { useThemeStore } from '@/stores/theme-store';
+defineProps<{
+    jump?: boolean;
+    delay?: number;
+    selected?: boolean;
+    color?: string;
+}>();
+
+const {isDark} = useThemeStore();
+</script>
+
+<template>
+    <a :class="['nav-item']">
+        <span 
+            :class="jump ? 'jump' : ''"
+            :style="{
+                borderBottom: (color && selected) ? '2px solid ' + color : 'none'
+            }"
+        >
+            <slot></slot>
+        </span>
+    </a>
+</template>
+
+<style lang="scss" scoped>
+@import "@/mixin.scss";
+.nav-item {
+    @include flex-center;
+    transition: background-color 1s;
+    height: 3vw;
+    cursor: pointer;
+    border-radius: 10%;
+    font-family: inherit;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background: #c7c5c5;
+        }
+    }
+
+    span {
+        display: inline-block;
+        color: v-bind(color);
+    }
+}
+
+.jump {
+    animation: jump 2s ease-in-out infinite;
+    animation-delay: v-bind("delay + 'ms'");
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(-20px);
+    }
+    40%, 100% {
+        transform: translateY(0px);
+    }
+}
+</style>

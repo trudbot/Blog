@@ -2,25 +2,15 @@
 import FullPage from '../../components/FullPage/index.vue'
 import PageItem from "../../components/FullPage/page-item.vue";
 import {useThemeStore} from "../../stores/theme-store";
-import {computed} from "vue";
 import device from 'current-device'
-import {cpp} from '@codemirror/lang-cpp'
-import { oneDark } from '@codemirror/theme-one-dark'
-import {tomorrow} from "thememirror";
 import codeStr from "./code.ts";
 import {useI18n} from "vue-i18n";
 import techStack from "./tech-stack.ts";
 import {openLink} from "../../utils/openLink.ts";
 import TimeLine from "../../components/TimeLine/time-line.vue";
-
-import pkg from 'vue-codemirror';
 import {useCodingSimulator} from "./codingSimulator.ts";
-const { Codemirror } = pkg;
 const {t} = useI18n();
 const {isDark} = useThemeStore();
-const extensions = computed(() => {
-  return [cpp(), isDark() ? oneDark : tomorrow];
-});
 
 const {code, disable} = useCodingSimulator(codeStr, 500);
 
@@ -56,17 +46,7 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
                    alt="icpc" :style="{width: device.mobile() ? '80vw' : ''}">
             </div>
             <div class="code-box cp-item" v-if="device.desktop()">
-              <Codemirror
-                  class="editor"
-                  style="height: 60vh; padding-top: 5vh; box-sizing: border-box;"
-                  @wheel.stop
-                  :extensions="extensions"
-                  v-model="code"
-                  :autofocus="true"
-                  :indent-with-tab="true"
-                  :tab-size="2"
-                  :disabled="disable"
-              />
+
             </div>
           </div>
         </div>

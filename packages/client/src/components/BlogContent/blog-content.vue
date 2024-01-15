@@ -1,6 +1,6 @@
 <template>
-  <div class="mk-cute editor">
-    <Viewer :value="text" :plugins="plugins"></Viewer>
+  <div class="mk-cute editor" translate="yes">
+    <Viewer :value="value" :plugins="plugins"></Viewer>
   </div>
 </template>
 
@@ -21,9 +21,7 @@ const plugins = [
 // Add more plugins here
 ]
 
-defineProps<{
-  modelValue: string;
-}>();
+const value = defineModel();
 
 const text = ref(`
 # trudbot

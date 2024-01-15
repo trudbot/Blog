@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Navigation from "./components/navigation.vue";
+import Navigation from "./components/Navigation/navigation.vue";
 import {useThemeStore} from "./stores/theme-store.ts";
 import {useLanguageStore} from "./stores/language-store.ts";
-import {useRouter} from "vue-router";
+import {useRouter} from "vue-router";``
 import {nextTick, onMounted, watch} from "vue";
 const router = useRouter();
 const {isDark} = useThemeStore();
