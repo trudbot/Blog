@@ -51,15 +51,15 @@ export class PostsService {
             ;
     }
 
-    async createPost(post_content: string, post_title: string, tags?: string[]){
+    async createPost(post_content: string, post_title: string, tags?: string[], publish_date?: Date) {
         const newPost = {
-            publish_date: new Date(),
+            publish_date: publish_date || new Date(),
             category: null,
             post_content: post_content,
             post_title: post_title,
             tags: tags ? tags.map(tag => ({tag_label: tag})) : []
         };
-        await this.postsRepository.save(newPost);
+        return await this.postsRepository.save(newPost);
     }
 
     async updateTags(post_id: number, tags: string[]) {

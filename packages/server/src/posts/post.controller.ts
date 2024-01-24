@@ -1,13 +1,4 @@
-import {
-    Put,
-    Get,
-    Body,
-    Post,
-    Query,
-    Controller,
-    HttpStatus,
-    HttpException,
-} from "@nestjs/common";
+import {Body, Controller, Get, HttpException, HttpStatus, Post, Put, Query,} from "@nestjs/common";
 import {CreatePost_Post, UpdateTags_Put} from "ts-api-models/lib/request";
 import {PostsService} from "./post.service";
 import {PostEntity, PostMetaInfoEntity} from "ts-api-models/lib/response";
@@ -21,8 +12,7 @@ export class PostsController {
     @Post('create')
     public async createPost(@Body() body: CreatePost_Post) {
         try {
-            await this.postsService.createPost(body.post_content, body.post_title, body.tags);
-            return 'success';
+            return await this.postsService.createPost(body.post_content, body.post_title, body.tags);
         } catch (e) {
             throw new HttpException(e.toString(), HttpStatus.BAD_REQUEST);
         }

@@ -1,6 +1,12 @@
-import {Body, Controller, Get, HttpException, HttpStatus, Post, Query, Req} from '@nestjs/common';
-import {AddPosts_Body, CreateCategory_Body, GetAncestors_Query, GetPosts_Query} from 'ts-api-models/lib/request'
-import { CategoryService } from './category.service';
+import {Body, Controller, Get, HttpException, HttpStatus, Post, Query} from '@nestjs/common';
+import {
+    AddPosts_Body,
+    CreateCategory_Body,
+    GetAncestors_Query,
+    GetPosts_Query,
+    MultiCreateCategory_Body
+} from 'ts-api-models/lib/request'
+import {CategoryService} from './category.service';
 import {CategoryEntity, CategoryTreeEntity, PostMetaInfoEntity} from "ts-api-models/lib/response";
 
 @Controller('categories')
@@ -11,8 +17,16 @@ export class CategoryController {
     @Post('create')
     public async createCategory(@Body() body: CreateCategory_Body) {
         try {
-            await this.categoryService.createCategory(body.name, body.parentId);
-            return 'success';
+            return await this.categoryService.createCategory(body.name, body.parentId);
+        } catch (e) {
+            throw new HttpException(e.toString(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Post('multiCreate')
+    public async multiCreateCategory(@Body() body: MultiCreateCategory_Body) {
+        try {
+            return await this.categoryService.multiCreateCategory(body.map(i => i.name));
         } catch (e) {
             throw new HttpException(e.toString(), HttpStatus.BAD_REQUEST);
         }

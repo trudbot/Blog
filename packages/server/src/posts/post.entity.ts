@@ -1,14 +1,6 @@
-import { Category } from "src/category/category.entity";
-import { Tag } from "src/tags/tag.entity";
-import {
-    Column, CreateDateColumn,
-    Entity,
-    JoinTable,
-    ManyToMany,
-    ManyToOne,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
-} from "typeorm";
+import {Category} from "src/category/category.entity";
+import {Tag} from "src/tags/tag.entity";
+import {Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 
 @Entity()
 export class Post {
@@ -28,7 +20,7 @@ export class Post {
     })
     last_updated: Date;
 
-    @CreateDateColumn({
+    @Column({
         type: "timestamp"
     })
     publish_date : Date;

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-
-// import BlogContent from "../../components/BlogContent/blog-content.vue";
 </script>
 
 <template>

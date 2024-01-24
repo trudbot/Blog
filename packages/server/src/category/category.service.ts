@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { TreeRepository } from 'typeorm';
-import { Category } from './category.entity';
+import {Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {TreeRepository} from 'typeorm';
+import {Category} from './category.entity';
 import {Post} from "../posts/post.entity";
 
 @Injectable()
@@ -44,7 +44,7 @@ export class CategoryService {
         // 相同名称且父分类项相同的分类项不可重复创建
         const sameNameCategory = await this.categoryRepository.findOneBy({category_name: name, parent});
         if (sameNameCategory) {
-            throw new Error(`${parent?.category_name || '顶层'}分类下已存在名称为 ${name} 的分类项`);
+            throw new Error(`重复创建分类项: ${parent?.category_name || '顶层'}分类下已存在名称为 ${name} 的分类项`);
         }
 
         const newCategory = {
@@ -56,6 +56,31 @@ export class CategoryService {
         } catch (e) {
             throw new Error(`创建分类项失败: ${e.toString()}`);
         }
+    }
+
+    /**
+     * 根据分类项数组批量创建分类项
+     * [c1, c2, c3...]， 前一项为后一项的父分类项
+     * @param names 分类项名称
+     */
+    async multiCreateCategory(names: string[]) {
+        let parentId = null;
+        let parent: Category;
+        for (let cate of names) {
+            try {
+                await this.createCategory(cate, parentId);
+            } catch (e) {
+                if (!e.message?.startsWith('重复创建分类项')) {
+                    throw e;
+                }
+            }
+             parent = await this.categoryRepository.findOneByOrFail({
+                category_name: cate,
+                parent: parentId && await this.categoryRepository.findOneByOrFail({category_id: parentId})
+            });
+            parentId = parent.category_id;
+        }
+        return parent;
     }
 
     /**

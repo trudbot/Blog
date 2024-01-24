@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import BlogContent from "../../../components/BlogContent/blog-content.vue";
-import { PostEntity } from "ts-api-models/lib/response";
-import { getPostById } from "../../../apis/posts.api.ts";
+import {onMounted, ref} from "vue";
+import BlogContent from "@/components/BlogContent/blog-content.vue";
+import {PostEntity} from "ts-api-models/lib/response";
+import {getPostById} from "@/apis/posts.api.ts";
+import {useRouter} from "vue-router";
+
 const props = defineProps<{
   id: string | number;
 }>();
@@ -14,9 +16,16 @@ const post = ref<PostEntity>({
   tags: [],
   category: []
 });
+
+const router = useRouter();
 onMounted(() => {
   getPostById({id: props.id as number}).then(res => {
     post.value = res.data;
+  }).catch(err => {
+    console.log(err);
+    router.push({
+      name: '404'
+    })
   })
 })
 </script>

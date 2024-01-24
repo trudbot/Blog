@@ -9,6 +9,7 @@ import techStack from "./tech-stack.ts";
 import {openLink} from "../../utils/openLink.ts";
 import TimeLine from "../../components/TimeLine/time-line.vue";
 import {useCodingSimulator} from "./codingSimulator.ts";
+
 const {t} = useI18n();
 const {isDark} = useThemeStore();
 
@@ -54,7 +55,6 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
       <PageItem>
         <TimeLine></TimeLine>
       </PageItem>
-      <PageItem></PageItem>
     </FullPage>
   </div>
 </template>

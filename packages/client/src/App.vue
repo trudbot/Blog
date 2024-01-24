@@ -2,8 +2,10 @@
 import Navigation from "./components/Navigation/navigation.vue";
 import {useThemeStore} from "./stores/theme-store.ts";
 import {useLanguageStore} from "./stores/language-store.ts";
-import {useRouter} from "vue-router";``
+import {useRouter} from "vue-router";
 import {nextTick, onMounted, watch} from "vue";
+
+``
 const router = useRouter();
 const {isDark} = useThemeStore();
 useLanguageStore();
@@ -46,8 +48,7 @@ img {
 }
 
 .app-container {
-  transition: background-color 2s;
-  background: var(--color);
+  background: transparent;
   height: 100%;
   display: flex;
   flex-direction: column;

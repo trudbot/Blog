@@ -3,6 +3,7 @@ export interface CreatePost_Post {
     post_content: string;
     category_id?: number;
     tags?: string[];
+    publish_date?: Date;
 }
 export interface UpdateTags_Put {
     post_id: number;

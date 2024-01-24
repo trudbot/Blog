@@ -14,5 +14,8 @@ export default {
     404: {
         tip: "PAGE NOT FOUND",
         short: "PAGE NOT FOUND"
+    },
+    blog: {
+        published: "Published on"
     }
 }

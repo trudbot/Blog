@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { useThemeStore } from '@/stores/theme-store';
 defineProps<{
     jump?: boolean;
     delay?: number;
     selected?: boolean;
     color?: string;
 }>();
-
-const {isDark} = useThemeStore();
 </script>
 
 <template>

@@ -14,5 +14,8 @@ export default {
     404: {
         tip: "你来到了没有知识的荒原",
         short: "页面不存在"
+    },
+    blog: {
+        published: "发布于"
     }
 }

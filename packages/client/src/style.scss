@@ -55,6 +55,7 @@ html, body, #app {
   color: #c7c5c5;
   font-family: "Candara Light", "serif", "华文仿宋", "仿宋";
   overflow: hidden;
+  background: transparent;
 }
 
 :root {
@@ -65,4 +66,7 @@ html, body, #app {
   --color: black;
 }
 
-
+#app {
+  transition: background-color 2s;
+  background: var(--color);
+}

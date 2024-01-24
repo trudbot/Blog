@@ -3,6 +3,8 @@ export interface CreateCategory_Body {
     parentId?: number;
 }
 
+export type MultiCreateCategory_Body = (CreateCategory_Body)[];
+
 export interface AddPosts_Body {
     category_id: number;
     post_ids: number | (number[]);
