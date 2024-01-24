@@ -1,0 +1,23 @@
+{
+  "name": "migration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "task": "pnpm exec tsc && node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.3.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.1",
+    "hexo2json": "^0.0.1",
+    "ts-api-models": "workspace:*"
+  }
+}
