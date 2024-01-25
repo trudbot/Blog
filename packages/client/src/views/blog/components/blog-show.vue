@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {onMounted, ref} from "vue";
+import { onMounted, ref, inject, Ref } from 'vue';
 import BlogContent from "@/components/BlogContent/blog-content.vue";
 import {PostEntity} from "ts-api-models/lib/response";
 import {getPostById} from "@/apis/posts.api.ts";
@@ -18,11 +18,16 @@ const post = ref<PostEntity>({
 });
 
 const router = useRouter();
+const {startLoading, stopLoading} = inject('loading') as any;
 onMounted(() => {
+  stopLoading();
+  startLoading();
   getPostById({id: props.id as number}).then(res => {
     post.value = res.data;
+    stopLoading();
   }).catch(err => {
     console.log(err);
+    stopLoading();
     router.push({
       name: '404'
     })

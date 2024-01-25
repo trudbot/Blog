@@ -3,9 +3,9 @@ import Navigation from "./components/Navigation/navigation.vue";
 import {useThemeStore} from "./stores/theme-store.ts";
 import {useLanguageStore} from "./stores/language-store.ts";
 import {useRouter} from "vue-router";
-import {nextTick, onMounted, watch} from "vue";
-
-``
+import { nextTick, onMounted, watch, ref, provide } from 'vue';
+import Loading from '@/components/Loading/loading.vue'
+import { useLoading } from "@/hooks/useLoading";
 const router = useRouter();
 const {isDark} = useThemeStore();
 useLanguageStore();
@@ -21,6 +21,13 @@ watch(isDark, async () => {
   document.documentElement.classList.toggle('dark-mode')
 })
 
+// loading 状态控制
+const {loading, startLoading, stopLoading} = useLoading(false);
+provide('loading', {
+  loading,
+  startLoading,
+  stopLoading
+});
 </script>
 
 <template>
@@ -32,6 +39,7 @@ watch(isDark, async () => {
     <main>
       <router-view />
     </main>
+    <loading v-model="loading"/>
   </div>
 </template>
 

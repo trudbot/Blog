@@ -15,9 +15,9 @@ type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => i
 async function addBlog(blog: ReturnType<typeof Hexo.parse>, blogName: string) {
     const tags = blog.meta.tags ? [].concat(blog.meta.tags) : [];
     const post: CreatePost_Post = {
-        post_content: blog.content,
+        post_content: blog.desc + '\n' + blog.content,
         post_title: blogName,
-        tags: tags,
+        tags: tags,s
         publish_date: blog.meta.date || new Date(),
     }
     const postE = (await axios.post(createPostsUrl, post)).data;

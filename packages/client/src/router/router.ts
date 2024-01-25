@@ -1,5 +1,4 @@
 import {createWebHistory, RouteRecordRaw, createRouter} from "vue-router";
-import HomeView from "../views/home/home-view.vue";
 import templates from './404-templates'
 
 const templateNames = templates.map(template => template.name)
@@ -11,7 +10,7 @@ export const routes:  RouteRecordRaw[] = [
     },
     {
         path: '/home',
-        component: HomeView
+        component: () => import('../views/home/home-view.vue')
     },
     {
       path: '/blog',
@@ -19,6 +18,7 @@ export const routes:  RouteRecordRaw[] = [
       children: [
         {
             path: '',
+            name: 'BlogList',
             component: () => import('../views/blog/components/blog-list.vue')
         },
         {

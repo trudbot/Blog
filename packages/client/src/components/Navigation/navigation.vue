@@ -34,6 +34,11 @@ const menuItems = computed(() => {
   ]
 })
 
+// 可预知的, 可能会加载较久的页面
+function menuClick(route: string) {
+  router.push(route);
+}
+
 const switchThemeThrottling = throttle(switchTheme, 1500, {
   leading: true,
   trailing: false
@@ -56,7 +61,7 @@ const changeLanguageThrottling = throttle(changeLanguage, 1000, {
           class="text-box" 
           v-for="(item, index) in menuItems" 
           :key="item.route" 
-          @click="router.push(item.route)"
+          @click="menuClick(item.route)"
           :jump="route.path === '/home'"
           :delay="100 * index"
           :selected="route.path === item.route"

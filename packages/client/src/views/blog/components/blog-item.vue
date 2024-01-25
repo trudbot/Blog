@@ -5,6 +5,7 @@ import {dark} from '@/assets/colorSystem.ts'
 import {Icon} from '@iconify/vue';
 import lodash from "lodash";
 import {useI18n} from "vue-i18n";
+import { inject } from "vue";
 
 defineProps<{
   post: PostMetaInfoEntity
@@ -12,6 +13,8 @@ defineProps<{
 
 const colors = lodash.shuffle(dark);
 const {t} = useI18n();
+
+const {startLoading} = inject('loading') as any;
 </script>
 
 <template>
@@ -26,6 +29,7 @@ const {t} = useI18n();
                   id: post.post_id
                 }
               }"
+              @click="startLoading()"
           >{{ post.post_title }}</router-link>
         </div>
         <ul class="tag-list">

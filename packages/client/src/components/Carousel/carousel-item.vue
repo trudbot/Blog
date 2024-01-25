@@ -16,9 +16,6 @@ defineOptions({
 const props = defineProps<StyleProps>();
 
 const cardStyle = inject<ComputedRef<StyleProps>>('cardStyle');
-onMounted(() => {
-  console.log(cardStyle);
-});
 
 function clamp(range: ClampType) {
   return `clamp(${range.min}, ${range.value}, ${range.max})`;

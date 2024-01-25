@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {computed, onMounted, ref} from "vue";
+import { computed, onMounted, ref, inject, Ref } from 'vue';
 import {PostMetaInfoEntity} from "ts-api-models/lib/response";
 import {getPostMetaInfoList} from "@/apis/posts.api.ts";
 import BlogItem from "./blog-item.vue";
@@ -15,12 +15,22 @@ const postMeta = ref<PostMetaInfoEntity[]>([]);
 const last = useLocalStorage('last', -1);
 const active = ref(0);
 
+const {startLoading, stopLoading} = inject('loading') as any;
+
 onMounted(() => {
+    startLoading();
     getPostMetaInfoList().then(res => {
+      res.data = res.data.sort((a, b) => {
+        return new Date(b.publish_date).getTime() - new Date(a.publish_date).getTime();
+      })
         postMeta.value = res.data;
         // 用户上一次浏览的文章
         const find = res.data.findIndex(item => item.post_id === last.value);
         active.value = find === -1 ? 0 : find;
+        stopLoading();
+    }).catch(e => {
+      console.log(e);
+      stopLoading();
     });
 });
 

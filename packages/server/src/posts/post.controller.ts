@@ -12,7 +12,7 @@ export class PostsController {
     @Post('create')
     public async createPost(@Body() body: CreatePost_Post) {
         try {
-            return await this.postsService.createPost(body.post_content, body.post_title, body.tags);
+            return await this.postsService.createPost(body.post_content, body.post_title, body.tags, body.publish_date);
         } catch (e) {
             throw new HttpException(e.toString(), HttpStatus.BAD_REQUEST);
         }

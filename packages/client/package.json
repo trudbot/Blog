@@ -23,7 +23,8 @@
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",
     "vue": "^3.4.13",
-    "vue-i18n": "^9.4.1"
+    "vue-i18n": "^9.4.1",
+    "worker-timers": "^7.1.1"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
