@@ -1,9 +1,9 @@
-import axios from "axios";
-import Hexo from "hexo2json"
-import fs from "fs";
-import {CreatePost_Post} from "ts-api-models/lib/request";
-import * as path from "path";
-import {CategoryEntity} from "ts-api-models/lib/response";
+import axios from 'axios';
+import Hexo from 'hexo2json';
+import fs from 'fs';
+import { CreatePost_Post } from 'ts-api-models/lib/request';
+import * as path from 'path';
+import { CategoryEntity } from 'ts-api-models/lib/response';
 
 const targetDir: string = "/Users/songyiping03/trudbot_blog/source/_posts";
 const base_url = "http://localhost:4000";
@@ -17,7 +17,7 @@ async function addBlog(blog: ReturnType<typeof Hexo.parse>, blogName: string) {
     const post: CreatePost_Post = {
         post_content: blog.desc + '\n' + blog.content,
         post_title: blogName,
-        tags: tags,s
+        tags: tags,
         publish_date: blog.meta.date || new Date(),
     }
     const postE = (await axios.post(createPostsUrl, post)).data;

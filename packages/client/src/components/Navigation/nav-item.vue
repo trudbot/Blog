@@ -30,10 +30,8 @@ defineProps<{
     border-radius: 10%;
     font-family: inherit;
 
-    @media (any-hover: hover) {
-        &:hover {
-            background: #c7c5c5;
-        }
+    @include hover {
+      background: #c7c5c5;
     }
 
     span {

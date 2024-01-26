@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, inject, Ref } from 'vue';
-import {PostMetaInfoEntity} from "ts-api-models/lib/response";
-import {getPostMetaInfoList} from "@/apis/posts.api.ts";
-import BlogItem from "./blog-item.vue";
-import Carousel from "@/components/Carousel/carousel.vue";
-import CarouselItem from "@/components/Carousel/carousel-item.vue";
-import {useLocalStorage} from "@vueuse/core";
-import {useThemeStore} from "@/stores/theme-store.ts";
+import { computed, inject, onMounted, ref } from 'vue';
+import { PostMetaInfoEntity } from 'ts-api-models/lib/response';
+import { getPostMetaInfoList } from '@/apis/posts.api.ts';
+import BlogItem from './blog-item.vue';
+import Carousel from '@/components/Carousel/carousel.vue';
+import CarouselItem from '@/components/Carousel/carousel-item.vue';
+import { useLocalStorage } from '@vueuse/core';
+import { useThemeStore } from '@/stores/theme-store.ts';
 
 const postMeta = ref<PostMetaInfoEntity[]>([]);
 

@@ -1,11 +1,11 @@
 
 <script setup lang="ts">
-import {PostMetaInfoEntity} from "ts-api-models/lib/response";
-import {dark} from '@/assets/colorSystem.ts'
-import {Icon} from '@iconify/vue';
-import lodash from "lodash";
-import {useI18n} from "vue-i18n";
-import { inject } from "vue";
+import { PostMetaInfoEntity } from 'ts-api-models/lib/response';
+import { dark } from '@/assets/colorSystem.ts';
+import { Icon } from '@iconify/vue';
+import lodash from 'lodash';
+import { useI18n } from 'vue-i18n';
+import { inject } from 'vue';
 
 defineProps<{
   post: PostMetaInfoEntity
@@ -75,23 +75,24 @@ const {startLoading} = inject('loading') as any;
         text-overflow:ellipsis;
         white-space:nowrap;
         color: var(--font-color);
-        font-size: 1.5rem;
+        font-size: clamp(15px, 2.5vw, 1.6rem);
         font-family: 'Noto Serif SC', serif;
     }
+
+    $size: clamp(0.8rem, 2vw, 1.5rem);
     .tag-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 5px;
-      font-size: 1.5rem;
-
+      font-size: $size;
       li {
         margin-left: 0.5rem;
       }
     }
     .publish {
       @include flex-center;
-      font-size: .8rem;
+      font-size: $size;
       font-family: monospace;
       margin-top: 10px;
 
@@ -116,8 +117,10 @@ const {startLoading} = inject('loading') as any;
     transition: all 0.2s ease-in-out;
   }
 
-  &:hover::after {
-    transform: scaleX(1);
+  @include hover {
+    &::after {
+      transform: scaleX(1);
+    }
   }
 }
 </style>

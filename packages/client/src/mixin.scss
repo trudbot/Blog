@@ -21,11 +21,18 @@
   border-radius: $R;
 }
 
-@mixin hover-cursor($cursor) {
+// 在支持hover的设备上，才会应用hover样式
+@mixin hover {
   @media (any-hover: hover) {
     &:hover {
-      cursor: $cursor;
+      @content;
     }
+  }
+}
+
+@mixin hover-cursor($cursor) {
+  @include hover {
+    cursor: $cursor;
   }
 }
 

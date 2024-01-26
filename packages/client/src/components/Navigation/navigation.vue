@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import {Icon} from '@iconify/vue';
-import {useThemeStore} from "@/stores/theme-store";
-import {useI18n} from "vue-i18n";
-import {useLanguageStore} from "@/stores/language-store";
-import {computed} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import { Icon } from '@iconify/vue';
+import { useThemeStore } from '@/stores/theme-store';
+import { useI18n } from 'vue-i18n';
+import { useLanguageStore } from '@/stores/language-store';
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import lodash from 'lodash';
-import device from "current-device";
-import NavItem from "./nav-item.vue";
-import {light, dark} from '@/assets/colorSystem'
+import device from 'current-device';
+import NavItem from './nav-item.vue';
+import { dark, light } from '@/assets/colorSystem';
+
 const { throttle } = lodash;
 
 const {isDark, switchTheme} = useThemeStore();
@@ -19,7 +20,7 @@ const route = useRoute();
 
 const socialLink = [
   {title: "github", link: "https://github.com/trudbot", icon: "line-md:github-loop"},
-  {title: "qq", link: "https://qm.qq.com/cgi-bin/qm/qr?k=MH-43mhUJOJb83xmB28ZHUW4-D2FRsjF", icon: "la:qq"},
+  // {title: "qq", link: "https://qm.qq.com/cgi-bin/qm/qr?k=MH-43mhUJOJb83xmB28ZHUW4-D2FRsjF", icon: "la:qq"},
   {title: "zhihu", link: "https://www.zhihu.com/people/qu-ge-sha-ming-hao-ni-30", icon: "ant-design:zhihu-outlined"}
 ];
 
