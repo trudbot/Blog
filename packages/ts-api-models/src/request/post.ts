@@ -10,3 +10,8 @@ export interface UpdateTags_Put {
     post_id: number;
     tags: string[];
 }
+
+export interface GetMetaInfo_Query {
+    category_id?: number;
+    tag_label?: string;
+}

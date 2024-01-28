@@ -1,7 +1,7 @@
-import {Body, Controller, Get, HttpException, HttpStatus, Post, Put, Query,} from "@nestjs/common";
-import {CreatePost_Post, UpdateTags_Put} from "ts-api-models/lib/request";
-import {PostsService} from "./post.service";
-import {PostEntity, PostMetaInfoEntity} from "ts-api-models/lib/response";
+import { Body, Controller, Get, HttpException, HttpStatus, Post, Put, Query } from '@nestjs/common';
+import { CreatePost_Post, GetMetaInfo_Query, UpdateTags_Put } from 'ts-api-models/lib/request';
+import { PostsService } from './post.service';
+import { PostEntity, PostMetaInfoEntity } from 'ts-api-models/lib/response';
 
 @Controller('posts')
 export class PostsController {
@@ -22,9 +22,9 @@ export class PostsController {
      * 获取文章的基本信息
      */
     @Get('meta')
-    public async getMetaInfo(): Promise<PostMetaInfoEntity[]> {
+    public async getMetaInfo(@Query() query: GetMetaInfo_Query): Promise<PostMetaInfoEntity[]> {
         try {
-            return await this.postsService.getMetaInfo();
+            return await this.postsService.getMetaInfo(query);
         } catch (e) {
             throw new HttpException(e.toString(), HttpStatus.BAD_REQUEST);
         }

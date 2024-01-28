@@ -1,11 +1,13 @@
-import { AxiosResponse } from 'axios'
-import request from '../utils/request'
-import {PostEntity, PostMetaInfoEntity, } from "ts-api-models/lib/response";
+import { AxiosResponse } from 'axios';
+import request from '../utils/request';
+import { PostEntity, PostMetaInfoEntity } from 'ts-api-models/lib/response';
+import { GetMetaInfo_Query } from 'ts-api-models/lib/request';
 
-export function getPostMetaInfoList(): Promise<AxiosResponse<PostMetaInfoEntity[]>> {
+export function getPostMetaInfoList(query?: GetMetaInfo_Query): Promise<AxiosResponse<PostMetaInfoEntity[]>> {
     return request({
         url: '/posts/meta',
-        method: 'get'
+        method: 'get',
+        params: query || {}
     })
 }
 

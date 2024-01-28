@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
     origin: [
-      'http://localhost:3000', 
+      'http://localhost:3000',
       'https://beta.trudbot.cn',
       'https://trudbot.cn',
     ],
@@ -13,4 +13,6 @@ async function bootstrap() {
   });
   await app.listen(4000);
 }
-bootstrap();
+bootstrap().then(() => {
+  console.log('server started!');
+});

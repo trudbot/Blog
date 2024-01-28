@@ -7,11 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import axios from "axios";
-import Hexo from "hexo2json";
-import fs from "fs";
-import * as path from "path";
+import axios from 'axios';
+import Hexo from 'hexo2json';
+import fs from 'fs';
+import * as path from 'path';
 const targetDir = "/Users/songyiping03/trudbot_blog/source/_posts";
+// const base_url = "https://api.trudbot.cn";
 const base_url = "http://localhost:4000";
 const createCategoriesUrl = `${base_url}/categories/multiCreate`;
 const createPostsUrl = `${base_url}/posts/create`;
@@ -20,7 +21,7 @@ function addBlog(blog, blogName) {
     return __awaiter(this, void 0, void 0, function* () {
         const tags = blog.meta.tags ? [].concat(blog.meta.tags) : [];
         const post = {
-            post_content: blog.content,
+            post_content: blog.desc + '\n' + blog.content,
             post_title: blogName,
             tags: tags,
             publish_date: blog.meta.date || new Date(),
@@ -71,6 +72,6 @@ function traverseMarkdownFiles(folderPath, callback) {
 traverseMarkdownFiles(targetDir, (pth, content) => {
     fileHandler(pth, content).then().catch(e => {
         console.log(pth, '失败');
-        console.log(e);
+        console.log(e.response.data);
     });
 });

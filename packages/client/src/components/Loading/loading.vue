@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { defineModel } from 'vue';
+
 const loading = defineModel<boolean>({
   default: true
 });
 </script>
 
 <template>
-    <div class="wrapper" :style="{visibility: loading ? 'visible': 'hidden'}">
+    <div class="loading-wrapper" :style="{visibility: loading ? 'visible': 'hidden'}">
         <div class="container">
             <div class="loading">
                 <i></i>
@@ -110,7 +111,7 @@ $ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
 
 // center
 
-.wrapper {
+.loading-wrapper {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -119,6 +120,9 @@ $ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
 .container {
 	position: absolute; top: 50%; left: 50%;
 	transform: translate(-50%,-50%);
+}
+
+* {
   z-index: 999;
 }
 </style>

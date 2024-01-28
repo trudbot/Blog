@@ -12,6 +12,7 @@ defineProps<{
 }>();
 
 const colors = lodash.shuffle(dark);
+
 const {t} = useI18n();
 
 const {startLoading} = inject('loading') as any;
@@ -34,11 +35,17 @@ const {startLoading} = inject('loading') as any;
         </div>
         <ul class="tag-list">
           <Icon icon="solar:tag-line-duotone"></Icon>
-          <li
+          <router-link
               v-for="(tag, i) in post.tags"
               :style="{color: colors[i % colors.length]}"
-              class="link"
-          >{{tag.tag_label}}</li>
+              :to="{
+                name: 'TagDetail',
+                params: {
+                  tag: tag.tag_label
+                }
+              }"
+              class="link tag"
+          >{{tag.tag_label}}</router-link>
         </ul>
         <div class="publish">
           <Icon icon="formkit:date"></Icon>
@@ -52,7 +59,7 @@ const {startLoading} = inject('loading') as any;
 </template>
 
 <style lang="scss" scoped>
-@import "@/mixin.scss";
+@import "@/mixin";
 
 .wrapper {
     @include fill-up;
@@ -86,7 +93,7 @@ const {startLoading} = inject('loading') as any;
       justify-content: center;
       margin-top: 5px;
       font-size: $size;
-      li {
+      .tag {
         margin-left: 0.5rem;
       }
     }

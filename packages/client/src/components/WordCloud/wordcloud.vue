@@ -28,13 +28,18 @@ const {width, height} = useElementSize(cloudRef);
 function render(data: {text: string; size: number}[], x: number, y: number) {
   emits('drawStart');
   cloudRef.value && (cloudRef.value.innerHTML = '');
-  const observer = new MutationObserver(() => {
+  try {
+    const observer = new MutationObserver(() => {
+      emits('drawEnd');
+      observer.disconnect();
+    })
+    observer.observe(cloudRef.value as Node, {
+      childList: true
+    });
+  } catch (e) {
+    console.log(e);
     emits('drawEnd');
-    observer.disconnect();
-  })
-  observer.observe(cloudRef.value as Node, {
-    childList: true
-  });
+  }
 
   const layout = cloud()
     .size([x, y])
@@ -42,7 +47,7 @@ function render(data: {text: string; size: number}[], x: number, y: number) {
     .padding(5)
     .rotate(function() { return ~~(Math.random() * 2) * 90; })
     .font("Impact")
-    .fontSize(function(d) { return d.size; })
+    .fontSize(function(d) { return d.size || 50; })
     .on("end", draw);
 
   function draw(words: any[]) {
@@ -79,7 +84,7 @@ const drawThrottle = throttle(render, 5000, {
 });
 
 const drawDebounce = debounce(drawThrottle, 1000);
-watch([width, height, props], () => {
+watch([width, height, () => props.data], () => {
   if (cloudRef.value && props.data && width.value && height.value) {
     drawDebounce(JSON.parse(JSON.stringify(props.data)), width.value, height.value);
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import {InjectRepository} from "@nestjs/typeorm";
-import {Tag} from "./tag.entity";
-import {Repository} from "typeorm";
+import { InjectRepository } from '@nestjs/typeorm';
+import { Tag } from './tag.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class TagService {
@@ -11,7 +11,15 @@ export class TagService {
     ) {}
 
     async getAll() {
-        return await this.tagRepository.find();
+        const tagEntity =  await this.tagRepository.find({
+            relations: {
+                posts: true
+            }
+        });
+        return tagEntity.map(tag => ({
+            tag_label: tag.tag_label,
+            posts_count: tag.posts.length
+        }))
     }
 
     async getPostsByTag(tag: string) {

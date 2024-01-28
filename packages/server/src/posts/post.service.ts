@@ -1,9 +1,9 @@
-import {Injectable} from "@nestjs/common";
-import {InjectRepository} from "@nestjs/typeorm";
-import {Post} from "./post.entity";
-import {Repository} from "typeorm";
-import {Tag} from "../tags/tag.entity";
-import {CategoryService} from "../category/category.service";
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Post } from './post.entity';
+import { Repository } from 'typeorm';
+import { Tag } from '../tags/tag.entity';
+import { CategoryService } from '../category/category.service';
 
 @Injectable()
 export class PostsService {
@@ -13,7 +13,10 @@ export class PostsService {
         private readonly categoryService: CategoryService,
     ){}
 
-    async getMetaInfo() {
+    async getMetaInfo(where: {
+        category_id?: number,
+        tag_label?: string,
+    } = {}) {
         return await this.postsRepository.find({
             select: {
                 post_title: true,
@@ -22,6 +25,10 @@ export class PostsService {
             },
             relations: {
                 tags: true
+            },
+            where: {
+                category: {category_id: where.category_id},
+                tags: {tag_label: where.tag_label}
             }
         });
     }

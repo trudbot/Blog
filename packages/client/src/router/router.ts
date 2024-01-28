@@ -1,5 +1,5 @@
-import {createWebHistory, RouteRecordRaw, createRouter} from "vue-router";
-import templates from './404-templates'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import templates from './404-templates';
 
 const templateNames = templates.map(template => template.name)
 
@@ -19,7 +19,7 @@ export const routes:  RouteRecordRaw[] = [
         {
             path: '',
             name: 'BlogList',
-            component: () => import('../views/blog/components/blog-list.vue')
+            component: () => import('../views/blog/components/blog-list-view.vue')
         },
         {
             path: 'show/:id',
@@ -40,6 +40,12 @@ export const routes:  RouteRecordRaw[] = [
     {
         path: '/tags',
         component: () => import('../views/tags/tags-view.vue')
+    },
+    {
+        path: '/tagDetail/:tag',
+        props: true,
+        name: "TagDetail",
+        component: () => import('../views/tags/tag-detail.vue')
     },
     {
         path: '/idols',

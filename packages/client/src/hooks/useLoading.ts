@@ -1,5 +1,5 @@
-import { ref } from "vue";
-import { setTimeout, clearTimeout } from "worker-timers";
+import { ref } from 'vue';
+import { clearTimeout, setTimeout } from 'worker-timers';
 
 const delay = 100;
 const loadingMinTime = 500;
@@ -10,7 +10,7 @@ const loadingMinTime = 500;
 export function useLoading(initState: boolean = false) {
     const loading = ref<boolean>(initState);
     let loadingStart: Date;
-    let timeout: number;
+    let timeout: number | null;
 
     function startLoading() {
         if (loading.value) return;
@@ -21,13 +21,14 @@ export function useLoading(initState: boolean = false) {
     }
 
     function stopLoading() {
-        clearTimeout(timeout);
-        if (!loading.value) return;
-        if (loading.value) {
-            setTimeout(() => {
-                loading.value = false;
-            }, Math.max(0, loadingMinTime - (Date.now() - loadingStart.getTime())))
+        if (timeout !== null) {
+            clearTimeout(timeout);
+            timeout = null;
         }
+        if (!loading.value) return;
+        setTimeout(() => {
+            loading.value = false;
+        }, Math.max(0, loadingMinTime - (Date.now() - loadingStart.getTime())))
     }
 
     return {

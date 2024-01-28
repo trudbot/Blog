@@ -6,6 +6,7 @@ import * as path from 'path';
 import { CategoryEntity } from 'ts-api-models/lib/response';
 
 const targetDir: string = "/Users/songyiping03/trudbot_blog/source/_posts";
+// const base_url = "https://api.trudbot.cn";
 const base_url = "http://localhost:4000";
 const createCategoriesUrl: string = `${base_url}/categories/multiCreate`;
 const createPostsUrl: string = `${base_url}/posts/create`;
@@ -76,6 +77,6 @@ traverseMarkdownFiles(targetDir, (pth, content) => {
     fileHandler(pth, content).then(
     ).catch(e => {
         console.log(pth, '失败');
-        console.log(e)
+        console.log(e.response.data)
     })
 });

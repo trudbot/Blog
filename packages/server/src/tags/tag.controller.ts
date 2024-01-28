@@ -1,7 +1,7 @@
-import {Controller, Get, HttpException, HttpStatus, Param} from '@nestjs/common';
-import {TagService} from "./tag.service";
-import {PostMetaInfoEntity} from "ts-api-models/lib/response";
-import {TagEntity} from "ts-api-models/lib/response/tag";
+import { Controller, Get, HttpException, HttpStatus, Param } from '@nestjs/common';
+import { TagService } from './tag.service';
+import { PostMetaInfoEntity } from 'ts-api-models/lib/response';
+import { TagData } from 'ts-api-models/lib/response/tag';
 
 @Controller('tag')
 export class TagController {
@@ -9,7 +9,7 @@ export class TagController {
         private readonly tagService: TagService
     ) {}
     @Get('getAll')
-    public getAllTags(): Promise<TagEntity[]> {
+    public getAllTags(): Promise<TagData[]> {
         return this.tagService.getAll();
     }
 
