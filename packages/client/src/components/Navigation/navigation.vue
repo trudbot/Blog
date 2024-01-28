@@ -105,7 +105,7 @@ $icon-color__dark: #fff;
 
 nav {
   box-sizing: border-box;
-  height: 15vh;
+  height: max(96px, 15vh);
   background-color: transparent;
   padding: 20px 40px 20px 30px;
   display: flex;

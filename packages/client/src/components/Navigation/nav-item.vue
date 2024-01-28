@@ -25,18 +25,17 @@ defineProps<{
 .nav-item {
     @include flex-center;
     transition: background-color 1s;
-    height: 3vw;
+    height: max(96px, 15vh);
     cursor: pointer;
     border-radius: 10%;
     font-family: inherit;
 
-    @include hover {
-      background: #c7c5c5;
-    }
-
     span {
         display: inline-block;
         color: v-bind(color);
+        @include hover {
+          background: #c7c5c5;
+        }
     }
 }
 

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import FullPage from '../../components/FullPage/index.vue'
-import PageItem from "../../components/FullPage/page-item.vue";
-import {useThemeStore} from "../../stores/theme-store";
-import device from 'current-device'
-import codeStr from "./code.ts";
-import {useI18n} from "vue-i18n";
-import techStack from "./tech-stack.ts";
-import {openLink} from "../../utils/openLink.ts";
-import TimeLine from "../../components/TimeLine/time-line.vue";
-import {useCodingSimulator} from "./codingSimulator.ts";
+import FullPage from '../../components/FullPage/index.vue';
+import PageItem from '../../components/FullPage/page-item.vue';
+import { useThemeStore } from '../../stores/theme-store';
+import device from 'current-device';
+import codeStr from './code.ts';
+import { useI18n } from 'vue-i18n';
+import techStack from './tech-stack.ts';
+import { openLink } from '../../utils/openLink.ts';
+import TimeLine from '../../components/TimeLine/time-line.vue';
+import { useCodingSimulator } from './codingSimulator.ts';
 
 const {t} = useI18n();
 const {isDark} = useThemeStore();
@@ -46,9 +46,6 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
               <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311181422543.png"
                    alt="icpc" :style="{width: device.mobile() ? '80vw' : ''}">
             </div>
-            <div class="code-box cp-item" v-if="device.desktop()">
-
-            </div>
           </div>
         </div>
       </PageItem>
@@ -73,7 +70,7 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
     flex-direction: column;
 
     img {
-      @include cycle(min(30vw, 30vh));
+      @include cycle(min(60vw, 30vh));
     }
 
     p {
@@ -98,8 +95,9 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
       flex-wrap: wrap;
 
       img {
-        @include square(10vw);
+        @include square(max(10vw, 10vh));
         @include hover-cursor(pointer);
+        margin-left: 10px;
       }
     }
   }
