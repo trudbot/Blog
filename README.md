@@ -61,7 +61,7 @@
 
 ---
 
-还有就是标签云, 使用了[d3-cloud](https://github.com/jasondavies/d3-cloud)
+还有就是标签云, tag页一开始就决定了要做成标签云的形式， 使用了[d3-cloud](https://github.com/jasondavies/d3-cloud)来完成
 
 <img width="1177" alt="截屏2024-01-28 下午3 34 33" src="https://github.com/trudbot/Blog/assets/91862181/fe4379d3-8957-460d-985b-20f1049efdcb">
 
