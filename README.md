@@ -61,6 +61,13 @@
 
 ---
 
+还有就是标签云, 使用了[d3-cloud](https://github.com/jasondavies/d3-cloud)
+
+<img width="1177" alt="截屏2024-01-28 下午3 34 33" src="https://github.com/trudbot/Blog/assets/91862181/fe4379d3-8957-460d-985b-20f1049efdcb">
+
+
+---
+
 客户端的开发收获嘛， 我想就是多写代码的收获。
 
 比如css一写多， 秉承着工具只用最必要的我， 也不得不尝试写scss的更多特性， 去重构代码。
