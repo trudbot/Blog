@@ -25,7 +25,7 @@ defineProps<{
 .nav-item {
     @include flex-center;
     transition: background-color 1s;
-    height: max(96px, 15vh);
+    //height: max(96px, 15vh);
     cursor: pointer;
     border-radius: 10%;
     font-family: inherit;

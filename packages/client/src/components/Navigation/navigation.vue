@@ -29,7 +29,7 @@ const menuItems = computed(() => {
     {label: t('menus.blog'), route: '/blog'},
     {label: t('menus.tags'), route: '/tags'},
     {label: t('menus.categories'), route: '/categories'},
-    {label: t('menus.archives'), route: '/archives'},
+    {label: t('menus.lab'), route: '/lab'},
     {label: t('menus.idols'), route: '/idols'},
     {label: t('menus.friends'), route: '/friends'}
   ]
@@ -112,8 +112,9 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  div {
+  .menu, .right {
     display: flex;
+    align-items: center;
   }
 
 
