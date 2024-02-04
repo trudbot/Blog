@@ -1,20 +1,13 @@
 <script setup lang="ts">
-import FullPage from '../../components/FullPage/index.vue';
-import PageItem from '../../components/FullPage/page-item.vue';
-import { useThemeStore } from '../../stores/theme-store';
+import FullPage from '@/components/FullPage/index.vue';
+import PageItem from '@/components/FullPage/page-item.vue';
 import device from 'current-device';
-import codeStr from './code.ts';
 import { useI18n } from 'vue-i18n';
 import techStack from './tech-stack.ts';
-import { openLink } from '../../utils/openLink.ts';
-import TimeLine from '../../components/TimeLine/time-line.vue';
-import { useCodingSimulator } from './codingSimulator.ts';
+import { openLink } from '@/utils/openLink.ts';
+import TimeLine from '@/components/TimeLine/time-line.vue';
 
 const {t} = useI18n();
-const {isDark} = useThemeStore();
-
-const {code, disable} = useCodingSimulator(codeStr, 500);
-
 </script>
 
 <template>
@@ -25,7 +18,7 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
         <p>trudbot</p>
       </PageItem>
       <PageItem>
-        <div class="frontend">
+        <section class="frontend">
           <div class="title">
             {{t('home.frontend')}}
           </div>
@@ -34,10 +27,10 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
               <img v-for="tech in techStack" :src="tech.img" :alt="tech.name" :key="tech.name" @click="openLink(tech.url)"/>
             </div>
           </div>
-        </div>
+        </section>
       </PageItem>
       <PageItem>
-        <div class="acm-show">
+        <section class="acm-show">
           <div class="title">
             {{ t('home.cp') }}
           </div>
@@ -47,7 +40,7 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
                    alt="icpc" :style="{width: device.mobile() ? '80vw' : ''}">
             </div>
           </div>
-        </div>
+        </section>
       </PageItem>
       <PageItem>
         <TimeLine></TimeLine>
@@ -111,7 +104,7 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
     .title {
       font-family: inherit;
       @include flex-center;
-      font-size: max(3vw, 30px);
+      font-size: max(3vw, 2rem);
       margin-top: 1vh;
       margin-bottom: 1vh;
       height: 10vh;
@@ -127,7 +120,6 @@ const {code, disable} = useCodingSimulator(codeStr, 500);
 
         img {
           position: relative;
-          top: 30%;
           object-fit: contain;
         }
 
