@@ -1,7 +1,9 @@
 export function setRotateAnimation(N: number, duration: number, ele: Element) {
   if (N < 1 || duration < 0 || !(ele instanceof Element)) {
     console.error('Invalid parameters');
-    return;
+    return {
+      animation: null
+    };
   }
 
   const pause = 0.6 / N;
