@@ -30,8 +30,8 @@ export const routes:  RouteRecordRaw[] = [
       ]
     },
     {
-        path: '/archives',
-        component: () => import('../views/archives/archives-view.vue')
+        path: '/lab',
+        component: () => import('../views/lab/lab-view.vue')
     },
     {
         path: '/categories',

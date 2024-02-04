@@ -3,7 +3,7 @@ export default {
         blog: 'Blog',
         tags: 'Tags',
         categories: 'Categories',
-        archives: 'Archives',
+        lab: 'Lab',
         idols: 'Idols',
         friends: 'Friends'
     },

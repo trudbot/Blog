@@ -3,7 +3,7 @@ export default {
         blog: '博客',
         tags: '标签',
         categories: '分类',
-        archives: '归档',
+        lab: '实验室',
         idols: '爱豆',
         friends: '友链'
     },

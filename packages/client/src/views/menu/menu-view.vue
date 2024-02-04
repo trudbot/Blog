@@ -8,7 +8,7 @@ const menuItems = computed(() => {
     {label: t('menus.blog'), route: '/blog'},
     {label: t('menus.tags'), route: '/tags'},
     {label: t('menus.categories'), route: '/categories'},
-    {label: t('menus.archives'), route: '/archives'},
+    {label: t('menus.lab'), route: '/lab'},
     {label: t('menus.idols'), route: '/idols'},
     {label: t('menus.friends'), route: '/friends'}
   ]
@@ -27,10 +27,14 @@ const menuItems = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/mixin.scss";
 .menu-list-container {
   width: 80%;
-  margin: 0 auto;
+  height: 100%;
+  box-sizing: content-box;
+  padding: 0 10% 0 10%;
+  overflow: scroll;
 
   ul {
     padding-left: 20px;

@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import WordCloud from '@/components/WordCloud/wordcloud.vue';
-import { generate } from 'random-words';
+// import { generate } from 'random-words';
 import { inject, onMounted, ref, watch } from 'vue';
 import { getAllTags } from '@/apis/tags.api.ts';
 import { useRouter } from 'vue-router';
 
-const words = (generate(100) as string[]).map(item => {
-  return {
-    text: item,
-    size: Math.random() * 100,
-    info: 'info'
-  }
-});
-
+// const words = (generate(100) as string[]).map(item => {
+//   return {
+//     text: item,
+//     size: Math.random() * 100,
+//     info: 'info'
+//   }
+// });
+defineOptions({
+  name: 'Tag'
+})
 const {startLoading, stopLoading} = inject('loading') as any;
 const data = ref<{text: string; size: number}[]>([]);
 onMounted(() => {

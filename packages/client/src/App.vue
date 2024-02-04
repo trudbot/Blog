@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Navigation from "./components/Navigation/navigation.vue";
-import {useThemeStore} from "./stores/theme-store.ts";
-import {useLanguageStore} from "./stores/language-store.ts";
-import {useRouter} from "vue-router";
-import { nextTick, onMounted, watch, ref, provide } from 'vue';
-import Loading from '@/components/Loading/loading.vue'
-import { useLoading } from "@/hooks/useLoading";
+import Navigation from './components/Navigation/navigation.vue';
+import { useThemeStore } from './stores/theme-store.ts';
+import { useLanguageStore } from './stores/language-store.ts';
+import { useRouter } from 'vue-router';
+import { nextTick, onMounted, provide, watch } from 'vue';
+import Loading from '@/components/Loading/loading.vue';
+import { useLoading } from '@/hooks/useLoading';
+
 const router = useRouter();
 const {isDark} = useThemeStore();
 useLanguageStore();
@@ -37,7 +38,11 @@ provide('loading', {
       <navigation />
     </header>
     <main>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <Transition name="content">
+          <component :is="Component" />
+        </Transition>
+      </router-view>
     </main>
     <loading v-model="loading"/>
   </div>
@@ -75,4 +80,16 @@ img {
   }
 }
 
+
+.content-enter-from {
+  transform: translateY(-100%);
+}
+
+//.content-leave-to {
+//  transform: translateY(100%);
+//}
+
+.content-enter-active {
+  transition: transform 0.5s linear;
+}
 </style>
