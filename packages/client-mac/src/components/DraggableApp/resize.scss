@@ -1,0 +1,83 @@
+.resize {
+  --left-cursor: ew-resize;
+  --right-cursor: ew-resize;
+  --top-cursor: ns-resize;
+  --bottom-cursor: ns-resize;
+  --bar-size: 6px;
+  --out-size: calc(-1 * (var(--bar-size) / 3));
+  $L: 6px;
+  $Out: calc(-1 * ($L / 3));
+  position: absolute;
+  display: inline-block;
+  &.left, &.right {
+    width: var(--bar-size);
+    top: 0;
+    height: 100%;
+  }
+  &.top, &.bottom {
+    height: var(--bar-size);
+    left: 0;
+    width: 100%;
+  }
+  &.left {
+    left: var(--out-size);
+    cursor: var(--left-cursor);
+  }
+  &.right {
+    right: var(--out-size);
+    &:hover {
+      cursor: var(--right-cursor);
+    }
+  }
+  &.top {
+    top: var(--out-size);
+    &:hover {
+      cursor: var(--top-cursor);
+    }
+  }
+  &.bottom {
+    bottom: var(--out-size);
+    &:hover {
+      cursor: var(--bottom-cursor);
+    }
+  }
+
+  &.corner {
+    $corner-L: 2 * $L;
+    $Out: calc(-1 * ($corner-L / 3));
+    width: $corner-L;
+    height: $corner-L;
+
+    &.left-top {
+      left: $Out;
+      top: $Out;
+      &:hover {
+        cursor: nwse-resize;
+      }
+    }
+
+    &.right-top {
+      right: $Out;
+      top: $Out;
+      &:hover {
+        cursor: nesw-resize;
+      }
+    }
+
+    &.left-bottom {
+      left: $Out;
+      bottom: $Out;
+      &:hover {
+        cursor: nesw-resize;
+      }
+    }
+
+    &.right-bottom {
+      right: $Out;
+      bottom: $Out;
+      &:hover {
+        cursor: nwse-resize;
+      }
+    }
+  }
+}
