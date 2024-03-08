@@ -59,6 +59,15 @@ export const routes:  RouteRecordRaw[] = [
         path: '/friends',
         component: () => import('../views/friends/friends-view.vue')
     },
+    // 将/posts重定向到旧版博客
+    {
+        path: '/posts/:id',
+        redirect(to)  {
+            const res =  `https://beta.trudbot.cn${to.path}`;
+            window.location.replace(res);
+            return '';
+        }
+    },
     {
       path: '/404',
       name: '404',
@@ -68,7 +77,8 @@ export const routes:  RouteRecordRaw[] = [
     {
         path: '/:catchAll(.*)',
         name: 'NotFound',
-        beforeEnter: () => {
+        beforeEnter: (_to, from) => {
+            console.log(from);
             const templateName = templateNames[Math.floor(Math.random() * templateNames.length)]
             return {
                 name: templateName

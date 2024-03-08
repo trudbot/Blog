@@ -1,0 +1,64 @@
+@import "@/mixin";
+.blog-item {
+  color: #000;
+  padding-top: 20px;
+  .post-title {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .title-text {
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    color: var(--font-color);
+    font-size: clamp(15px, 2.5vw, 1.6rem);
+    font-family: 'Noto Serif SC', serif;
+  }
+
+  $size: clamp(0.8rem, 2vw, 1.5rem);
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    font-size: $size;
+    .tag {
+      margin-left: 0.5rem;
+    }
+  }
+  .publish {
+    @include flex-center;
+    font-size: $size;
+    font-family: monospace;
+    margin-top: 10px;
+
+    .text {
+      margin-left: 5px;
+    }
+  }
+}
+
+.link {
+  position: relative;
+  $bar-height: 1px;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(100% - $bar-height);
+    transform: scaleX(0);
+    background-color: #000;
+    height: $bar-height;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+  }
+
+  @include hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}

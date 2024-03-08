@@ -60,10 +60,12 @@ html, body, #app {
 
 :root {
   --color: white;
+  --blog-header-font-color: #000;
 }
 
 :root.dark-mode {
   --color: black;
+  --blog-header-font-color: #fff;
 }
 
 #app {

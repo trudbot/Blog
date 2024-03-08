@@ -10,7 +10,7 @@ const loadingMinTime = 500;
 export function useLoading(initState: boolean = false) {
     const loading = ref<boolean>(initState);
     let loadingStart: Date;
-    let timeout: number | null;
+    let timeout: number | null = null;
 
     function startLoading() {
         if (loading.value) return;

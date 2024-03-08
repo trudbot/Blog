@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router';
 import { nextTick, onMounted, provide, watch } from 'vue';
 import Loading from '@/components/Loading/loading.vue';
 import { useLoading } from '@/hooks/useLoading';
+import { useOption } from '@/hooks/useOption.ts';
 
 const router = useRouter();
 const {isDark} = useThemeStore();
@@ -29,15 +30,30 @@ provide('loading', {
   startLoading,
   stopLoading
 });
+
+// 允许一级子组件调整app的布局
+// 默认为full page, nav固定高度, content占满窗口剩余高度
+// 为content布局时, nav固定高度, content高度auto, container滚动
+const [
+  layout,
+  setFullPageLayout,
+  setContentLayout
+] = useOption(['fullPage', 'content'], 'fullPage');
+provide('layout', {
+  layout,
+  setFullPageLayout,
+  setContentLayout
+});
+
 </script>
 
 <template>
   <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311122207869.webp" alt="home" @click="router.push('/')">
-  <div class="app-container">
+  <div :class="['app-container', layout]">
     <header class="nav-container">
       <navigation />
     </header>
-    <main>
+    <main class="app-content">
       <router-view v-slot="{ Component }">
         <Transition name="content">
           <component :is="Component" />
@@ -66,12 +82,9 @@ img {
   display: flex;
   flex-direction: column;
 
-  main {
+  .app-content {
     box-sizing: border-box;
     padding-top: 20px;
-    height: 100%;
-    flex: 1;
-    overflow: hidden;
   }
 
   .nav-container {
@@ -79,6 +92,23 @@ img {
     padding-top: 15px;
   }
 }
+
+.app-container.fullPage {
+  display: flex;
+  flex-direction: column;
+
+  .app-content {
+    flex: 1;
+    overflow: hidden;
+  }
+}
+
+.app-container.content {
+  overflow-y: scroll;
+  @include hide-scrollbar;
+}
+
+
 
 
 .content-enter-from {

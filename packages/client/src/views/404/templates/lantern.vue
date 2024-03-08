@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useThemeStore} from "../../../stores/theme-store.ts";
-import {computed} from "vue";
-import {useI18n} from "vue-i18n";
+import { useThemeStore } from '../../../stores/theme-store.ts';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const {isLight} = useThemeStore();
 const {t} = useI18n();
@@ -230,7 +230,7 @@ const text = computed(() => {
 
 main {
   filter: v-bind('invert');
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background: transparent;
   display: flex;
