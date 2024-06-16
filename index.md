@@ -25,6 +25,7 @@ features:
 ---
 
 <script setup>
+import Tags from './views/tags.vue'
 </script>
 
 <Tags/>
