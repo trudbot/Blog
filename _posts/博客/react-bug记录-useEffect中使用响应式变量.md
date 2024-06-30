@@ -43,9 +43,9 @@ useEffect(() => {
 
 代码中的bug最终反映在前端界面上， 经过排查， 发现是`3`处， groups始终是空数组也就是初始值。
 
-这个bug原因也很简单， 在[将事件从 Effect 中分开 – React 中文文档 (docschina.org)](https://react.docschina.org/learn/separating-events-from-effects)中提到
+这个bug原因也很简单， 在[将事件从 Effect 中分开 – React 中文文档](https://zh-hans.react.dev/learn/separating-events-from-effects)中提到
 
->  [Effect 读取的每一个响应式值都必须在其依赖项中声明](https://react.docschina.org/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)
+>  [Effect 读取的每一个响应式值都必须在其依赖项中声明](https://zh-hans.react.dev/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)
 
 也就是说在useEffect中读取的每一个响应式值都必须作为其依赖。
 
@@ -79,7 +79,7 @@ const connection = createUnreadMessageConnection({useinfo });
 
 ### useEffectEvent
 
-[将事件从 Effect 中分开 – React 中文文档 (docschina.org)](https://react.docschina.org/learn/separating-events-from-effects#declaring-an-effect-event)中， 提供了useEffectEvent API的用法。
+[将事件从 Effect 中分开 – React 文档](https://zh-hans.react.dev/learn/separating-events-from-effects#declaring-an-effect-event)中， 提供了useEffectEvent API的用法。
 
 简单说就是， 将非响应式代码包装到useEffectEvent 中， 然后在useEffect中调用， 就可以不影响Effect响应式逻辑的情况下， 去获取state的最新值。
 
