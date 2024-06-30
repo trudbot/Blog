@@ -41,4 +41,4 @@ post.data.top = 0;
 const content = matter.stringify(post.content, post.data);
 const pth = `${filePath}.md`;
 
-writeFileEnsureDir(path.join('_post', pth), content);
+writeFileEnsureDir(path.join('_posts', pth), content);
