@@ -42,14 +42,16 @@ jobs:
         uses: actions/configure-pages@v4
       - name: Install dependencies
         run: npm ci # 或 pnpm install / yarn install / bun install
-      - name: Build with VitePress
-        run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+      - name: Build for trudbot's server
+        run: npm run docs:build_for_server
       - name: Copy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .vitepress/dist
           publish_branch: static
+      - name: Build for github pages
+        run: npm run docs:build_for_github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -17,7 +17,7 @@ hero:
 
 features:
   - title: 前端切图仔
-    details: 精通JavaScript的编写
+    details: 精通JavaScript的拼写
   - title: 竞赛算法蒟蒻
     details: 偶尔刷刷leetcode、atcoder
   - title: 拖延症患者

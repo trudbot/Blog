@@ -9,7 +9,6 @@ export default withMermaid(defineConfig({
   head: [
     ['link', { rel: 'icon', href: 'https://trudbot-pic.oss-cn-hangzhou.aliyuncs.com/trubdot/68d0b48ba4f1cf004059144fa0fccc78.jpg' }]
   ],
-  base: '/Blog/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202311131854196.webp',
