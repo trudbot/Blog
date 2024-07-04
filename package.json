@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
     "docs:dev": "vitepress dev",
-    "docs:build_for_github_pages": "vitepress build --base /blog/",
+    "docs:build_for_github_pages": "vitepress build --base /Blog/",
     "docs:build_for_server": "vitepress build",
     "docs:preview": "vitepress preview",
     "new": "node scripts/create-post.js"
