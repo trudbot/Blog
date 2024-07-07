@@ -66,4 +66,8 @@ export default withMermaid(defineConfig({
   mermaidPlugin: {
     class: "mermaid trudbot-mermaid", // set additional css classes for parent container
   },
+
+  sitemap: {
+    hostname: 'https://trudbot.cn'
+  },
 }));
