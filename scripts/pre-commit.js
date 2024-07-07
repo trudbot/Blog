@@ -2,6 +2,7 @@ const { execSync } = require('child_process');
 const path = require('path');
 const matter = require('gray-matter');
 const fs = require('fs');
+const chalk = require('chalk');
 const { minimatch } = require('minimatch');
 
 function formatDate(date) {
@@ -42,8 +43,8 @@ try {
     }).map(decodeUtf8);
 
   const mdFiles = modifiedFiles.filter(file => minimatch(file, '_posts/**/*.md'));
-  console.log('modifiedFiles', modifiedFiles);
-  console.log('mdFiles', mdFiles);
+  console.log(chalk.blue.bold('本次提交修改的文件: '), modifiedFiles);
+  console.log(chalk.blue.bold('在_posts中的md文件:'), mdFiles);
   mdFiles.forEach(file => {
     const pth = path.resolve(file);
     const content = fs.readFileSync(pth, {encoding: 'utf-8'});
@@ -66,11 +67,13 @@ try {
 
   if (mdFiles.length > 0) {
     execSync(`git add ${mdFiles.map(file => `"${file}"`).join(' ')}`);
+  } else {
+    console.log(chalk.green.bold('没有需要更新的文件, pre-commit结束')); 
   }
 
-  console.log('Pre-commit hook completed successfully.');
+  console.log(chalk.green.bold('Pre-commit hook completed successfully.'));
   process.exit(0);
 } catch (error) {
-  console.error('Error running pre-commit hook:', error);
+  console.error(chalk.red.bold('Error running pre-commit hook:'), error);
   process.exit(1);
 }
