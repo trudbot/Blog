@@ -1,1 +1,1 @@
-node .husky/pre-commit.js
+node scripts/pre-commit.js
