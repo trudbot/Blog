@@ -41,8 +41,6 @@ try {
       return filePath;
     }).map(decodeUtf8);
 
-  const commitMessage = execSync('git log -1 --pretty=%B').toString().trim();
-
   const mdFiles = modifiedFiles.filter(file => minimatch(file, '_posts/**/*.md'));
   console.log('modifiedFiles', modifiedFiles);
   console.log('mdFiles', mdFiles);
@@ -50,10 +48,16 @@ try {
     const pth = path.resolve(file);
     const content = fs.readFileSync(pth, {encoding: 'utf-8'});
     const fileContent = matter(content);
+    const fileName = path.basename(file).replace(/\.md$/, '');
     
     // 更新lastUpdated字段
     const frontmatter = fileContent.data || {};
     frontmatter.lastUpdated = formatDate(new Date());
+    
+    // 无title字段则使用文件名
+    if (!frontmatter.title) {
+      frontmatter.title = fileName;
+    }
     const newContent = matter.stringify(fileContent.content, frontmatter);
     
     // 写入文件
