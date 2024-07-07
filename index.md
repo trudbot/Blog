@@ -25,9 +25,28 @@ features:
 ---
 
 <script setup>
-import Tags from './views/tags.vue'
 </script>
 
+<!--代码语言统计-->
+<div style="display: flex; justify-content: center" class="code-lang">
+    <img :src="data"/>
+</div>
+
+<style>
+.code-lang {
+    margin-top: 5vh;
+    img {
+        width: 50%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        img {
+            width: 70%;
+        }
+    }
+}
+</style>
+
 <Tags/>
-
-
+<Beian/>

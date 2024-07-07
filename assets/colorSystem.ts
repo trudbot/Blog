@@ -15,7 +15,6 @@ const light = [
 const dark = [
   "#5B8FF9",
   "#5AD8A6",
-  "#5D7092",
   "#F6BD16",
   "#E8684A",
   "#6DC8EC",
@@ -23,6 +22,7 @@ const dark = [
   "#FF9D4D",
   "#269A99",
   "#FF99C3",
+  "#5D7092"
 ];
 
 export {light, dark};

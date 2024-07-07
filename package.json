@@ -11,7 +11,8 @@
     "docs:build_for_github_pages": "vitepress build --base /Blog/",
     "docs:build_for_server": "vitepress build",
     "docs:preview": "vitepress preview",
-    "new": "node scripts/create-post.js"
+    "new": "node scripts/create-post.js",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "trudbot",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@docsearch/css": "^3.6.0",
     "@docsearch/js": "^3.6.0",
+    "@trudbot/map": "^0.0.4",
     "@types/d3": "^7.4.3",
     "@types/d3-cloud": "^1.2.9",
     "@types/lodash": "^4.17.5",
@@ -28,9 +30,12 @@
     "d3-cloud": "^1.2.7",
     "glob": "^10.4.1",
     "gray-matter": "^4.0.3",
+    "husky": "^9.0.11",
     "lodash": "^4.17.21",
     "markdown-it-mathjax3": "^4.3.2",
     "mermaid": "^10.9.1",
+    "minimatch": "^9.0.5",
+    "quickchart-js": "^3.1.3",
     "sass": "^1.77.5",
     "vitepress": "^1.2.3",
     "vitepress-plugin-mermaid": "^2.0.16",
