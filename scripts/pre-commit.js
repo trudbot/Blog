@@ -48,17 +48,27 @@ try {
   mdFiles.forEach(file => {
     const pth = path.resolve(file);
     const content = fs.readFileSync(pth, {encoding: 'utf-8'});
+    const stats = fs.statSync(pth);
     const fileContent = matter(content);
     const fileName = path.basename(file).replace(/\.md$/, '');
-    
-    // 更新lastUpdated字段
     const frontmatter = fileContent.data || {};
-    frontmatter.lastUpdated = formatDate(new Date());
     
     // 无title字段则使用文件名
     if (!frontmatter.title) {
       frontmatter.title = fileName;
+      console.log(chalk.green(`文件[${chalk.bold(fileName)}]的title字段为空, 已更新为文件名`));
     }
+
+    // 更新lastUpdated字段
+    frontmatter.lastUpdated = formatDate(stats.mtime);
+    console.log(chalk.green(`文件[${chalk.bold(fileName)}]的lastUpdated字段已更新`));
+
+    if (!frontmatter.date) {
+      const creationTime = stats.birthtime;
+      frontmatter.date = formatDate(creationTime);
+      console.log(chalk.green(`文件[${chalk.bold(fileName)}]的date字段为空, 已更新为文件创建时间`));
+    }
+
     const newContent = matter.stringify(fileContent.content, frontmatter);
     
     // 写入文件
