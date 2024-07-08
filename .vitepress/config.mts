@@ -7,7 +7,7 @@ export default withMermaid(defineConfig({
   title: "Trudbot's Blog",
   description: "trudbot的博客",
   head: [
-    ['link', { rel: 'icon', href: 'https://trudbot-pic.oss-cn-hangzhou.aliyuncs.com/trubdot/68d0b48ba4f1cf004059144fa0fccc78.jpg' }]
+    ['link', { rel: 'icon', href: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg' }]
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -42,7 +42,7 @@ export default withMermaid(defineConfig({
     math: true
   },
   srcExclude: [
-    '.README.md',
+    'README.md',
     './scripts',
   ],
   vite: {

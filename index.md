@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Trudbot's Blog"
   image:
-    src: https://trudbot-pic.oss-cn-hangzhou.aliyuncs.com/trubdot/68d0b48ba4f1cf004059144fa0fccc78.jpg
+    src: https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg
     alt: trudbot
   actions:
     - theme: brand
