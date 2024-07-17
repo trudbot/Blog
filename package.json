@@ -18,7 +18,7 @@
   "author": "trudbot",
   "license": "MIT",
   "devDependencies": {
-    "@docsearch/css": "^3.6.0",
+    "@docsearch/css": "^3.6.1",
     "@docsearch/js": "^3.6.0",
     "@trudbot/map": "^0.0.4",
     "@types/d3": "^7.4.3",
