@@ -1,7 +1,9 @@
 ---
 date: '2024-07-07 20:23:03'
-lastUpdated: '2024-07-07 20:36:17'
+lastUpdated: '2024-07-07 21:59:33'
 title: free-programming-books
+---
+[原文](https://ebookfoundation.github.io/free-programming-books/books/free-programming-books-zh.html)
 ---
 ## 目录
 
