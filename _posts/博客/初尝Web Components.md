@@ -1,9 +1,9 @@
 ---
-title: 初尝Web Component
-lastUpdated: '2024-07-19 16:34:03'
+title: 初尝Web Components
+lastUpdated: '2024-07-19 16:47:27'
 date: '2024-07-11 21:22:04'
 ---
-Web Component 是 2017年前新出的一套标准, 旨在提供官方的视图 组件化解决方案。
+Web Component 是 2017年新出的一套标准, 旨在提供官方的视图 组件化解决方案。
 
 现在让我们从视图组件化必不可少的组成部分上， 介绍web component。
 
