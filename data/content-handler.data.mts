@@ -2,6 +2,7 @@ import { loadFiles } from '../utils/fs-utils.mjs';
 import { EasyMap } from '@trudbot/map';
 import { matchCodeBlocks } from '../utils/md-statistics';
 import { pie_base64 } from '../utils/chart';
+import { countLines } from '../utils/common';
 
 export default {
   async load() {
@@ -10,9 +11,10 @@ export default {
       return typeof p === 'string' ? p : p.toString();
     });
     loadFiles('_posts/**/*.md', (content) => {
-      matchCodeBlocks(content).forEach(({language}) => {
+      matchCodeBlocks(content).forEach(({language, code}) => {
         if (language === 'c++') language = 'cpp';
-        proxy[language]++;
+        if (language === 'in' || language === 'out') language = 'text';
+        proxy[language] += countLines(code);
       });
     });
     const pieData = {
