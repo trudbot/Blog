@@ -19,7 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "@docsearch/css": "^3.6.1",
-    "@docsearch/js": "^3.6.0",
+    "@docsearch/js": "^3.6.1",
     "@trudbot/map": "^0.0.4",
     "@types/d3": "^7.4.3",
     "@types/d3-cloud": "^1.2.9",
