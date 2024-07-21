@@ -198,6 +198,8 @@
     background: #fffaf0;
     margin: 2px 3px;
     border: 1px solid #d6d6d6;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .dark {
