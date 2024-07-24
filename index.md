@@ -45,7 +45,7 @@ import {data} from './data/content-handler.data.mts'
 
     @media (max-width: 768px) {
         img {
-            width: 70%;
+            width: 80%;
         }
     }
 }
