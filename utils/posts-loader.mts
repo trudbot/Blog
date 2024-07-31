@@ -58,7 +58,10 @@ export function generateIndex(dir: string, depth: number = 0, text?: string, mor
   const subDirIndex = subDirs.map(subDir => generateIndex(path.join(dir, subDir), depth + 1));
   return {
     text: text || path.basename(dir),
-    items: [...subDirIndex, ...generatePostListSync(dir)],
+    items: [...subDirIndex, ...generatePostListSync(dir)].filter((item) => {
+      // @ts-ignore
+      return item.link || item?.items?.length;
+    }),
     collapsed: depth === 0,
     ...more
   }
