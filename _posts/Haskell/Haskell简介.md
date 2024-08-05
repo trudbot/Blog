@@ -1,0 +1,391 @@
+---
+date: '2024-08-02 14:52:59'
+title: Haskell简介
+lastUpdated: '2024-08-02 14:52:59'
+---
+> Haskell is a *lazy, functional* programming language created in the late 1980’s by a committee of academics. There were a plethora of lazy functional languages around, everyone had their favorite, and it was hard to communicate ideas. So a bunch of people got together and designed a new language, taking some of the best ideas from existing languages (and a few new ideas of their own). Haskell was born.
+
+
+
+## Haskell的特点
+
+### 函数式
+
+1. 函数在haskell中是一等公民
+
+haskell中的函数可以被赋值也可以被传递。
+
+2. haskell更注重表达式结果的计算， 而不是按照步骤逐一执行指令。
+
+### 纯函数
+
+1. **No mutation!**， 任何东西都是不可变的
+
+haskell中的变量、数据结构均不可变。
+
+2. **零副作用**（副作用: 比如更新全局变量, 打印到屏幕， 写入文件）
+2. 相同输入， 相同输出
+
+纯函数的好处:
+
+1. 并行计算, 对于两个没有任何副作用的表达式的计算， 执行顺序谁先谁后是不会影响结果的， 因此天然适合并行计算
+
+2. 代码更不容易出bug!
+
+### 惰性求值
+
+在haskell中， 一条表达式除非需要用到它的结果， 否则不会进行计算。
+
+### 静态类型
+
+Every Haskell expression has a type, and types are all checked at *compile-time*. Programs with type errors will not even compile, much less run.
+
+## Haskell的声明和变量
+
+### 类型声明
+
+每一个haskell变量都有一个不可变的数据类型， 声明方式使用`::`。
+
+如
+
+```haskell
+x :: Int
+x = 3
+-- or
+-- x :: Int = 3
+```
+
+从上面我们可以学到
+
+1. 类型声明的形式为`name :: type`
+2. 赋值使用`=`
+3. Haskell的类型声明和赋值可以分开进行
+4. 使用`-- `进行单行注释
+
+**haskell的变量是不可变的**
+
+```haskell
+x :: Integer = 3
+x = 4
+```
+
+以上代码将报错: `error: Multiple declarations of ‘x’`
+
+虽然叫"变量"， 但它是不可变的， 它只是值的一种名称。
+
+### 基础数据类型
+
+**`Int`**
+
+Int是haskell中的固定长度(精度)整形， 注意在不同计算机中`Int`的长度可能不同。
+
+**`Integer`**
+
+`Integer`是无限长度的整形。
+
+**`Float`、`Double`**
+
+`Float`、`Double`分别是单、双精度的浮点数类型。
+
+```haskell
+-- Double-precision floating point
+d1, d2 :: Double
+d1 = 4.5387
+d2 = 6.2831e-4
+```
+
+**`Bool`**
+
+布尔值, `True` / `False`
+
+**`Char`**
+
+unicode字符。
+
+```haskell
+c1, c2, c3 :: Char
+c1 = 'x'
+c2 = 'Ø'
+c3 = '宋'
+```
+
+注意`Char`字面量必须使用单引号， 跟c语言类似， 双引号是用来表示字符串字面量的， 关于字符串后面会讲到。
+
+## Haskell的运算符
+
+### 算术运算符
+
+```haskell
+ghci> 3 + 2
+5
+ghci> 19 - 27
+-8
+ghci> 2.35 * 8.6
+20.21
+ghci> 8.7 / 3.1
+2.8064516129032255
+ghci> mod 19 3
+1
+ghci> 19 `mod` 3
+1
+ghci> 7 ^ 222
+40903915558252355961885564235233827390274916808670721972378015470397485101670867316479654900404204284975885535566242786061025593172032118590958393531614633803778811048702555046770492868049
+ghci> (-3) * (-7)
+21
+```
+
+> 注意， 以上是在haskell的交互式命令行(`gchi`)上演示的。 这没什么令人困惑的， 相比于将结果保存在变量中， 然后打印， 这样的方式我觉得更加简洁。
+
+一些注意点:
+
+* 在上面mod有两种使用方法， 分别是前缀和中缀。 本质上mod是haskell中一个函数， 所以调用方式为`funcName arg1 arg2 ...`。 而中缀的形式是因为haskell的一个语法糖， 对于两个参数的函数， 可以使用反引号$`$包裹函数名， 便能中缀调用。
+
+* 表达式的负数一般会用括号包裹以表达它是一个整体， 否则haskell可能会认为它是减号， 如·`-1 + -2`将引发报错
+
+* 算术表达式的两个值必须是同一数字类型， haskell不会自动帮你做隐式类型转换
+
+比如
+
+```haskell
+> a :: Integer = 2;
+> b :: Float = 3.14;
+> a * b 
+Couldn't match expected type ‘Integer’ with actual type ‘Float’
+```
+
+可以使用`fromIntegral`将整形转为任何其他数字类型, 如`(fromIntegral a) * b`即可正常运行。
+
+还可以使用`round`、`ceil`、`floor`这些数学函数将浮点类型转换为整形。
+
+* `/`只能用于浮点类型， 对于整形除法需要使用`div`函数
+
+### 比较运算符
+
+```haskell
+ghci> 2 > 1
+True
+ghci> 1 < 2
+True
+ghci> 2 >= 1
+True
+ghci> 1 <= 2
+True
+ghci> 1.5 == 1.5
+True
+```
+
+到此为止， 一切都和`C`很像不是吗。
+
+注意比较运算同样只能相同类型的值进行使用。
+
+### 逻辑运算符
+
+```haskell
+ghci> True && False
+False
+ghci> True || False
+True
+ghci> not True
+False
+```
+
+## Haskell的函数定义
+
+### 函数的调用方式
+
+```haskell
+funcName arg1 arg2 ...
+```
+
+函数名在前， 参数依次按空格分隔排列在后。
+
+### 定义函数的类型
+
+函数的类型定义方式如: 
+
+```haskell
+sum :: Integer -> Integer --> Integer
+```
+
+这段定义的含义是`sum`函数有两个参数， 第一个参数类型为`Integer`， 第二个参数类型为`Integer`， 返回值类型为`Integer`。
+
+haskell基础函数的定义正如`Arg1Type -> Arg2Type -> ... -> ResultType`
+
+### 定义函数的实现
+
+以下是一个斐波那契数列的简单实现(并不完全正确， 参数没有考虑负数): 
+
+```haskell
+fib :: Integer -> Integer
+fib 0 = 0
+fib 1 = 1
+fib n = fib(n - 1) + fib(n - 2)
+```
+
+一个函数可以定义多个实现， fib调用时会按照顺序， 将实参与每个函数实现的参数进行匹配， 并选择第一个匹配成功的实现。
+
+如`fib 0 = 0`就是匹配参数为0的情况， 返回值为0.
+
+`fib n = fib(n - 1) + fib(n - 2)`， 这里使用了变量作为函数的参数， 这将匹配任何内容。
+
+除了参数匹配， 还有另一种方式能表达函数内的控制流, 那就是守卫*`guards`*。
+
+比如: 
+
+```haskell
+fib :: Integer -> Integer
+fib n
+	| n <= 0 = 0
+	| n == 1 = 1
+	| otherwise = fib(n - 1) + fib(n - 2)
+```
+
+格式上为
+
+```haskell
+funName arg1Match arg2Match
+	| expression1 = value1
+	| expression1 = value2
+	| otherwise = value3
+```
+
+当守卫的表达式为真时， 将返回对应的值; 否则将进行下一个守卫。
+
+## 列表(list)
+
+> 列表?数组?
+>
+> 一般认为，数组和列表的区别在于， 数组将所有元素存储在一块连续的内存空间中， 而列表则没有这个保证。
+>
+> 由于数组内存连续的特性， 使用首地址 + 偏移量访问是非常快速的， 就如c中的数组。
+>
+> 按以上标准来看, Haskell中只有列表没有数组， 因为Haskell的列表实际上是一个链表。
+>
+> 但我习惯了把有序序列都叫成数组， 所以我在某个地方笔误时， 这是很有可能的。
+
+### 列表的基础操作
+
+**声明列表类型**
+
+```haskell
+list :: [Integer]
+```
+
+如上声明了一个整形列表， 注意haskell中的列表每一个元素都必须是相同类型。
+
+**声明一个空列表**
+
+使用`[]`即代表了一个空列表。
+
+```haskell
+list = []
+```
+
+**构建列表**
+
+使用冒号运算符， 将一个元素和一个列表合并为一个新列表， 元素会在最前面。
+
+```haskell
+ghci> 1 : []
+[1]
+ghci> 1 : 2 : 3 : []
+[1,2,3]
+ghci> -- 上面这种写法等价于下面这种
+ghci> 1 : (2 : (3 : []))
+[1,2,3]
+ghci> -- 冒号运算符的语法糖
+ghci> [1, 2, 3] == 1 : 2 : 3 : []
+True
+```
+
+**模式匹配(pattern matching)**
+
+```haskell
+ghci> x : xs = [1, 2, 3]
+ghci> x
+1
+ghci> xs
+[2,3]
+ghci> a : b : [] = [1, 2]
+ghci> a
+1
+ghci> [a, b, c] = [1, 2, 3]
+ghci> b
+2
+```
+
+这有点像其他语言中的解构不是吗(或者反过来)， 所以有时候我可能会把它叫成解构。
+
+当使用两个变量时`x : xs = [1, 2, 3, 4]`， 将匹配得到第一项和列表剩余部分。 注意`x : xs = []`将会引发错误。
+
+当时使用若干个变量 + 一个空数组时， 如`a : b : c : []`或`[a, b, c]`， 这要求被匹配的列表有和变量数量相同的长度。
+
+### 列表与函数
+
+仍然以一个例子来展开
+
+```haskell
+sum :: [Integer] -> Integer
+
+sum [] = 0
+sum (x:xs) = x + sum xs
+```
+
+这是一个对Integer列表求和的函数， 让我们看看能学到什么~
+
+* 参数值匹配对列表是有效的, haskell会比较它们的值
+
+```haskell
+ghci> [1, 2] == [1, 2]
+True
+```
+
+* 列表的模式匹配和函数的参数匹配结合非常有用
+
+```haskell
+fun :: [Integer] -> Integer
+fun [x] = 1
+fun [a, b] = 2
+func list = 3
+```
+
+以上这个函数， 在列表有一个元素时返回1， 两个元素时返回2， 否则返回3。 
+
+看到了吧， 当模式匹配失败时， 会继续进行后面的匹配。
+
+## 元组 or pair?
+
+元组和列表的不同在于， 元组中每个元素的类型是可以不同的。
+
+```haskell
+p :: (Int, Char)
+p = (1, 'a')
+```
+
+以上声明了一个长度为2的元组， 第一个元素类型为`Int`, 第二个元素类型为`Char`
+
+> Haskell also has triples, quadruples, … but you should never use them. As we’ll see next week, there are much better ways to package three or more pieces of information together.
+
+对于长度为2的元组， 或者称为pair， 我们可以使用`fst`和`snd`获取第一个和第二个元素的值。
+
+```haskell
+ghci> p = (1, 'a')
+ghci> fst p
+1
+ghci> snd p
+'a'
+```
+
+元组也可以进行模式匹配
+
+```haskell
+ghci> (a, _) = (1, 'a')
+ghci> a
+1
+```
+
+## 课后作业
+
+以已学的知识尝试完成这个homework吧
+
+[homework1](./CIS194-课后作业/homework1.md)
