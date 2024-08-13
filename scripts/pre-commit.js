@@ -28,10 +28,11 @@ function decodeUtf8(str) {
  */
 try {
   // 获取本次提交修改过的文件列表
-  const modifiedFiles = execSync('git diff --cached --name-only', {encoding: 'utf-8'})
+  const modifiedFiles = execSync('git diff --cached --name-status', {encoding: 'utf-8'})
     .trim()
     .split('\n')
-    .filter(file => file)
+    .filter(line => line && !line.startsWith('D')) // 排除删除的文件
+    .map(line => line.split('\t')[1]) // 获取文件路径
     .map(filePath => {
       if (filePath.startsWith(`"`)) {
         filePath = filePath.slice(1);
