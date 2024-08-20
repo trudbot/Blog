@@ -221,3 +221,18 @@ body {
     font-size: 16px;
     line-height: 23px;
 }
+
+/** markdown图片交互效果 */
+.VPDoc .vp-doc {
+  img {
+    width: 70%;
+    cursor: pointer;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    margin: 0 auto;
+  }
+
+  img.scale {
+    width: 100%;
+  }
+}

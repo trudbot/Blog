@@ -3,6 +3,7 @@ import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import './style.css';
+import {initializeImageInteractions} from '../../utils/custom-img';
 
 export default {
   extends: DefaultTheme,
@@ -12,6 +13,6 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
+    router.onAfterRouteChanged = () => initializeImageInteractions();
   }
 } satisfies Theme
