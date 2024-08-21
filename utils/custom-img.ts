@@ -1,6 +1,6 @@
 // 初始化函数
 export function initializeImageInteractions() {
-  if (!document) return;
+  if (typeof document === 'undefined') return;
   const images = document.querySelectorAll('.VPDoc .vp-doc img');
   images.forEach(image => {
     // 移除之前的事件监听器
