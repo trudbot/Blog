@@ -1,92 +1,92 @@
 ---
 date: '2024-07-07 20:23:03'
-lastUpdated: '2024-07-07 21:59:33'
+lastUpdated: '2024-08-23 20:23:18'
 title: free-programming-books
 ---
 [原文](https://ebookfoundation.github.io/free-programming-books/books/free-programming-books-zh.html)
 ---
+
 ## 目录
 
 * [语言无关](#语言无关)
-    * [版本控制](#版本控制)
-    * [编程艺术](#编程艺术)
-    * [编译原理](#编译原理)
-    * [操作系统](#操作系统)
-    * [程序员杂谈](#程序员杂谈)
-    * [大数据](#大数据)
-    * [分布式系统](#分布式系统)
-    * [管理和监控](#管理和监控)
-    * [函数式概念](#函数式概念)
-    * [计算机图形学](#计算机图形学)
-    * [其它](#其它)
-    * [软件开发方法](#软件开发方法)
-    * [设计模式](#设计模式)
-    * [数据库](#数据库)
-    * [项目相关](#项目相关)
-    * [在线教育](#在线教育)
-    * [正则表达式](#正则表达式)
-    * [智能系统](#智能系统)
-    * [IDE and editors](#ide-and-editors)
-    * [Web](#web)
-    * [WEB服务器](#web服务器)
+  * [版本控制](#版本控制)
+  * [编程艺术](#编程艺术)
+  * [编译原理](#编译原理)
+  * [操作系统](#操作系统)
+  * [程序员杂谈](#程序员杂谈)
+  * [大数据](#大数据)
+  * [分布式系统](#分布式系统)
+  * [管理和监控](#管理和监控)
+  * [函数式概念](#函数式概念)
+  * [计算机图形学](#计算机图形学)
+  * [其它](#其它)
+  * [软件开发方法](#软件开发方法)
+  * [设计模式](#设计模式)
+  * [数据库](#数据库)
+  * [项目相关](#项目相关)
+  * [在线教育](#在线教育)
+  * [正则表达式](#正则表达式)
+  * [智能系统](#智能系统)
+  * [IDE and editors](#ide-and-editors)
+  * [Web](#web)
+  * [WEB服务器](#web服务器)
 * [语言相关](#语言相关)
-    * [Android](#android)
-    * [Assembly](#assembly)
-    * [AWK](#awk)
-    * [C](#c)
-    * [C#](#csharp)
-    * [C++](#cpp)
-    * [CoffeeScript](#coffeescript)
-    * [Dart](#dart)
-    * [Elasticsearch](#elasticsearch)
-    * [Elixir](#elixir)
-    * [Erlang](#erlang)
-    * [Fortran](#fortran)
-    * [Golang](#golang)
-    * [Haskell](#haskell)
-    * [HTML and CSS](#html-and-css)
-    * [HTTP](#http)
-    * [iOS](#ios)
-    * [Java](#java)
-    * [JavaScript](#javascript)
-        * [AngularJS](#angularjs)
-        * [Backbone.js](#backbonejs)
-        * [D3.js](#d3js)
-        * [Electron.js](#electronjs)
-        * [ExtJS](#extjs)
-        * [jQuery](#jquery)
-        * [Node.js](#nodejs)
-        * [React.js](#reactjs)
-        * [Vue.js](#vuejs)
-        * [Zepto.js](#zeptojs)
-    * [LaTeX](#latex)
-    * [Lisp](#lisp)
-    * [Lua](#lua)
-    * [Markdown](#markdown)
-    * [MySQL](#mysql)
-    * [NoSQL](#nosql)
-    * [Perl](#perl)
-    * [PHP](#php)
-        * [Laravel](#laravel)
-        * [Symfony](#symfony)
-    * [PostgreSQL](#postgresql)
-    * [Python](#python)
-        * [Django](#django)
-    * [R](#r)
-    * [reStructuredText](#restructuredtext)
-    * [Ruby](#ruby)
-    * [Rust](#rust)
-    * [Scala](#scala)
-    * [Scheme](#scheme)
-    * [Scratch](#scratch)
-    * [Shell](#shell)
-    * [Swift](#swift)
-    * [TypeScript](#typescript)
-        * [Angular](#angular)
-        * [Deno](#deno)
-    * [VBA](#vba-microsoft-visual-basic-applications)
-    * [Visual Prolog](#visual-prolog)
-
+  * [Android](#android)
+  * [Assembly](#assembly)
+  * [AWK](#awk)
+  * [C](#c)
+  * [C#](#csharp)
+  * [C++](#cpp)
+  * [CoffeeScript](#coffeescript)
+  * [Dart](#dart)
+  * [Elasticsearch](#elasticsearch)
+  * [Elixir](#elixir)
+  * [Erlang](#erlang)
+  * [Fortran](#fortran)
+  * [Golang](#golang)
+  * [Haskell](#haskell)
+  * [HTML and CSS](#html-and-css)
+  * [HTTP](#http)
+  * [iOS](#ios)
+  * [Java](#java)
+  * [JavaScript](#javascript)
+    * [AngularJS](#angularjs)
+    * [Backbone.js](#backbonejs)
+    * [D3.js](#d3js)
+    * [Electron.js](#electronjs)
+    * [ExtJS](#extjs)
+    * [jQuery](#jquery)
+    * [Node.js](#nodejs)
+    * [React.js](#reactjs)
+    * [Vue.js](#vuejs)
+    * [Zepto.js](#zeptojs)
+  * [LaTeX](#latex)
+  * [Lisp](#lisp)
+  * [Lua](#lua)
+  * [Markdown](#markdown)
+  * [MySQL](#mysql)
+  * [NoSQL](#nosql)
+  * [Perl](#perl)
+  * [PHP](#php)
+    * [Laravel](#laravel)
+    * [Symfony](#symfony)
+  * [PostgreSQL](#postgresql)
+  * [Python](#python)
+    * [Django](#django)
+  * [R](#r)
+  * [reStructuredText](#restructuredtext)
+  * [Ruby](#ruby)
+  * [Rust](#rust)
+  * [Scala](#scala)
+  * [Scheme](#scheme)
+  * [Scratch](#scratch)
+  * [Shell](#shell)
+  * [Swift](#swift)
+  * [TypeScript](#typescript)
+    * [Angular](#angular)
+    * [Deno](#deno)
+  * [VBA](#vba-microsoft-visual-basic-applications)
+  * [Visual Prolog](#visual-prolog)
 
 ## 语言无关
 
@@ -110,18 +110,15 @@ title: free-programming-books
 * [Pro Git 第二版 中文版](https://bingohuang.gitbooks.io/progit2/content) - Bingo Huang
 * [Subversion 版本控制](http://svnbook.red-bean.com/nightly/zh/index.html) - Ben Collins-Sussman, Brian W. Fitzpatrick, C. Michael Pilato
 
-
 ### 编程艺术
 
 * [编程入门指南](http://www.kancloud.cn/kancloud/intro-to-prog/52592)
 * [程序员编程艺术](https://github.com/julycoding/The-Art-Of-Programming-by-July)
 * [每个程序员都应该了解的内存知识 (第一部分)](http://www.oschina.net/translate/what-every-programmer-should-know-about-memory-part1)
 
-
 ### 编译原理
 
 * [《计算机程序的结构和解释》公开课 翻译项目](https://github.com/DeathKing/Learning-SICP)
-
 
 ### 操作系统
 
@@ -147,11 +144,9 @@ title: free-programming-books
 * [uCore Lab: Operating System Course in Tsinghua University](https://www.gitbook.com/book/objectkuan/ucore-docs/details)
 * [UNIX TOOLBOX](https://web.archive.org/web/20210812021003/cb.vu/unixtoolbox_zh_CN.xhtml) *(:card_file_box: archived)*
 
-
 ### 程序员杂谈
 
 * [程序员的自我修养](http://www.kancloud.cn/kancloud/a-programmer-prepares)
-
 
 ### 大数据
 
@@ -159,11 +154,9 @@ title: free-programming-books
 * [数据挖掘中经典的算法实现和详细的注释](https://github.com/linyiqun/DataMiningAlgorithm)
 * [Spark 编程指南简体中文版](https://aiyanbo.gitbooks.io/spark-programming-guide-zh-cn/content/)
 
-
 ### 分布式系统
 
 * [走向分布式](http://dcaoyuan.github.io/papers/pdfs/Scalability.pdf) (PDF)
-
 
 ### 管理和监控
 
@@ -174,17 +167,14 @@ title: free-programming-books
 * [Mastering Elasticsearch(中文版)](http://udn.yyuap.com/doc/mastering-elasticsearch/)
 * [Puppet 2.7 Cookbook 中文版](https://www.gitbook.com/book/wizardforcel/puppet-27-cookbook/details)
 
-
 ### 函数式概念
 
 * [傻瓜函数编程](https://github.com/justinyhuang/Functional-Programming-For-The-Rest-of-Us-Cn)
-
 
 ### 计算机图形学
 
 * [LearnOpenGL CN](https://learnopengl-cn.github.io)
 * [OpenGL 教程](https://github.com/zilongshanren/opengl-tutorials)
-
 
 ### 其它
 
@@ -192,12 +182,10 @@ title: free-programming-books
 * [SAN 管理入门系列](https://community.emc.com/docs/DOC-16067)
 * [Sketch 中文手册](http://sketchcn.com/sketch-chinese-user-manual.html#introduce)
 
-
 ### 软件开发方法
 
 * [傻瓜函数编程](https://github.com/justinyhuang/Functional-Programming-For-The-Rest-of-Us-Cn) (《Functional Programming For The Rest of Us》中文版)
 * [硝烟中的 Scrum 和 XP](http://www.infoq.com/cn/minibooks/scrum-xp-from-the-trenches)
-
 
 ### 设计模式
 
@@ -205,11 +193,9 @@ title: free-programming-books
 * [史上最全设计模式导学目录](http://blog.csdn.net/lovelion/article/details/17517213)
 * [图说设计模式](https://github.com/me115/design_patterns)
 
-
 ### 数据库
 
 <!-- Waiting to add in -->
-
 
 ### 项目相关
 
@@ -222,7 +208,6 @@ title: free-programming-books
 * [Gradle 中文使用文档](http://yuedu.baidu.com/ebook/f23af265998fcc22bcd10da2)
 * [Joel谈软件](https://web.archive.org/web/20170616013024/http://local.joelonsoftware.com/wiki/Chinese_(Simplified))
 * [selenium 中文文档](https://einverne.gitbook.io/selenium-doc/)
-
 
 ### 在线教育
 
@@ -241,17 +226,14 @@ title: free-programming-books
 * [Udacity](https://www.udacity.com)
 * [xuetangX](https://www.xuetangx.com)
 
-
 ### 正则表达式
 
 * [正则表达式-菜鸟教程](http://www.runoob.com/regexp/regexp-tutorial.html)
 * [正则表达式30分钟入门教程](https://web.archive.org/web/20161119141236/http://deerchao.net:80/tutorials/regex/regex.htm)
 
-
 ### 智能系统
 
 * [一步步搭建物联网系统](https://github.com/phodal/designiot)
-
 
 ### IDE and editors
 
@@ -260,7 +242,6 @@ title: free-programming-books
 * [exvim--vim 改良成IDE项目](http://exvim.github.io/docs-zh/intro/)
 * [IntelliJ IDEA 简体中文专题教程](https://github.com/judasn/IntelliJ-IDEA-Tutorial) - Judas.n
 * [Vim中文文档](https://github.com/vimcn/vimcdoc) - Vim 中文计划, Yian Willis
-
 
 ### Web
 
@@ -283,13 +264,11 @@ title: free-programming-books
 * [JSON风格指南](https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md)
 * [Wireshark用户手册](https://web.archive.org/web/20200415002730/http://man.lupaworld.com/content/network/wireshark/index.html)
 
-
 ### WEB服务器
 
 * [Apache 中文手册](http://works.jinbuguo.com/apache/menu22/index.html)
 * [Nginx教程从入门到精通](http://www.ttlsa.com/nginx/nginx-stu-pdf/) - 运维生存时间 (PDF)
 * [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html) - 淘宝团队
-
 
 ## 语言相关
 
@@ -301,20 +280,17 @@ title: free-programming-books
 * [Google Material Design 中文协同翻译](https://github.com/1sters/material_design_zh) - 1sters 极客实验室, 四勾 4J, IceskYsl, et al.
 * [Point-of-Android](https://github.com/FX-Max/Point-of-Android)
 
-
 ### Assembly
 
 * 逆向工程权威指南 《Reverse Engineering for Beginners》 - Dennis Yurichev, Antiy Labs, Archer
-    * [逆向工程权威指南 《Reverse Engineering for Beginners》 Vol.1](https://beginners.re/RE4B-CN-vol1.pdf) - Dennis Yurichev, Antiy Labs, Archer (PDF)
-    * [逆向工程权威指南 《Reverse Engineering for Beginners》 Vol.2](https://beginners.re/RE4B-CN-vol2.pdf) - Dennis Yurichev, Antiy Labs, Archer (PDF)
+  * [逆向工程权威指南 《Reverse Engineering for Beginners》 Vol.1](https://beginners.re/RE4B-CN-vol1.pdf) - Dennis Yurichev, Antiy Labs, Archer (PDF)
+  * [逆向工程权威指南 《Reverse Engineering for Beginners》 Vol.2](https://beginners.re/RE4B-CN-vol2.pdf) - Dennis Yurichev, Antiy Labs, Archer (PDF)
 * [C/C++面向WebAssembly编程](https://github.com/3dgen/cppwasm-book/tree/master/zh) - Ending, Chai Shushan (HTML, [:package: examples](https://github.com/3dgen/cppwasm-book/tree/master/examples))
-
 
 ### AWK
 
 * [awk程序设计语言](https://github.com/wuzhouhui/awk)
 * [awk中文指南](http://awk.readthedocs.org/en/latest/index.html)
-
 
 ### C
 
@@ -325,11 +301,9 @@ title: free-programming-books
 * [C 语言入门教程](https://www.dotcpp.com/course/c/)
 * [Linux C 编程一站式学习](https://web.archive.org/web/20210514225440/http://docs.linuxtone.org/ebooks/C&CPP/c/) *(:card_file_box: archived)*
 
-
 ### <a id="csharp"></a>C\#
 
 * [精通C#(第6版)](http://book.douban.com/subject/24827879/)
-
 
 ### <a id="cpp"></a>C++
 
@@ -350,24 +324,20 @@ title: free-programming-books
 * [Google C++ 风格指南](http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/contents/)
 * [ZMQ 指南](https://github.com/anjuke/zguide-cn)
 
-
 ### CoffeeScript
 
 * [CoffeeScript 编程风格指南](https://github.com/elrrrrrrr/coffeescript-style-guide/blob/master/README-ZH.md)
 * [CoffeeScript 编码风格指南](https://github.com/geekplux/coffeescript-style-guide)
 * [CoffeeScript 中文](http://coffee-script.org)
 
-
 ### Dart
 
 * [Dart 语言导览](https://web.archive.org/web/20200415002731/dart.lidian.info/wiki/Language_Tour) *(:card_file_box: archived)*
-
 
 ### Elasticsearch
 
 * [Elasticsearch 权威指南](https://github.com/looly/elasticsearch-definitive-guide-cn) （《Elasticsearch the definitive guide》中文版）
 * [Mastering Elasticsearch(中文版)](http://udn.yyuap.com/doc/mastering-elasticsearch/)
-
 
 ### Elixir
 
@@ -376,16 +346,13 @@ title: free-programming-books
 * [Elixir元编程与DSL 中文翻译](https://github.com/Ljzn/MetaProgrammingInElixirChinese)
 * [Phoenix 框架中文文档](https://mydearxym.gitbooks.io/phoenix-doc-in-chinese/content/)
 
-
 ### Erlang
 
 * [Erlang 并发编程](https://github.com/liancheng/cpie-cn) (《Concurrent Programming in Erlang (Part I)》中文版)
 
-
 ### Fortran
 
 * [Fortran77和90/95编程入门](http://micro.ustc.edu.cn/Fortran/ZJDing/)
-
 
 ### Golang
 
@@ -410,17 +377,14 @@ title: free-programming-books
 * [Revel 框架手册](https://web.archive.org/web/20190610030938/https://gorevel.cn/docs/manual/index.html) *(:card_file_box: archived)*
 * [The Little Go Book 繁體中文翻譯版](https://github.com/kevingo/the-little-go-book) - Karl Seguin, `trl.:` KevinGo, Jie Peng ([HTML](https://kevingo.gitbooks.io/the-little-go-book/))
 
-
 ### Groovy
 
 * [Groovy 教程](https://www.w3cschool.cn/groovy) - W3Cschool
-
 
 ### Haskell
 
 * [Haskell 趣学指南](https://learnyouahaskell.mno2.org)
 * [Real World Haskell 中文版](http://cnhaskell.com)
-
 
 ### HTML and CSS
 
@@ -436,7 +400,6 @@ title: free-programming-books
 * [HTML和CSS编码规范](http://codeguide.bootcss.com)
 * [Sass Guidelines 中文](http://sass-guidelin.es/zh/)
 
-
 ### iOS
 
 * [网易斯坦福大学公开课：iOS 7应用开发字幕文件](https://github.com/jkyin/Subtitle)
@@ -444,7 +407,6 @@ title: free-programming-books
 * [Google Objective-C Style Guide 中文版](http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/)
 * [iOS开发60分钟入门](https://github.com/qinjx/30min_guides/blob/master/ios.md)
 * [iPhone 6 屏幕揭秘](http://wileam.com/iphone-6-screen-cn/)
-
 
 ### Java
 
@@ -471,7 +433,6 @@ title: free-programming-books
 * [Spring Boot参考指南](https://github.com/qibaoguang/Spring-Boot-Reference-Guide) (:construction: *翻译中*)
 * [Spring Framework 4.x参考文档](https://github.com/waylau/spring-framework-4-reference)
 
-
 ### JavaScript
 
 * [命名函数表达式探秘](http://justjavac.com/named-function-expressions-demystified.html) - kangax、为之漫笔(翻译) (原始地址无法打开，所以此处地址为justjavac博客上的备份)
@@ -488,7 +449,6 @@ title: free-programming-books
 * [JavaScript 原理](https://web.archive.org/web/20170112164945/http://typeof.net/s/jsmech/)
 * [JavaScript Promise迷你书](http://liubin.github.io/promises-book/)
 
-
 #### AngularJS
 
 > :information_source: See also &#8230; [Angular](#angular)
@@ -498,13 +458,11 @@ title: free-programming-books
 * [AngularJS入门教程](https://github.com/zensh/AngularjsTutorial_cn) - Yan Qing, Hou Zhenyu, 速冻沙漠 (HTML) (:card_file_box: *archived*)
 * [AngularJS最佳实践和风格指南](https://github.com/mgechev/angularjs-style-guide/blob/master/README-zh-cn.md) - Minko Gechev, Xuefeng Zhu, Shintaro Kaneko, et al. (HTML)
 
-
 #### Backbone.js
 
 * [Backbone.js入门教程](http://www.the5fire.com/backbone-js-tutorials-pdf-download.html) (PDF)
 * [Backbone.js入门教程第二版](https://github.com/the5fire/backbonejs-learning-note)
 * [Backbone.js中文文档](https://web.archive.org/web/20200916085144/https://www.html.cn/doc/backbone/) *(:card_file_box: archived)*
-
 
 #### D3.js
 
@@ -512,23 +470,19 @@ title: free-programming-books
 * [官方API文档](https://github.com/mbostock/d3/wiki/API--%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C)
 * [Learning D3.JS](http://d3.decembercafe.org) - 十二月咖啡馆
 
-
 #### Electron.js
 
 * [Electron 中文文档](https://wizardforcel.gitbooks.io/electron-doc/content) - WizardForcel
 * [Electron 中文文档](https://www.w3cschool.cn/electronmanual) - W3Cschool
 
-
 #### ExtJS
 
 * [Ext4.1.0 中文文档](http://extjs-doc-cn.github.io/ext4api/)
-
 
 #### jQuery
 
 * [简单易懂的JQuery魔法](https://web.archive.org/web/20201127045453/http://www.nowamagic.net/librarys/books/contents/jquery) *(:card_file_box: archived)*
 * [How to write jQuery plugin](http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html)
-
 
 #### Node.js
 
@@ -546,7 +500,6 @@ title: free-programming-books
 * [nodejs中文文档](https://www.gitbook.com/book/0532/nodejs/details)
 * [The NodeJS 中文文档](https://www.gitbook.com/book/0532/nodejs/details) - 社区翻译
 
-
 #### React.js
 
 * [Learn React & Webpack by building the Hacker News front page](https://github.com/theJian/build-a-hn-front-page)
@@ -555,45 +508,37 @@ title: free-programming-books
 * [React.js 入门教程](http://fraserxu.me/intro-to-react/)
 * [React.js 中文文档](https://discountry.github.io/react/)
 
-
 #### Vue.js
 
 * [Vue3.0学习教程与实战案例](https://vue3.chengpeiquan.com) - chengpeiquan
 
-
 #### Zepto.js
 
 * [Zepto.js 中文文档](https://web.archive.org/web/20210303025214/https://www.css88.com/doc/zeptojs_api/) *(:card_file_box: archived)*
-
 
 ### LaTeX
 
 * [大家來學 LaTeX](https://github.com/49951331/graduate-project-102pj/blob/master/docs/latex123.pdf) (PDF)
 * [一份不太简短的 LaTeX2ε 介绍](http://ctan.org/pkg/lshort-zh-cn)
 
-
 ### Lisp
 
 * [ANSI Common Lisp 中文翻译版](http://acl.readthedocs.org/en/latest/)
 * [Common Lisp 高级编程技术](http://www.ituring.com.cn/minibook/862) (《On Lisp》中文版)
 
-
 ### Lua
 
 * [Lua 5.3 参考手册](https://www.runoob.com/manual/lua53doc/)
-
 
 ### Markdown
 
 * [献给写作者的 Markdown 新手指南](http://www.jianshu.com/p/q81RER)
 * [Markdown 語法說明](https://markdown.tw)
 
-
 ### MySQL
 
 * [21分钟MySQL入门教程](http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html)
 * [MySQL索引背后的数据结构及算法原理](http://blog.codinglabs.org/articles/theory-of-mysql-index.html)
-
 
 ### NoSQL
 
@@ -605,13 +550,11 @@ title: free-programming-books
 * [The Little MongoDB Book](https://github.com/justinyhuang/the-little-mongodb-book-cn/blob/master/mongodb.md)
 * [The Little Redis Book](https://github.com/JasonLai256/the-little-redis-book/blob/master/cn/redis.md)
 
-
 ### Perl
 
 * [Master Perl Today](https://github.com/fayland/chinese-perl-book)
 * [Perl 5 教程](https://web.archive.org/web/20150326073235/http://net.pku.edu.cn/~yhf/tutorial/perl/perl.html)
 * [Perl 教程](http://www.yiibai.com/perl)
-
 
 ### PHP
 
@@ -623,7 +566,6 @@ title: free-programming-books
 * [PHP中文手册](http://php.net/manual/zh/)
 * [Yii2中文文档](http://www.yiichina.com/doc/guide/2.0)
 
-
 #### Laravel
 
 * [Laravel 5.4 中文文档](http://d.laravel-china.org/docs/5.4)
@@ -633,12 +575,10 @@ title: free-programming-books
 * [Laravel 9 中文文档](https://learnku.com/docs/laravel/9.x)
 * [Laravel 入门到精通教程](https://laravelacademy.org/books/laravel-tutorial)
 
-
 #### Symfony
 
 * [Symfony 2 实例教程](https://wusuopu.gitbooks.io/symfony2_tutorial/content)
 * [Symfony 5 快速开发](https://web.archive.org/web/20210812222957/symfony.com/doc/current/the-fast-track/zh_CN/index.html) *(:card_file_box: archived)*
-
 
 ### PostgreSQL
 
@@ -647,7 +587,6 @@ title: free-programming-books
 * [PostgreSQL 9.4.4 中文文档](http://www.postgres.cn/docs/9.4/index.html)
 * [PostgreSQL 9.5.3 中文文档](http://www.postgres.cn/docs/9.5/index.html)
 * [PostgreSQL 9.6.0 中文文档](http://www.postgres.cn/docs/9.6/index.html)
-
 
 ### Python
 
@@ -666,7 +605,6 @@ title: free-programming-books
 * [Python之旅](https://web.archive.org/web/20191217091745/http://funhacks.net/explore-python/) - Ethan *(:card_file_box: archived)*
 * [Tornado 6.1 中文文档](http://www.osgeo.cn/tornado/) (Online) *(网络上其他的都是较旧版本的)*
 
-
 #### Django
 
 * [Django 1.11.6 中文文档](https://www.yiyibooks.cn/xx/Django_1.11.6/index.html)
@@ -675,7 +613,6 @@ title: free-programming-books
 * [Django book 2.0](http://djangobook.py3k.cn/2.0/)
 * [Django Girls 教程 (1.11)](https://tutorial.djangogirls.org/zh/) (HTML)
 
-
 ### R
 
 * [153分钟学会 R](http://cran.r-project.org/doc/contrib/Liu-FAQ.pdf) (PDF)
@@ -683,11 +620,9 @@ title: free-programming-books
 * [用 R 构建 Shiny 应用程序](https://web.archive.org/web/20200220023703/yanping.me/shiny-tutorial/) (《Building 'Shiny' Applications with R》中文版) *(:card_file_box: archived)*
 * [R 导论](http://cran.r-project.org/doc/contrib/Ding-R-intro_cn.pdf) (《An Introduction to R》中文版) (PDF)
 
-
 ### reStructuredText
 
 * [reStructuredText 入门](http://www.pythondoc.com/sphinx/rest.html)
-
 
 ### Ruby
 
@@ -697,7 +632,6 @@ title: free-programming-books
 * [Ruby on Rails 实战圣经](https://ihower.tw/rails4/)
 * [Ruby on Rails 指南](https://ruby-china.github.io/rails-guides/)
 * [Sinatra](http://www.sinatrarb.com/intro-zh.html)
-
 
 ### Rust
 
@@ -709,22 +643,18 @@ title: free-programming-books
 * [RustPrimer](https://github.com/rustcc/RustPrimer)
 * [Tour of Rust](https://tourofrust.com/00_zh-cn.html)
 
-
 ### Scala
 
 * [Effective Scala](http://twitter.github.io/effectivescala/index-cn.html)
 * [Scala 课堂](http://twitter.github.io/scala_school/zh_cn/index.html) (Twitter的Scala中文教程)
 
-
 ### Scheme
 
 * [Scheme 入门教程](http://deathking.github.io/yast-cn/) (《Yet Another Scheme Tutorial》中文版)
 
-
 ### Scratch
 
 * [创意计算课程指南](http://cccgchinese.strikingly.com)
-
 
 ### Shell
 
@@ -734,11 +664,9 @@ title: free-programming-books
 * [shell-book](http://me.52fhy.com/shell-book/)
 * [The Linux Command Line 中文版](http://billie66.github.io/TLCL/book/)
 
-
 ### Swift
 
 * [《The Swift Programming Language》中文版](https://www.gitbook.com/book/numbbbbb/-the-swift-programming-language-/details)
-
 
 ### TypeScript
 
@@ -748,7 +676,6 @@ title: free-programming-books
 * [TypeScript Deep Dive 中文版](https://github.com/jkchao/typescript-book-chinese) - 三毛 (HTML)
 * [TypeScript Handbook（中文版）](https://www.runoob.com/manual/gitbook/TypeScript/_book/) - Patrick Zhong (HTML)
 
-
 #### Angular
 
 > :information_source: See also &#8230; [AngularJS](#angularjs)
@@ -757,17 +684,14 @@ title: free-programming-books
 * [Angular Material 组件库](https://material.angular.cn) - Wang Zhicheng, Ye Zhimin, Yang Lin, et al. (HTML)
 * [Angular Tutorial (教程：英雄之旅)](https://angular.cn/tutorial) - Wang Zhicheng, Ye Zhimin, Yang Lin, et al. (HTML)
 
-
 #### Deno
 
 * [Deno 钻研之术](https://deno-tutorial.js.org)
 * [Deno进阶开发笔记](https://chenshenhai.com/deno_note) - 大深海
 
-
 ### VBA (Microsoft Visual Basic Applications)
 
 * [简明Excel VBA](https://github.com/Youchien/concise-excel-vba)
-
 
 ### Visual Prolog
 

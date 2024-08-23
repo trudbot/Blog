@@ -8,13 +8,14 @@ categories:
   - git
 abbrlink: 18402
 date: '2023-09-19 06:24:55'
-lastUpdated: '2023-09-19 06:24:55'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 commit message的规范格式很有必要， 让别人和未来的自己都能更快速的浏览commits。在此记录相关规则供自查。
 
 <!--more-->
 
 ## 规范
+
 ```
 <type>(<scope>): <subject>
 // 空一行
@@ -51,4 +52,3 @@ For example, if the commit changes the login page, the scope could be “login�
 ### Body
 
 Body 部分是对本次 commit 的详细描述，可以分成多行。
-

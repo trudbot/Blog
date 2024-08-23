@@ -9,7 +9,7 @@ categories:
   - nest
 abbrlink: 52255
 date: '2023-09-08 04:20:21'
-lastUpdated: '2023-09-08 04:20:21'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 本文主要总结nest中如何使用socket.io等WebSocket库， socket.io的使用可见[socket.io](https://socket.io/zh-CN/)
@@ -25,7 +25,7 @@ lastUpdated: '2023-09-08 04:20:21'
 export class ChatGetWay {}
 ```
 
-在类中有三个固定名称的钩子函数， 控制着websocket的生命周期: 
+在类中有三个固定名称的钩子函数， 控制着websocket的生命周期:
 
 1. afterInit(), 参数为服务器实例
 2. handleConnection()， 参数为客户端实例

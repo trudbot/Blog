@@ -7,7 +7,7 @@ tags:
 categories: 图论
 abbrlink: 12115
 date: '2023-04-11 05:09:17'
-lastUpdated: '2023-04-11 05:09:17'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 在[图论](https://zh.wikipedia.org/wiki/图论)和[计算机科学](https://zh.wikipedia.org/wiki/计算机科学)中，**最近公共祖先**（英语：lowest common ancestor）是指在一个[树](https://zh.wikipedia.org/wiki/树_(图论))或者[有向无环图](https://zh.wikipedia.org/wiki/有向无环图)中同时拥有*v*和*w*作为后代的最深的节点。
@@ -211,7 +211,7 @@ void dfs(int u, int fa) {
 >
 > 该树结构如下：
 >
->  ![](https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/2282.png) 
+> ![](https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/2282.png)
 >
 > 第一次询问：$2, 4$ 的最近公共祖先，故为 $4$。
 >
@@ -262,17 +262,17 @@ int lca(int a, int b) {
 }
 
 int main () {
-	int n, m, s; cin >> n >> m >> s;
-	for (int i = 1; i < n; i ++) {
-		int x, y; cin >> x >> y;
-		g[x].push_back(y), g[y].push_back(x);
-	}
-	dfs(s, 0);
-	while (m --) {
-		int a, b; cin >> a >> b;
+ int n, m, s; cin >> n >> m >> s;
+ for (int i = 1; i < n; i ++) {
+  int x, y; cin >> x >> y;
+  g[x].push_back(y), g[y].push_back(x);
+ }
+ dfs(s, 0);
+ while (m --) {
+  int a, b; cin >> a >> b;
     cout << lca(a, b) << endl;
-	}
-	return 0;
+ }
+ return 0;
 }
 ```
 

@@ -10,7 +10,7 @@ categories:
   - 多项式
 abbrlink: 19154
 date: '2023-07-14 22:50:03'
-lastUpdated: '2023-07-14 22:50:03'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 **先来回忆一下高精度乘法的原理**
@@ -25,7 +25,7 @@ lastUpdated: '2023-07-14 22:50:03'
 
 ## 多项式的点值表示
 
-设`n`次多项式$f(x) = a_0x^0 + ... + a_{n-1}x^(n - 1) + a_nx^n$， 
+设`n`次多项式$f(x) = a_0x^0 + ... + a_{n-1}x^(n - 1) + a_nx^n$，
 
 由线性代数知识可知， 若知道了n+1组不同的`[x, f(x)]`的关系， 即可得到一个`n+1 x n+1`的多元线性方程组， 且这个方程组有唯一解。
 
@@ -73,7 +73,7 @@ $$
 
 快速傅里叶变换是一种能在计算机中快速地计算离散傅里叶变换的算法。
 
-FFT的基本思想是分治。 
+FFT的基本思想是分治。
 
 设`n-1`阶多项式$f(x) = \sum\limits_{i=0}^{n-1}a_ix^i$，且$n$为2的整数幂（不够则零填充），上面我们知道要求$f(x)$的点值形式， 也就是对每一个k求出$f(\omega_n^k)$。
 
@@ -81,12 +81,12 @@ FFT的基本思想是分治。
 $$
 \begin {eqnarray}
 f(x) &=& a_0 + a_1x + ... + a_{n-1}x^{n-1}\\
-		 &=& (a_0 + a_2x^2 + ... + a_{n-2}x^{n-2}) + (a_1x + a_3x^3 + ... + a_{n-1} x^{n-1})
+   &=& (a_0 + a_2x^2 + ... + a_{n-2}x^{n-2}) + (a_1x + a_3x^3 + ... + a_{n-1} x^{n-1})
 \end {eqnarray}
 $$
 设
 $$
-\begin {eqnarray} 
+\begin {eqnarray}
 g(x) &=& a_0 + a_2x^1 + ... + a_{n-2}x^{\frac n2 - 1}\\
 h(x) &=& a_1 + a_3x + ... + a_{n-1} x^{\frac n2 - 1}\\
 \end {eqnarray}
@@ -99,15 +99,15 @@ $$
 $$
 \begin {eqnarray}
 f(\omega^k_n) &=& g((\omega^k_n) ^2) + \omega^k_n * h((\omega^k_n) ^ 2)\\
-							&=& g(\omega^{2k}_n) + \omega^{k}_nh(\omega^{2k}_n)\\
-							&=& g(\omega^k_{\frac n2}) + \omega^k_{n}h(\omega^k_{\frac n2})
+       &=& g(\omega^{2k}_n) + \omega^{k}_nh(\omega^{2k}_n)\\
+       &=& g(\omega^k_{\frac n2}) + \omega^k_{n}h(\omega^k_{\frac n2})
 \end {eqnarray}
 $$
 且
 $$
 \begin {eqnarray}
 f(\omega^{k + \frac n2}_n) =  f(-\omega^{k}_n)&=& g((\omega^k_n) ^2) - \omega^k_n * h((\omega^k_n) ^ 2)\\
-							&=& g(\omega^k_{\frac n2}) - \omega^k_{n}h(\omega^k_{\frac n2})
+       &=& g(\omega^k_{\frac n2}) - \omega^k_{n}h(\omega^k_{\frac n2})
 \end {eqnarray}
 $$
 故求出$f(\omega^k_n)$和$f(\omega^{k + \frac n2}_n)$只需要先求出$g(\omega^k_{\frac n2})$和$h(\omega^k_{\frac n2})$.
@@ -127,7 +127,7 @@ $$
 \vdots & \vdots &\ddots & \vdots \\
 1 & \omega_n^{n-1} & (\omega_n^{n-1})^2&\cdots & (\omega_n^{n-1})^{n-1}
 \end {bmatrix}
-\cdot 
+\cdot
 \begin {bmatrix}
 a_0 \\ a_1 \\ a_2 \\ \vdots \\ a_{n-1}
 \end {bmatrix}
@@ -185,8 +185,6 @@ void IDFT(std::complex<double> *a, int n) {
 }
 ```
 
-
-
 ## 参考
 
 [超详细易懂FFT（快速傅里叶变换）及代码实现_Trilarflagz的博客-CSDN博客](https://blog.csdn.net/Flag_z/article/details/99163939)
@@ -204,4 +202,3 @@ void IDFT(std::complex<double> *a, int n) {
 [欧拉公式_百度百科 (baidu.com)](https://baike.baidu.com/item/欧拉公式)
 
 [如何用latex编写矩阵（包括各类复杂、大型矩阵）？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/266267223)
-

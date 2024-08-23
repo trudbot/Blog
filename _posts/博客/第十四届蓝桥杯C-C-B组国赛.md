@@ -7,7 +7,7 @@ tags:
 abbrlink: 25862
 date: '2023-06-11 04:54:13'
 categories: null
-lastUpdated: '2023-06-11 04:54:13'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 # 2023蓝桥C/C++B组国赛
@@ -300,4 +300,3 @@ int main () {
 0 1
  */
 ```
-

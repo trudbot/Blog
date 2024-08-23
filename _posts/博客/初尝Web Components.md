@@ -1,6 +1,6 @@
 ---
 title: 初尝Web Components
-lastUpdated: '2024-07-19 16:47:27'
+lastUpdated: '2024-08-23 20:23:18'
 date: '2024-07-11 21:22:04'
 ---
 Web Component 是 2017年新出的一套标准, 旨在提供官方的视图 组件化解决方案。
@@ -73,7 +73,7 @@ wc使用自定义html标签/元素的方式来封装组件视图。
 
 ### 标签的数据通信
 
-在视图组件中， 常常会有数据通信的场景: 
+在视图组件中， 常常会有数据通信的场景:
 
 1. 使用组件时， 为组件提供某些数据， 且在后期可以更改
 2. 由用户触发的时机(如 click等)， 组件需要发送一个事件给父组件
@@ -95,7 +95,7 @@ wc使用自定义html标签/元素的方式来封装组件视图。
 - 属性的旧值。
 - 属性的新值。
 
-以下是一个例子: 
+以下是一个例子:
 
 ```html
 <!DOCTYPE html>
@@ -294,8 +294,6 @@ attribute由于html的限制只能传递文本数据， 这意味着若用它传
 </html>
 ```
 
-
-
 ![截屏2024-07-12 下午7.35.05](https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407121935140.png)
 
 ## 上下文隔离——Shadow DOM
@@ -312,8 +310,6 @@ Custom Element提供了一个封装的方式,  但仅仅是形式上的封装是
 - **影子根（Shadow root）**: 影子树的根节点。
 
 > 在影子 DOM 向 web 开发者提供之前，浏览器已经使用它来封装元素的内部结构。以 [``](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video) 元素举例，它暴露了默认浏览器控件。在 DOM 中你只能看到 `<video>` 元素，但其影子 DOM 中包含了一系列按钮和其它控件。影子 DOM 规范使你能够操纵自定义元素的影子 DOM。
-
-
 
 使用`Element.attachShadow()`将一个shadow root挂载到到当前元素,  然后返回shadow root。
 
@@ -364,15 +360,15 @@ Custom Element提供了一个封装的方式,  但仅仅是形式上的封装是
 
 而`attachShadow()`的`mode`选项控制是否将shadow tree向组件外部暴露。
 
-* mode为closed时， shadow root只会通过`attachShadow()`函数返回
-* mode为`open`时， shadow root会保存在`Element.shadowRoot`只读属性中， 外部可以使用javascript通过`Element.shadowRoot`操作shadow tree.
+- mode为closed时， shadow root只会通过`attachShadow()`函数返回
+- mode为`open`时， shadow root会保存在`Element.shadowRoot`只读属性中， 外部可以使用javascript通过`Element.shadowRoot`操作shadow tree.
 
 ### web component 引入外部CSS
 
 隔离是封装不可或缺的一部分， 但隔离的同时， 也会存在需要复用css的场景。
 
-* 比如， 大部分前端项目都会有`reset.css`的全局样式， 对html自带的一些样式进行清除.但使用了shadow dom的情况下， `reset.css`无法影响`shadow dom`, 在每个shadow dom内再写一份? 
-* 比如， 你封装了一个wc组件， 你希望给用户一定的css定制能力
+- 比如， 大部分前端项目都会有`reset.css`的全局样式， 对html自带的一些样式进行清除.但使用了shadow dom的情况下， `reset.css`无法影响`shadow dom`, 在每个shadow dom内再写一份?
+- 比如， 你封装了一个wc组件， 你希望给用户一定的css定制能力
 
 我们接下来讨论， 将shadow dom外部的样式引入内部的具体方法。
 
@@ -541,8 +537,6 @@ part是专为shadow dom设计的伪元素， 作用是在某自定义标签的sh
 </html>
 ```
 
-
-
 ![截屏2024-07-12 下午10.02.08](https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407122202662.png)
 
 ## 模板复用——<template\>
@@ -579,7 +573,7 @@ part是专为shadow dom设计的伪元素， 作用是在某自定义标签的sh
 </html>
 ```
 
-注意， 当需要多次使用template内容时， 需要使用cloneNode复制一份。 
+注意， 当需要多次使用template内容时， 需要使用cloneNode复制一份。
 
 > `<template>` 元素的内容存在于其 `content` 属性中，这是一个 `DocumentFragment`。这个 `DocumentFragment` 可以包含任意数量的节点，且不会直接在页面上渲染。
 >
@@ -683,13 +677,13 @@ template可以直接预先放在html文件中， js中无需再在客户端进�
 
 插槽在被命名和未被命名时行为有所不同。
 
-* 具名插槽: 指具有name属性的`slot`元素， 可以通过将标签子元素的slot属性设置为slot的name来插入对应的插槽
-* 未命名插槽: 一个自定义标签中只能存储一个有效的未命名插槽(存在多个时只有第一个会有效); 自定义标签所有的未指定`slot`属性的子元素都会插入未命名插槽中， 包括文本元素， 比如这个例子:
+- 具名插槽: 指具有name属性的`slot`元素， 可以通过将标签子元素的slot属性设置为slot的name来插入对应的插槽
+- 未命名插槽: 一个自定义标签中只能存储一个有效的未命名插槽(存在多个时只有第一个会有效); 自定义标签所有的未指定`slot`属性的子元素都会插入未命名插槽中， 包括文本元素， 比如这个例子:
 
 ```html
 <!--自定义标签的html模板-->
 <template> 
-		<button class="beautiful-button">
+  <button class="beautiful-button">
       to <slot name="text"></slot> bc <slot></slot>
     </button>
  </template>

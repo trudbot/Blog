@@ -9,7 +9,7 @@ tags:
 categories: 算法
 abbrlink: 32085
 date: '2023-08-14 22:15:44'
-lastUpdated: '2023-08-14 22:15:44'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 $RMQ$全称是`Range Minimum/Maximum Query`, 即"区间最大最小值问题"， 一般来说需要处理多组查询， 查询的区间长度不一、可能重复。
@@ -60,10 +60,10 @@ int a[N], stk[N], top = -1, t = 0;
 struct Q{int id, l, r;};
 
 inline int read() {
-	int x=0,f=1;char ch=getchar();
-	while (ch<'0'||ch>'9'){if (ch=='-') f=-1;ch=getchar();}
-	while (ch>='0'&&ch<='9'){x=x*10+ch-48;ch=getchar();}
-	return x*f;
+ int x=0,f=1;char ch=getchar();
+ while (ch<'0'||ch>'9'){if (ch=='-') f=-1;ch=getchar();}
+ while (ch>='0'&&ch<='9'){x=x*10+ch-48;ch=getchar();}
+ return x*f;
 }
 
 void push(int i) {
@@ -110,7 +110,7 @@ ST表一般用来解决区间性质查询问题， 并且要求这个区间性�
 * 可结合(拆分): 区间的性质能由子区间的性质组合而成。
 * 可重复贡献: 某个子区间贡献多次， 并不会影响结果。
 
-例如经典的区间最大值问题: 
+例如经典的区间最大值问题:
 
 1. 区间的最大值能由若干个能覆盖区间的子区间取最大值得到
 2. 取的子区间有重合部分时， 并不会影响结果
@@ -144,10 +144,10 @@ const int N = 1e5 + 10;
 int f[N][21];
 
 inline int read() {
-	int x=0,f=1;char ch=getchar();
-	while (ch<'0'||ch>'9'){if (ch=='-') f=-1;ch=getchar();}
-	while (ch>='0'&&ch<='9'){x=x*10+ch-48;ch=getchar();}
-	return x*f;
+ int x=0,f=1;char ch=getchar();
+ while (ch<'0'||ch>'9'){if (ch=='-') f=-1;ch=getchar();}
+ while (ch>='0'&&ch<='9'){x=x*10+ch-48;ch=getchar();}
+ return x*f;
 }
 
 int main () {

@@ -9,7 +9,7 @@ tags:
 categories: 杂谈
 abbrlink: 41626
 date: '2023-07-07 02:57:44'
-lastUpdated: '2023-07-07 02:57:44'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 主要记录一下本次耗时一两天博客的迁移过程。
@@ -76,8 +76,6 @@ chmod +x /var/repo/blog.git/hooks/post-receive
 完成后， 进行推送: `hexo d`， 成功推送到`/var/www/hexo`目录下即成功。
 
 ### 配置nginx服务器
-
-
 
 * 安装nginx, `yum install nginx -y`
 * 使用yum安装nginx时， 默认的目录如下
@@ -229,7 +227,9 @@ server{
   server_name  localhost;
 }
 ```
+
 2、基于域名的虚拟主机(servername)
+
 ```
 #域名可以有多个，用空格隔开
 server{
@@ -241,7 +241,9 @@ server{
   server_name  www.nginx3.com;
 }
 ```
+
 3、基于端口的虚拟主机(listen不写ip的端口模式)
+
 ```
 server{
   listen       80;
@@ -252,6 +254,7 @@ server{
   server_name  localhost;
 }
 ```
+
 ##### location模块
 
 location模块用于处理一个server中特定的url。
@@ -270,10 +273,10 @@ location [ = | ~ | ~* | ^~ ] uri { ... }
 >
 > 了解了上面的内容，就可以解释可选项中各个标识的含义了：
 >
-> - “=”，用于标准uri前，要求请求字符串与uri严格匹配。如果已经匹配成功，就停止继续向下搜索并立即处理此请求。
-> - “^～”，用于标准uri前，要求Nginx服务器找到标识uri和请求字符串匹配度最高的location后，立即使用此location处理请求，而不再使用location块中的正则uri和请求字符串做匹配。
-> - “～”，用于表示uri包含正则表达式，并且区分大小写。
-> - “～`*`”，用于表示uri包含正则表达式，并且不区分大小写。注意如果uri包含正则表达式，就必须要使用“～”或者“～*”标识。
+> * “=”，用于标准uri前，要求请求字符串与uri严格匹配。如果已经匹配成功，就停止继续向下搜索并立即处理此请求。
+> * “^～”，用于标准uri前，要求Nginx服务器找到标识uri和请求字符串匹配度最高的location后，立即使用此location处理请求，而不再使用location块中的正则uri和请求字符串做匹配。
+> * “～”，用于表示uri包含正则表达式，并且区分大小写。
+> * “～`*`”，用于表示uri包含正则表达式，并且不区分大小写。注意如果uri包含正则表达式，就必须要使用“～”或者“～*”标识。
 
 location下常用的配置有:
 
@@ -284,8 +287,6 @@ index： 入口文件
 error_page: 异常处理
 proxy_pass： 反省代理配置
 ```
-
-
 
 ## 图床迁移
 
@@ -313,7 +314,7 @@ proxy_pass： 反省代理配置
 server {
         listen          443 ssl http2;    #使用http2协议
         server_name     trudbot.cn;       #申请SSL证书的域名
-  			root    /var/www/hexo;
+     root    /var/www/hexo;
 
         ssl_certificate /etc/nginx/ssl/www.trudbot.cn.pem;  #申请的证书文件，写上全路径
         ssl_certificate_key     /etc/nginx/ssl/www.trudbot.cn.key;   #申请的证书文件，写上全路径
@@ -335,7 +336,7 @@ server {
         add_header X-Content-Type-Options nosniff;
         #防XSS攻擊
         add_header X-Xss-Protection 1;
-			  #资源目录配置
+     #资源目录配置
         location = / {
                          index   index.html;
         }
@@ -381,8 +382,6 @@ echo 'ok !'
 
 ## 参考
 
-
-
 [yum 安装nginx 后 nginx的 目录_用yam下载的nginx的路径是什么_上官二狗的博客-CSDN博客](https://blog.csdn.net/qq_36431213/article/details/78164286)
 
 [Hexo部署到云服务器指南-知乎](https://zhuanlan.zhihu.com/p/356054248)
@@ -394,4 +393,3 @@ echo 'ok !'
 [万字带你搞懂nginx的配置文件_nginx 配置_way_more的博客-CSDN博客](https://blog.csdn.net/qq_36551991/article/details/118612282)
 
 [Nginx配置文件详解 - 程序员自由之路 - 博客园 (cnblogs.com)](https://www.cnblogs.com/54chensongxia/p/12938929.html)
-

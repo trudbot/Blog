@@ -8,7 +8,7 @@ categories:
   - 数学
 abbrlink: 48306
 date: '2023-02-27 04:58:29'
-lastUpdated: '2023-02-27 04:58:29'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 由于markdown语法的局限性， 在写markdown文本时经常需要用到扩展的语法来满足更多的需求。而内嵌式latex是最广泛的markdown编写数学公式的解决方案。
 
@@ -71,6 +71,7 @@ lastUpdated: '2023-02-27 04:58:29'
 |  5   |   $\le$   | 小于等于 | `\le` or `\leq` |
 |  6   |    $>$    |   大于   |       `>`       |
 |  7   |   $\ge$   | 大于等于 | `\ge` or `\geq` |
+
 ## 集合关系
 
 |   latex显示    |  解释  |   latex源码    |
@@ -121,6 +122,7 @@ lastUpdated: '2023-02-27 04:58:29'
 | :----: | :-------------: | :-------------: |
 | 平方根 |  $\sqrt{abc}$   |  `\sqrt{abc}`   |
 | n次根  | $\sqrt[n]{abc}$ | `\sqrt[n]{abc}` |
+
 ## 模运算
 
 |          latex显示          |          latex源码          |
@@ -132,7 +134,7 @@ lastUpdated: '2023-02-27 04:58:29'
 
 | 类型 |        latex显示         |        latex源码         |
 | :--: | :----------------------: | :----------------------: |
-| 求和 |  $\sum\limits_{i=1}^n$   |  ` \sum\limits_{i=1}^n`  |
+| 求和 |  $\sum\limits_{i=1}^n$   |  `\sum\limits_{i=1}^n`  |
 | 交集 | $\bigcap\limits_{i=1}^n$ | `\bigcap\limits_{i=1}^n` |
 | 并集 | $\bigcup\limits_{i=1}^n$ | `\bigcup\limits_{i=1}^n` |
 

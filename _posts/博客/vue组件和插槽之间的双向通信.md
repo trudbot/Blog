@@ -9,7 +9,7 @@ categories:
   - vue
 abbrlink: 26800
 date: '2023-10-04 22:38:04'
-lastUpdated: '2023-10-04 22:38:04'
+lastUpdated: '2024-08-23 20:23:18'
 ---
 
 vue高度封装的语法也会有很多弊端， 父组件与插槽之间的通信就是其中之一。
@@ -24,8 +24,8 @@ vue高度封装的语法也会有很多弊端， 父组件与插槽之间的通�
 
 ```vue
 <my-select v-model="selectedData">
-	<my-option :value="data1"/>
-	<my-option :value="data2"/>
+ <my-option :value="data1"/>
+ <my-option :value="data2"/>
   <my-option :value="data3"/>
 </my-select>
 ```
@@ -61,7 +61,7 @@ provide('my-select', {
 ```js
 const mySelectContext = inject('my-select');
 function click() {
-	mySelectContext.selected.value = props.value;
+ mySelectContext.selected.value = props.value;
 }
 ```
 
@@ -315,8 +315,6 @@ provide('SelectContext', {
 此hook在`element-plus`的`carousel`、`tabs`等组件中均有应用。
 
 普通的插槽通信， 也许直接provide就够用了；而通信较复杂时， 可以使用此hook， 清晰、稳定。
-
-
 
 ## 参考
 
