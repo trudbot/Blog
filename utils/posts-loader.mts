@@ -11,12 +11,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '../');
 
-export function generatePostListSync(dir: string): {text: string, link: string}[] {
+export function generatePostListSync(dir: string): {text: string, link: string, items?: DefaultTheme.SidebarItem[];}[] {
   const files = globSync('*.md', {
     cwd: path.resolve(root, dir)
   });
 
-  const posts: {text: string, link: string}[] = [];
+  const posts: {text: string, link: string, top: number, date: Date}[] = [];
 
   for (const file of files) {
     const pth = path.resolve(root, dir, file);
@@ -53,13 +53,12 @@ export function generatePostListSync(dir: string): {text: string, link: string}[
  * @param dir 目录路径
  * @param text 目录名称
  */
-export function generateIndex(dir: string, depth: number = 0, text?: string, more?: any): DefaultTheme.SidebarItem {
+export function generateIndex(dir: string, depth: number = 0, text?: string, more?: {[key: string]: unknown}): DefaultTheme.SidebarItem {
   const subDirs = getDirectories(path.resolve(root, dir));
   const subDirIndex = subDirs.map(subDir => generateIndex(path.join(dir, subDir), depth + 1));
   return {
     text: text || path.basename(dir),
     items: [...subDirIndex, ...generatePostListSync(dir)].filter((item) => {
-      // @ts-ignore
       return item.link || item?.items?.length;
     }),
     collapsed: depth === 0,

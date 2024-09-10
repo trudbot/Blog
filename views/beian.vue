@@ -3,11 +3,11 @@
 </script>
 
 <template>
-  <div class="beian">
-    <a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2023017814号-1 </a>
-    <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407071401918.png" style="display: inline-block;">
-    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011402000613" rel="noopener" target="_blank">蜀公网安备 51011402000613 号 </a>
-  </div>
+    <div class="beian">
+        <a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2023017814号-1 </a>
+        <img src="https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407071401918.png" style="display: inline-block;">
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011402000613" rel="noopener" target="_blank">蜀公网安备 51011402000613 号 </a>
+    </div>
 </template>
 
 <style scoped lang="scss">

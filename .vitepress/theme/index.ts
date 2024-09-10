@@ -6,13 +6,13 @@ import './style.css';
 import {initializeImageInteractions} from '../../utils/custom-img';
 
 export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
-  enhanceApp({ app, router, siteData }) {
-    router.onAfterRouteChanged = () => initializeImageInteractions();
-  }
+    extends: DefaultTheme,
+    Layout: () => {
+        return h(DefaultTheme.Layout, null, {
+            // https://vitepress.dev/guide/extending-default-theme#layout-slots
+        })
+    },
+    enhanceApp({ router }) {
+        router.onAfterRouteChanged = () => initializeImageInteractions();
+    }
 } satisfies Theme

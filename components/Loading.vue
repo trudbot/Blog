@@ -2,21 +2,21 @@
 import { defineModel } from 'vue';
 
 const loading = defineModel<boolean>({
-  default: true
+    default: true
 });
 </script>
 
 <template>
-  <div class="loading-wrapper" :style="{visibility: loading ? 'visible': 'hidden'}">
-    <div class="container">
-      <div class="loading">
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-      </div>
+    <div class="loading-wrapper" :style="{visibility: loading ? 'visible': 'hidden'}">
+        <div class="container">
+            <div class="loading">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>

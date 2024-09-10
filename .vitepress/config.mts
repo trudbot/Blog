@@ -7,7 +7,16 @@ export default withMermaid(defineConfig({
   title: "Trudbot's Blog",
   description: "trudbot的博客",
   head: [
-    ['link', { rel: 'icon', href: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg' }]
+    ['link', { rel: 'icon', href: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg' }],
+    ['script', { src: 'https://www.googletagmanager.com/gtag/js?id=G-KVFZYET0GD', async: ''}],
+    ['script', {}, 
+      `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KVFZYET0GD');`
+    ]
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
