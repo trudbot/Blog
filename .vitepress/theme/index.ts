@@ -10,9 +10,9 @@ export default {
     Layout: () => {
         return h(DefaultTheme.Layout, null, {
             // https://vitepress.dev/guide/extending-default-theme#layout-slots
-        })
+        });
     },
     enhanceApp({ router }) {
         router.onAfterRouteChanged = () => initializeImageInteractions();
     }
-} satisfies Theme
+} satisfies Theme;

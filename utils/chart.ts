@@ -1,5 +1,5 @@
-import QuickChart from 'quickchart-js'
-import {dark, light} from '../assets/colorSystem'
+import QuickChart from 'quickchart-js';
+import {dark, light} from '../assets/colorSystem';
 export async function pie_base64(
     labels: string[],
     data: number[],

@@ -11,7 +11,7 @@ function traversal(root, callback) {
             traversal(pth, callback);
         }
         callback?.(pth);
-    })
+    });
 }
 
 function fileNameLint(pth) {
@@ -47,4 +47,4 @@ function lint(){
 
 module.exports = {
     lint
-}
+};

@@ -36,7 +36,7 @@ function render(data: {text: string; size: number}[], x: number, y: number) {
         const observer = new MutationObserver(() => {
             emits('drawEnd');
             observer.disconnect();
-        })
+        });
         observer.observe(cloudRef.value as Node, {
             childList: true
         });
@@ -76,7 +76,7 @@ function render(data: {text: string; size: number}[], x: number, y: number) {
             .text(function(d) { return d.text; })
             .on("click", function(d) {
                 emits('click', d.target.__data__);
-            })
+            });
     // emits('drawEnd');
     }
     layout.start();
@@ -92,7 +92,7 @@ watch([width, height, () => props.data], () => {
     if (cloudRef.value && props.data && width.value && height.value) {
         drawDebounce(JSON.parse(JSON.stringify(props.data)), width.value, height.value);
     }
-})
+});
 </script>
 
 <template>

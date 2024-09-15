@@ -9,9 +9,10 @@ export default [
         ignores: [".vitepress/dist/**", ".vitepress/cache/**"],
     },
     {
-        files: ["**/*.{js,mjs,ts,vue}"],
+        files: ["**/*.{js,mjs,ts,vue,cjs,jsx,tsx}"],
         rules: {
             "indent": ["error", 4],
+            "semi": ["error", "always"],
         }
     },
     {
@@ -32,7 +33,8 @@ export default [
         languageOptions: {parserOptions: {parser: tseslint.parser}},
         rules: {
             "vue/html-indent": ["error", 4],
-            "vue/multi-word-component-names": "off"
+            "vue/multi-word-component-names": "off",
+            "semi": ["error", "always"],
         },
     },
 ];
