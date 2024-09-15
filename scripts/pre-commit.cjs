@@ -4,6 +4,7 @@ const matter = require('gray-matter');
 const fs = require('fs');
 const chalk = require('chalk');
 const { minimatch } = require('minimatch');
+const {lint} = require('./filename-lint.cjs');
 
 function formatDate(date) {
   const year = date.getFullYear();
@@ -27,6 +28,7 @@ function decodeUtf8(str) {
  * 在md文件的frontmatter中更新lastUpdated字段
  */
 try {
+  console.log(chalk.bgBlack.white.bold('1. markdown预处理'), chalk.gray('(自动补充markdown文件当中的frontmatter信息)'));
   // 获取本次提交修改过的文件列表
   const modifiedFiles = execSync('git diff --cached --name-only', {encoding: 'utf-8'})
     .trim()
@@ -77,12 +79,14 @@ try {
   if (mdFiles.length > 0) {
     execSync(`git add ${mdFiles.map(file => `"${file}"`).join(' ')}`);
   } else {
-    console.log(chalk.green.bold('没有需要更新的文件, pre-commit结束')); 
+    console.log(chalk.green.bold('没有需要更新的文件, markdown文件预处理结束')); 
   }
 
-  console.log(chalk.green.bold('Pre-commit hook completed successfully.'));
+  console.log(chalk.bgBlack.white.bold('2. fileName Lint'), chalk.gray('(lint文件名和目录名, 避免在其他系统不可用的情况)'));
+  lint();
+  console.log(chalk.bgGreen.white.bold('Pre-commit hook completed successfully.'));
   process.exit(0);
 } catch (error) {
-  console.error(chalk.red.bold('Error running pre-commit hook:'), error);
+  console.error(chalk.bgRed.white.bold('Error running pre-commit hook:'), error);
   process.exit(1);
 }
