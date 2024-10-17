@@ -1,9 +1,8 @@
 import { defineConfig } from 'vitepress';
-import { withMermaid } from 'vitepress-plugin-mermaid';
 import { generateIndex } from '../utils/posts-loader.mjs';
 // https://vitepress.dev/reference/site-config
 
-export default withMermaid(defineConfig({
+export default defineConfig({
   title: "Trudbot's Blog",
   description: "trudbot的博客",
   head: [
@@ -67,16 +66,8 @@ export default withMermaid(defineConfig({
       ]
     }
   },
-  // optionally, you can pass MermaidConfig
-  mermaid: {
-    // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
-  },
-  // optionally set additional config for plugin itself with MermaidPluginConfig
-  mermaidPlugin: {
-    class: "mermaid trudbot-mermaid", // set additional css classes for parent container
-  },
 
   sitemap: {
     hostname: 'https://trudbot.cn'
   },
-}));
+});
