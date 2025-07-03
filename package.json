@@ -34,7 +34,7 @@
     "d3-cloud": "^1.2.7",
     "eslint": "^9.10.0",
     "eslint-plugin-vue": "^9.28.0",
-    "glob": "^11.0.0",
+    "glob": "^11.0.3",
     "globals": "^15.9.0",
     "gray-matter": "^4.0.3",
     "husky": "^9.1.6",
