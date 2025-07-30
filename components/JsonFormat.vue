@@ -3,18 +3,32 @@ import { JsonFormatView } from '@trudbot/json-format';
 import { ref } from 'vue';
 
 const iv = ref('{"text":"abc"}');
+const showInput = ref(true);
+const showOutput = ref(true);
+
+const toggleInput = () => {
+    showOutput.value = !showOutput.value;
+};
+
+const toggleOutput = () => {
+    showInput.value = !showInput.value;
+};
 </script>
 
 <template>
     <div class="json-format-lab">
-        <div class="json-input">
-            <h3>JSON 输入</h3>
-            <textarea v-model="iv" placeholder="请输入 JSON 数据..."></textarea>
-        </div>
-        <div class="json-format-view">
-            <h3>格式化视图</h3>
-            <JsonFormatView :value="iv"/>
-        </div>
+        <Transition name="slide-left">
+            <div class="json-input" v-if="showInput">
+                <h3 @click="toggleInput">JSON 输入</h3>
+                <textarea v-model="iv" placeholder="请输入 JSON 数据..."></textarea>
+            </div>
+        </Transition>
+        <Transition name="slide-right">
+            <div class="json-format-view" v-if="showOutput">
+                <h3 @click="toggleOutput">格式化视图</h3>
+                <JsonFormatView :value="iv"/>
+            </div>
+        </Transition>
     </div>
 </template>
 
@@ -29,6 +43,19 @@ const iv = ref('{"text":"abc"}');
   padding: 24px;
   box-sizing: border-box;
   position: relative;
+  align-items: stretch;
+  
+  /* 只有当只有一个模块时才居中和限制宽度 */
+  &:has(.json-input:only-child),
+  &:has(.json-format-view:only-child) {
+    justify-content: center;
+    
+    .json-input,
+    .json-format-view {
+      width: 70%;
+      flex: none;
+    }
+  }
   
   &::before {
     content: '';
@@ -63,10 +90,29 @@ const iv = ref('{"text":"abc"}');
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 8px;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+      }
+      
+      &:active {
+        transform: scale(0.98);
+      }
       
       &::before {
         content: '📝';
         font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover::before {
+        transform: rotate(10deg);
       }
     }
     
@@ -127,10 +173,29 @@ const iv = ref('{"text":"abc"}');
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 8px;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+      }
+      
+      &:active {
+        transform: scale(0.98);
+      }
       
       &::before {
         content: '✨';
         font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover::before {
+        transform: rotate(-10deg);
       }
     }
     
@@ -160,6 +225,15 @@ const iv = ref('{"text":"abc"}');
     padding: 16px;
     gap: 20px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* 小屏幕上单模块也占满宽度 */
+    &:has(.json-input:only-child),
+    &:has(.json-format-view:only-child) {
+      .json-input,
+      .json-format-view {
+        width: 100%;
+      }
+    }
     
     .json-input, .json-format-view {
       h3 {
@@ -198,6 +272,59 @@ const iv = ref('{"text":"abc"}');
     .json-input textarea::placeholder {
       color: #718096;
     }
+  }
+}
+
+/* 过渡动画 */
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-left-enter-from {
+  opacity: 0;
+  transform: translateX(-80px) scale(0.95);
+}
+
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(-80px) scale(0.95);
+}
+
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translateX(80px) scale(0.95);
+}
+
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(80px) scale(0.95);
+}
+
+/* 单模块时的特殊动画效果 */
+.json-format-lab:has(.json-input:only-child) .slide-left-enter-active,
+.json-format-lab:has(.json-format-view:only-child) .slide-right-enter-active {
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.json-format-lab:has(.json-input:only-child) .slide-left-enter-from,
+.json-format-lab:has(.json-format-view:only-child) .slide-right-enter-from {
+  transform: translateY(-20px) scale(0.9);
+  opacity: 0;
+}
+
+/* 响应式动画优化 */
+@media (max-width: 768px) {
+  .slide-left-enter-from,
+  .slide-left-leave-to {
+    transform: translateY(-50px) scale(0.95);
+  }
+  
+  .slide-right-enter-from,
+  .slide-right-leave-to {
+    transform: translateY(50px) scale(0.95);
   }
 }
 
