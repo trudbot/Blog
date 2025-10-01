@@ -32,7 +32,7 @@ import {data} from './data/content-handler.data.mts'
 
 <!--代码语言统计-->
 <div style="display: flex; justify-content: center" class="code-lang">
-    <img :src="data"/>
+    <img :src="data" alt="代码语言统计"/>
 </div>
 
 <style>
