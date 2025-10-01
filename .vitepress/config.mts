@@ -5,6 +5,7 @@ import { generateIndex } from '../utils/posts-loader.mjs';
 export default defineConfig({
   title: "Trudbot's Blog",
   description: "trudbot的博客",
+  lang: 'zh-CN',
   head: [
     ['link', { rel: 'icon', href: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg' }],
     ['script', { src: 'https://www.googletagmanager.com/gtag/js?id=G-KVFZYET0GD', async: ''}],
