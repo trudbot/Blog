@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@docsearch/css": "^4.0.1",
-    "@docsearch/js": "^4.0.1",
+    "@docsearch/js": "^4.1.0",
     "@eslint/js": "^9.10.0",
     "@trudbot/map": "^0.0.4",
     "@types/d3": "^7.4.3",
