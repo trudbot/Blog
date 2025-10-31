@@ -1,4 +1,6 @@
 const path = require('path');
+const matter = require('gray-matter');
+const fs = require('fs');
 
 let filePath = process.argv[2];
 filePath = filePath.replace(/\.md$/, '');
@@ -25,9 +27,6 @@ function writeFileEnsureDir(filePath, data) {
     // 写入文件
     fs.writeFileSync(filePath, data, 'utf8');
 }
-
-const matter = require('gray-matter');
-const fs = require('fs');
 
 const post = {
     data: {},
