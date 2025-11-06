@@ -4,17 +4,38 @@ import { matchCodeBlocks } from '../utils/md-statistics';
 import { pie_base64 } from '../utils/chart';
 import { countLines } from '../utils/common';
 
+const langMap = {
+  javascript: ['js', 'javascript', 'JavaScript', 'jsx'],
+  cpp: ['c++', 'cpp', 'CPP'],
+  typescript: ['ts', 'typescript', 'TypeScript', 'tsx'],
+  python: ['py', 'python', 'Python'],
+  java: ['java', 'Java'],
+  go: ['go', 'Go', 'golang'],
+  rust: ['rs', 'rust', 'Rust'],
+  html: ['html', 'HTML', 'htm'],
+  css: ['css', 'CSS', 'scss', 'Sass', 'sass', 'less', 'Less'],
+  shell: ['sh', 'bash', 'Shell', 'zsh'],
+  text: ['text', 'Text', 'txt', 'Txt', 'plaintext', 'Plaintext', 'in', 'out'],
+}
+
+const getStdLang = (lang: string) => {
+  for (const [stdLang, variants] of Object.entries(langMap)) {
+    if (variants.includes(lang)) {
+      return stdLang;
+    }
+  }
+  return lang;
+}
+
 export default {
   async load() {
-    const count = new EasyMap<string, number>({defaultValue: 0});
+    const count = new EasyMap<string, number>();
     const proxy = count.createProxy(p => {
       return typeof p === 'string' ? p : p.toString();
-    });
+    }, 0);
     loadFiles('_posts/**/*.md', (content) => {
       matchCodeBlocks(content).forEach(({language, code}) => {
-        if (language === 'c++') language = 'cpp';
-        if (language === 'in' || language === 'out') language = 'text';
-        proxy[language] += countLines(code);
+        proxy[getStdLang(language)] += countLines(code);
       });
     });
     const pieData = {
