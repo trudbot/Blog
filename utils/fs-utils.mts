@@ -10,7 +10,7 @@ export function getDirectories(srcPath: string): string[] {
     });
 }
 
-export function loadFiles(globPattern: string, callback: (content: string) => void): string[] {
+export function loadFiles(globPattern: string, callback: (content: string) => void): void {
   globSync(globPattern).forEach(pth => {
     const content = fs.readFileSync(pth, 'utf-8');
     callback(content);

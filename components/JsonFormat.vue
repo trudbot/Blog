@@ -75,7 +75,7 @@ const toggleOutput = () => {
   }
 
   .json-input {
-    flex: 1;
+    flex: 1 0 0;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -158,7 +158,7 @@ const toggleOutput = () => {
   }
 
   .json-format-view {
-    flex: 1;
+    flex: 1 0 0;
     display: flex;
     flex-direction: column;
     position: relative;

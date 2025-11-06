@@ -13,6 +13,6 @@ export default {
         });
     },
     enhanceApp({ router }) {
-        router.onAfterRouteChanged = () => initializeImageInteractions();
+        router.onAfterRouteChange = () => initializeImageInteractions();
     }
 } satisfies Theme;
