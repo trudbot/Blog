@@ -6,7 +6,7 @@ import pluginVue from "eslint-plugin-vue";
 
 export default [
     {
-        ignores: [".vitepress/dist/**", ".vitepress/cache/**"],
+        ignores: [".vitepress/dist/**", ".vitepress/cache/**", "node_modules/**", "_posts/**"],
     },
     {
         languageOptions: { globals: globals.browser }
