@@ -1,6 +1,10 @@
 ---
-date: '2024-06-15 17:31:34'
-title: about
-top: 0
+layout: page
+title: trudbot
+sidebar: false
+navbar: false
 ---
 
+<script>
+location.href = "https://trudbot.cn";
+</script>
