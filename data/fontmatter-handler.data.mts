@@ -1,20 +1,24 @@
 import { ContentData, createContentLoader } from 'vitepress';
 import { MapFunctionReturnTypes } from '../utils/ts-utils';
+import {EasyMap} from '@trudbot/map';
 
 const {watch, load} = createContentLoader([
     '_posts/**/*.md',
 ]);
 
 function getTagsData(data: ContentData[]) {
-    const count = new Map<string, number>();
+    const count = new EasyMap<string, number>();
+    const proxy = count.createProxy(p => {
+        return p.toString();
+    }, 0);
     data.map(content => {
         const frontmatter = content.frontmatter;
         if (!frontmatter.tags || !Array.isArray(frontmatter.tags)) return;
         (frontmatter.tags as Array<string>).forEach(tag => {
-            count.set(tag, (count.has(tag) ? count.get(tag)! : 0) + 1);
+            proxy[tag] ++;
         });
     });
-    const list = Array.from(count, ([text, size]) => ({ text, size }));
+    const list = count.entries().map(({key, value}) => ({ text: key, size: value }));
     return {list};
 }
 
