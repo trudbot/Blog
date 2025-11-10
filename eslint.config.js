@@ -9,13 +9,6 @@ export default [
         ignores: [".vitepress/dist/**", ".vitepress/cache/**"],
     },
     {
-        files: ["**/*.{js,mjs,ts,vue,cjs,jsx,tsx}"],
-        rules: {
-            "indent": ["error", 4],
-            "semi": ["error", "always"],
-        }
-    },
-    {
         languageOptions: { globals: globals.browser }
     },
     pluginJs.configs.recommended,
@@ -26,6 +19,20 @@ export default [
         languageOptions: { globals: globals.node},
         rules: {
             "@typescript-eslint/no-require-imports": "off"
+        }
+    },
+    {
+        files: ["**/*.{js,mjs,cjs,jsx}"],
+        rules: {
+            "indent": ["error", 4],
+            "semi": ["error", "always"],
+        }
+    },
+    {
+        files: ["**/*.{ts,mts,cts,tsx}"],
+        rules: {
+            "indent": ["error", 4],
+            "semi": ["error", "always"],
         }
     },
     {

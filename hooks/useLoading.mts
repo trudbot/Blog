@@ -8,33 +8,33 @@ const loadingMinTime = 500;
 // loading至少显示500ms
 
 export function useLoading(initState: boolean = false) {
-  const loading = ref<boolean>(initState);
-  let loadingStart: Date;
-  let timeout: number | null = null;
+    const loading = ref<boolean>(initState);
+    let loadingStart: Date;
+    let timeout: number | null = null;
 
-  function startLoading() {
-    if (loading.value) return;
-    loadingStart = new Date();
-    timeout = setTimeout(() => {
-      loading.value = true;
-      timeout = null;
-    }, delay);
-  }
-
-  function stopLoading() {
-    if (timeout !== null) {
-      clearTimeout(timeout);
-      timeout = null;
+    function startLoading() {
+        if (loading.value) return;
+        loadingStart = new Date();
+        timeout = setTimeout(() => {
+            loading.value = true;
+            timeout = null;
+        }, delay);
     }
-    if (!loading.value) return;
-    setTimeout(() => {
-      loading.value = false;
-    }, Math.max(0, loadingMinTime - (Date.now() - loadingStart.getTime())))
-  }
 
-  return {
-    loading,
-    startLoading,
-    stopLoading
-  }
+    function stopLoading() {
+        if (timeout !== null) {
+            clearTimeout(timeout);
+            timeout = null;
+        }
+        if (!loading.value) return;
+        setTimeout(() => {
+            loading.value = false;
+        }, Math.max(0, loadingMinTime - (Date.now() - loadingStart.getTime())));
+    }
+
+    return {
+        loading,
+        startLoading,
+        stopLoading
+    };
 }
