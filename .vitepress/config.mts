@@ -69,6 +69,6 @@ export default defineConfig({
     },
 
     sitemap: {
-        hostname: 'https://trudbot.cn'
+        hostname: 'https://trudbot.cn/Blog/'
     },
 });
