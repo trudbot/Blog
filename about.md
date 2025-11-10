@@ -6,5 +6,8 @@ navbar: false
 ---
 
 <script>
-location.href = "https://trudbot.cn";
+// @ts-ignore
+if (typeof window !== 'undefined' && window.location) {
+    window.location.href = "https://trudbot.cn";
+}
 </script>
