@@ -6,7 +6,8 @@ tags:
 categories: 题解
 abbrlink: 6078
 date: '2023-04-12 22:02:05'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: qcqatdga
 ---
 
 # 2023蓝桥C/C++B组省赛

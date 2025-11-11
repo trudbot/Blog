@@ -1,24 +1,15 @@
-const { execSync } = require('child_process');
-const path = require('path');
-const matter = require('gray-matter');
-const fs = require('fs');
-const chalk = require('chalk');
-const { minimatch } = require('minimatch');
-const {lint} = require('./filename-lint.cjs');
+import { execSync } from 'child_process';
+import path from 'path';
+import matter from 'gray-matter';
+import fs from 'fs';
+import chalk from 'chalk';
+import { minimatch } from 'minimatch';
+import { lint } from './filename-lint.js';
+import {formatDate} from '../utils/date-format.js';
+import { genPostId } from '../utils/post-id';
 
-function formatDate(date) {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
-
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-}
-
-function decodeUtf8(str) {
-    str = str.replace(/\\(\d{3})/g, (match, octal) => {
+function decodeUtf8(str: string): string {
+    str = str.replace(/\\(\d{3})/g, (_match: string, octal: string) => {
         return String.fromCharCode(parseInt(octal, 8));
     });
     return Buffer.from(str, 'latin1').toString('utf8');
@@ -68,6 +59,11 @@ try {
             const creationTime = stats.birthtime;
             frontmatter.date = formatDate(creationTime);
             console.log(chalk.green(`文件[${chalk.bold(fileName)}]的date字段为空, 已更新为文件创建时间`));
+        }
+
+        if (!frontmatter.id) {
+            frontmatter.id = genPostId();
+            console.log(chalk.green(`文件[${chalk.bold(fileName)}]的id字段为空, 已生成唯一id`));
         }
 
         const newContent = matter.stringify(fileContent.content, frontmatter);

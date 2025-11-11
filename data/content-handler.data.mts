@@ -1,4 +1,4 @@
-import { loadFiles } from '../utils/fs-utils.mjs';
+import { loadFiles } from '../utils/fs-utils';
 import { EasyMap } from '@trudbot/map';
 import { matchCodeBlocks } from '../utils/md-statistics';
 import { pie_base64 } from '../utils/chart';

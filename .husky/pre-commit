@@ -1,2 +1,2 @@
 npx eslint
-node scripts/pre-commit.cjs
+npx tsx scripts/pre-commit.ts

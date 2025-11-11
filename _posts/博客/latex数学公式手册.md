@@ -8,7 +8,8 @@ categories:
   - 数学
 abbrlink: 48306
 date: '2023-02-27 04:58:29'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: 64t72ggq
 ---
 由于markdown语法的局限性， 在写markdown文本时经常需要用到扩展的语法来满足更多的需求。而内嵌式latex是最广泛的markdown编写数学公式的解决方案。
 

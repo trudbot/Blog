@@ -1,8 +1,9 @@
 ---
 title: README
-lastUpdated: '2024-09-15 08:07:04'
+lastUpdated: '2025-11-10 21:00:10'
 date: '2024-08-20 17:01:32'
 top: 10
+id: wy66r8de
 ---
 > 本系列原文地址: [Good Math/Bad Math: Lamda Calculus (Index)](https://goodmath.blogspot.com/2006/06/lamda-calculus-index.html)
 

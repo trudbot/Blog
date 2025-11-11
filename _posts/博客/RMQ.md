@@ -9,7 +9,8 @@ tags:
 categories: 算法
 abbrlink: 32085
 date: '2023-08-14 22:15:44'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: efznq9ww
 ---
 
 $RMQ$全称是`Range Minimum/Maximum Query`, 即"区间最大最小值问题"， 一般来说需要处理多组查询， 查询的区间长度不一、可能重复。

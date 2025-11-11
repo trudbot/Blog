@@ -2,7 +2,8 @@
 date: '2024-07-31 18:56:21'
 title: README
 top: 10
-lastUpdated: '2024-09-12 15:54:19'
+lastUpdated: '2025-11-10 21:00:10'
+id: 4jpjdapv
 ---
 
 函数式编程是迷人的, Haskell对于我是神秘的。

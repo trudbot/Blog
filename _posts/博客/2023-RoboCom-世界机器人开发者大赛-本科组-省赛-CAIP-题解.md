@@ -6,7 +6,8 @@ tags:
 categories: 题解
 abbrlink: 13513
 date: '2023-07-18 00:22:30'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: 9fa4e2tp
 ---
 
 RoboCom省赛题解。

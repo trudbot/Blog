@@ -9,7 +9,8 @@ tags:
 categories: 杂谈
 abbrlink: 41626
 date: '2023-07-07 02:57:44'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: 7egpqt2j
 ---
 
 主要记录一下本次耗时一两天博客的迁移过程。

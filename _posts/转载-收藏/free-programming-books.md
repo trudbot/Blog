@@ -1,7 +1,8 @@
 ---
 date: '2024-07-07 20:23:03'
-lastUpdated: '2024-09-15 08:07:04'
+lastUpdated: '2025-11-10 21:00:10'
 title: free-programming-books
+id: rgf4mvzc
 ---
 [原文](https://ebookfoundation.github.io/free-programming-books/books/free-programming-books-zh.html)
 ---

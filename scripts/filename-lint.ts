@@ -1,20 +1,15 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import sanitize from 'sanitize-filename';
+import chalk from 'chalk';
+import {traversal} from '../utils/fs-utils.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '..');
-const fs = require('fs');
-const sanitize = require("sanitize-filename");
-const chalk = require('chalk');
 
-function traversal(root, callback) {
-    fs.readdirSync(root).map(item => {
-        const pth = path.join(root, item);
-        if (fs.statSync(pth).isDirectory()) {
-            traversal(pth, callback);
-        }
-        callback?.(pth);
-    });
-}
-
-function fileNameLint(pth) {
+function fileNameLint(pth: string) {
     const fileName = path.basename(pth, path.extname(pth));
     const newFileName =  sanitize(fileName, {
         replacement: '-'
@@ -22,9 +17,9 @@ function fileNameLint(pth) {
     return path.join(path.dirname(pth), newFileName + path.extname(pth));
 }
 
-function lint(){
+export function lint() {
     let renameCount = 0;
-    traversal(path.join(root, '_posts'), pth => {
+    traversal(path.join(root, '_posts'), (pth: string) => {
         try {
             const newFileName = fileNameLint(pth);
             if (pth !== newFileName) {
@@ -44,7 +39,3 @@ function lint(){
         console.log(chalk.green.bold('filename lint完成, 没有不兼容的目录或文件名'));
     }
 }
-
-module.exports = {
-    lint
-};

@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: 进入博客
-      link: /_posts/博客/Readme
+      link: /wfvka7w8
     - theme: alt
       text: Github
       link: https://github.com/trudbot

@@ -8,7 +8,8 @@ categories:
   - git
 abbrlink: 18402
 date: '2023-09-19 06:24:55'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: ckcnfjy2
 ---
 commit message的规范格式很有必要， 让别人和未来的自己都能更快速的浏览commits。在此记录相关规则供自查。
 

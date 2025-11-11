@@ -9,7 +9,8 @@ categories:
   - nest
 abbrlink: 52255
 date: '2023-09-08 04:20:21'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: khcaqhyw
 ---
 
 本文主要总结nest中如何使用socket.io等WebSocket库， socket.io的使用可见[socket.io](https://socket.io/zh-CN/)

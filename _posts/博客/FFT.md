@@ -10,7 +10,8 @@ categories:
   - 多项式
 abbrlink: 19154
 date: '2023-07-14 22:50:03'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: g9u6dhjz
 ---
 
 **先来回忆一下高精度乘法的原理**

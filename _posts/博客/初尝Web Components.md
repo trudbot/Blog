@@ -1,7 +1,8 @@
 ---
 title: 初尝Web Components
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
 date: '2024-07-11 21:22:04'
+id: fvbtpx8h
 ---
 Web Component 是 2017年新出的一套标准, 旨在提供官方的视图 组件化解决方案。
 

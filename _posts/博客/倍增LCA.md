@@ -7,7 +7,8 @@ tags:
 categories: 图论
 abbrlink: 12115
 date: '2023-04-11 05:09:17'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: pyd2faaj
 ---
 
 在[图论](https://zh.wikipedia.org/wiki/图论)和[计算机科学](https://zh.wikipedia.org/wiki/计算机科学)中，**最近公共祖先**（英语：lowest common ancestor）是指在一个[树](https://zh.wikipedia.org/wiki/树_(图论))或者[有向无环图](https://zh.wikipedia.org/wiki/有向无环图)中同时拥有*v*和*w*作为后代的最深的节点。

@@ -4,12 +4,16 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
-import { getCurrentFormattedDate } from './date-format.mjs';
-import { getDirectories } from './fs-utils.mjs';
+import { getCurrentFormattedDate } from './date-format';
+import { getDirectories } from './fs-utils';
+import { genPostId } from './post-id';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '../');
+const rewrites: Record<string, string> = {};
+
+export { rewrites };
 
 export function generatePostListSync(dir: string): {text: string, link: string, items?: DefaultTheme.SidebarItem[];}[] {
     const files = globSync('*.md', {
@@ -23,20 +27,26 @@ export function generatePostListSync(dir: string): {text: string, link: string, 
         const content = matter.read(pth);
         const frontmatter = content.data || {};
         const title = frontmatter.title || file.replace(/\.md$/, '');
-        const link = path.join('/', dir, file.replace(/\.md$/, ''));
-        // 必须要有如2023-03-01 16:49:12格式的日期， 没有的话以当前时间写入文件中
+        // const link = path.join('/', dir, file.replace(/\.md$/, ''));
         let date = frontmatter.date;
-
-        if (!date) {
-            date = getCurrentFormattedDate();
+        let id = frontmatter.id;
+        // 必须要有如2023-03-01 16:49:12格式的日期， 没有的话以当前时间写入文件中
+        if (!date || !id) {
+            if (!date) {
+                date = getCurrentFormattedDate();
+            }
+            if (!id) {
+                id = genPostId();
+            }
             frontmatter.date = date;
+            frontmatter.id = id;
             // 将更新后的 frontmatter 写回到文件中
             const updatedContent = matter.stringify(content.content, frontmatter);
             fs.writeFileSync(pth, updatedContent);
         }
-
+        rewrites[`${path.join(dir, file)}`] = `${id}.md`;
         const top = frontmatter.top || 0;
-
+        const link = `/${id}`;
         posts.push({text: title, link, date, top});
     }
     // 优先级越高越靠前， 否则日期越近越靠前

@@ -9,7 +9,8 @@ categories:
   - vue
 abbrlink: 26800
 date: '2023-10-04 22:38:04'
-lastUpdated: '2024-08-23 20:23:18'
+lastUpdated: '2025-11-10 21:00:10'
+id: qmnz4qrf
 ---
 
 vue高度封装的语法也会有很多弊端， 父组件与插槽之间的通信就是其中之一。
