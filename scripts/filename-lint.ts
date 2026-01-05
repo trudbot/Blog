@@ -2,8 +2,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import sanitize from 'sanitize-filename';
-import chalk from 'chalk';
 import {traversal} from '../utils/fs-utils.js';
+import { logger } from '../utils/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +24,7 @@ export function lint() {
             const newFileName = fileNameLint(pth);
             if (pth !== newFileName) {
                 renameCount ++;
+                logger.warn('重命名', `${path.basename(pth)} -> ${path.basename(newFileName)}`);
             }
             fs.renameSync(pth, newFileName);
         } catch(e) {
@@ -33,9 +34,9 @@ export function lint() {
     });
 
     if (renameCount > 0) {
-        console.log(chalk.red.bold('filename lint失败, 已自动将路径非法字符改为"-", 请在git中review'));
+        logger.error('Lint 失败', '已自动修复非法文件名，请检查变更后重新提交。');
         process.exit(1);
     } else {
-        console.log(chalk.green.bold('filename lint完成, 没有不兼容的目录或文件名'));
+        logger.success('文件名检查通过');
     }
 }

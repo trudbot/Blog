@@ -2,11 +2,11 @@ import { execSync } from 'child_process';
 import path from 'path';
 import matter from 'gray-matter';
 import fs from 'fs';
-import chalk from 'chalk';
 import { minimatch } from 'minimatch';
 import { lint } from './filename-lint.js';
 import {formatDate} from '../utils/date-format.js';
 import { genPostId } from '../utils/post-id';
+import { logger } from '../utils/logger.js';
 
 function decodeUtf8(str: string): string {
     str = str.replace(/\\(\d{3})/g, (_match: string, octal: string) => {
@@ -19,7 +19,7 @@ function decodeUtf8(str: string): string {
  * 在md文件的frontmatter中更新lastUpdated字段
  */
 try {
-    console.log(chalk.bgCyan.black.bold(' 1. Markdown 预处理 '), chalk.gray('(自动补充 frontmatter 信息)'));
+    logger.section('1. Markdown 预处理', '(自动补充 frontmatter 信息)');
     // 获取本次提交修改过的文件列表
     const modifiedFiles = execSync('git diff --cached --name-only', {encoding: 'utf-8'})
         .trim()
@@ -35,8 +35,8 @@ try {
         }).map(decodeUtf8);
 
     const mdFiles = modifiedFiles.filter(file => minimatch(file, '_posts/**/*.md')).filter(file => fs.existsSync(file));
-    console.log(chalk.cyan('  • 本次提交修改的文件: '), modifiedFiles);
-    console.log(chalk.cyan('  • 在_posts中的md文件:'), mdFiles);
+    logger.info('本次提交修改的文件: ', modifiedFiles);
+    logger.info('在_posts中的md文件:', mdFiles);
     mdFiles.forEach(file => {
         const pth = path.resolve(file);
         const content = fs.readFileSync(pth, {encoding: 'utf-8'});
@@ -48,22 +48,22 @@ try {
         // 无title字段则使用文件名
         if (!frontmatter.title) {
             frontmatter.title = fileName;
-            console.log(chalk.green('    ✔ 更新 Title: ') + chalk.yellow(fileName));
+            logger.success('更新 Title', fileName);
         }
 
         // 更新lastUpdated字段
         frontmatter.lastUpdated = formatDate(stats.mtime);
-        console.log(chalk.green('    ✔ 更新 LastUpdated: ') + chalk.yellow(fileName));
+        logger.success('更新 LastUpdated', fileName);
 
         if (!frontmatter.date) {
             const creationTime = stats.birthtime;
             frontmatter.date = formatDate(creationTime);
-            console.log(chalk.green('    ✔ 更新 Date: ') + chalk.yellow(fileName));
+            logger.success('更新 Date', fileName);
         }
 
         if (!frontmatter.id) {
             frontmatter.id = genPostId();
-            console.log(chalk.green('    ✔ 生成 ID: ') + chalk.yellow(fileName));
+            logger.success('生成 ID', fileName);
         }
 
         const newContent = matter.stringify(fileContent.content, frontmatter);
@@ -75,14 +75,14 @@ try {
     if (mdFiles.length > 0) {
         execSync(`git add ${mdFiles.map(file => `"${file}"`).join(' ')}`);
     } else {
-        console.log(chalk.gray('  - 没有需要更新的文件')); 
+        logger.gray('没有需要更新的文件'); 
     }
 
-    console.log('\n' + chalk.bgCyan.black.bold(' 2. FileName Lint '), chalk.gray('(检查文件名兼容性)'));
+    logger.section('2. FileName Lint', '(检查文件名兼容性)');
     lint();
-    console.log('\n' + chalk.green.bold('✨ Pre-commit hook completed successfully.'));
+    logger.complete('Pre-commit hook completed successfully.');
     process.exit(0);
 } catch (error) {
-    console.error('\n' + chalk.red.bold('✖ Error running pre-commit hook:'), error);
+    logger.error('Error running pre-commit hook:', error);
     process.exit(1);
 }
