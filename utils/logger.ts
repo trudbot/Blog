@@ -15,7 +15,7 @@ export const logger = {
      * @param label 标签
      * @param value 值 (可选)
      */
-    info: (label: string, value?: object | Array<unknown> | string) => {
+    info: (label: string, value?: unknown) => {
         let msg = chalk.cyan(`  • ${label}`);
         if (value !== undefined) {
             // 如果是对象或数组，格式化一下，否则直接拼接
@@ -56,8 +56,8 @@ export const logger = {
      * @param label 错误描述
      * @param error 错误对象或详细信息
      */
-    error: (label: string, error?: object | string | Array<unknown>) => {
-        console.error('\n' + chalk.red.bold(`✖ ${label}`), error || '');
+    error: (label: string, error?: unknown) => {
+        console.error('\n' + chalk.red.bold(`✖ ${label}`), error === undefined ? '' : error);
     },
 
     /**
