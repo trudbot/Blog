@@ -8,16 +8,7 @@ export default defineConfig({
     lang: 'zh-CN',
     rewrites,
     head: [
-        ['link', { rel: 'icon', href: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg' }],
-        ['script', { src: 'https://www.googletagmanager.com/gtag/js?id=G-KVFZYET0GD', async: ''}],
-        ['script', {}, 
-            `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KVFZYET0GD');`
-        ]
+        ['link', { rel: 'icon', href: 'https://trudbot-md-img.oss-cn-shanghai.aliyuncs.com/202407082112768.jpg' }]
     ],
     themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
