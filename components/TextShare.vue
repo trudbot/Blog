@@ -1,5 +1,5 @@
 <template>
-    <div class="text-share-container">
+    <main class="text-share-container">
         <div class="card">
             <!-- Header -->
             <div class="header">
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script setup lang="ts">
@@ -374,7 +374,7 @@ onMounted(() => {
 
 .empty-state {
   text-align: center;
-  color: var(--vp-c-text-3, #999);
+  color: var(--vp-c-text-2, #666);
   padding: 60px 0;
   font-style: italic;
   font-size: 1.1rem;
