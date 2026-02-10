@@ -47,6 +47,13 @@ export default defineConfig({
         './scripts',
     ],
     vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern-compiler'
+                }
+            }
+        },
         resolve: {
             // 组件重写
             alias: [

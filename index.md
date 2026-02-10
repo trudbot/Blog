@@ -25,8 +25,8 @@ features:
 ---
 
 <script setup>
-import Tags from './views/tags.vue';
-import Beian from './views/beian.vue';
+import Tags from './components/tags.vue';
+import Beian from './components/beian.vue';
 import {data} from './data/content-handler.data.mts'
 </script>
 

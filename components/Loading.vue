@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineModel } from 'vue';
 
 const loading = defineModel<boolean>({
     default: true
