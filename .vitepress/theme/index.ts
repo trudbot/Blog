@@ -6,6 +6,7 @@ import { useData } from 'vitepress';
 import './style.css';
 import {initializeImageInteractions} from '../../utils/custom-img';
 import { pageTracker } from '../../utils/analytics/page-tracker';
+import { ensureUid } from '../../utils/analytics/uid';
 
 export default {
     extends: DefaultTheme,
@@ -46,6 +47,8 @@ export default {
         };
 
         onMounted(() => {
+            // 尽早解析持久化访客 id（缓存在 localStorage），后续事件携带 uid。
+            void ensureUid();
             trackCurrent();
             watch(
                 () => page.value.relativePath,

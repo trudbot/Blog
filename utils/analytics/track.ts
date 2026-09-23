@@ -5,6 +5,8 @@
  *  3. 小而稳的类型化接口：调用方只用 trackDisplay/trackExposure/trackClick + 自定义参数。
  */
 
+import { getUid } from './uid';
+
 export type TrackEventType = 'display' | 'exposure' | 'click';
 
 export type TrackParams = Record<string, unknown>;
@@ -49,6 +51,9 @@ export function track(type: TrackEventType, name: string, params?: TrackParams):
             params: {
                 name,
                 page: window.location.pathname,
+                // 持久化访客 id（FingerprintJS）；首访解析完成前为 undefined，
+                // JSON.stringify 会自动忽略该键。
+                uid: getUid(),
                 ...params,
             },
         });

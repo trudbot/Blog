@@ -7,3 +7,4 @@ export {
     type TrackParams,
 } from './track';
 export { pageTracker, type PageInfo } from './page-tracker';
+export { getUid, ensureUid } from './uid';
